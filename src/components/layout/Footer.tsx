@@ -4,38 +4,24 @@ import logo from "@/assets/logo-intellix.png";
 
 export function Footer() {
   return (
-    <footer className="relative bg-gradient-to-b from-card via-background to-background border-t border-primary/20 overflow-hidden">
-      {/* Background Pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
-          backgroundSize: "40px 40px",
-        }}
-      />
-      
-      {/* Glow Effects */}
-      <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
+    <footer className="relative bg-gradient-to-br from-card via-background to-[hsl(220_30%_8%)] border-t border-primary/30 overflow-hidden">
+      {/* Subtle particle/halo background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/8 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-accent/6 rounded-full blur-[80px]" />
+        <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-[60px]" />
+      </div>
 
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-3 group">
+            <Link to="/" className="inline-block group">
               <img 
                 src={logo} 
                 alt="IntelliX.AI" 
-                className="h-14 w-auto drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_25px_hsl(var(--primary)/0.7)]" 
+                className="h-16 md:h-20 w-auto drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_25px_hsl(var(--primary)/0.7)]" 
               />
-              <div className="flex items-baseline">
-                <span className="text-xl font-bold text-primary text-glow tracking-tight">
-                  IntelliX
-                </span>
-                <span className="text-xl font-bold gradient-text-gold">
-                  .AI
-                </span>
-              </div>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Sistemas inteligentes que fazem sua empresa operar melhor, vender mais e depender menos de tarefas manuais.
@@ -48,7 +34,7 @@ export function Footer() {
 
           {/* Links */}
           <div className="glass-card-glow p-6">
-            <h4 className="font-semibold text-foreground mb-4 text-primary">Navegação</h4>
+            <h4 className="font-semibold mb-4 gradient-text-gold text-glow-gold">Navegação</h4>
             <ul className="space-y-3">
               <li>
                 <Link to="/" className="text-muted-foreground hover:text-primary text-sm transition-colors hover-glow inline-block">
@@ -80,7 +66,7 @@ export function Footer() {
 
           {/* Soluções */}
           <div className="glass-card-glow p-6">
-            <h4 className="font-semibold text-foreground mb-4 text-primary">Soluções</h4>
+            <h4 className="font-semibold mb-4 gradient-text-gold text-glow-gold">Soluções</h4>
             <ul className="space-y-3">
               <li>
                 <span className="text-muted-foreground text-sm">Prospecção & Vendas</span>
@@ -102,7 +88,7 @@ export function Footer() {
 
           {/* Contato */}
           <div className="glass-card-glow p-6">
-            <h4 className="font-semibold text-foreground mb-4 text-primary">Contato</h4>
+            <h4 className="font-semibold mb-4 gradient-text-gold text-glow-gold">Contato</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-muted-foreground text-sm">
                 <Mail size={16} className="text-primary icon-glow" />
@@ -141,20 +127,14 @@ export function Footer() {
                 <Instagram size={22} />
               </a>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">@ai_intellix</p>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-primary/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-primary/20 mt-6 pt-4 flex justify-center items-center">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} <span className="text-primary">IntelliX</span><span className="text-accent">.AI</span>. Todos os direitos reservados.
+            © {new Date().getFullYear()} IntelliX.AI. Todos os direitos reservados.
           </p>
-          <div className="flex gap-6">
-            <Link to="/diagnostico" className="text-sm text-accent hover:text-accent/80 transition-colors font-semibold glow-gold px-4 py-2 rounded-lg bg-accent/10 border border-accent/30 hover:bg-accent/20">
-              Iniciar Diagnóstico
-            </Link>
-          </div>
         </div>
       </div>
     </footer>
