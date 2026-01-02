@@ -20,7 +20,7 @@ export function Footer() {
               <img 
                 src={logo} 
                 alt="IntelliX.AI" 
-                className="h-16 md:h-20 w-auto drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_25px_hsl(var(--primary)/0.7)]" 
+                className="h-20 md:h-24 w-auto drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_25px_hsl(var(--primary)/0.7)]"
               />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">

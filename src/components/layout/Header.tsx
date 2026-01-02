@@ -23,10 +23,10 @@ export function Header() {
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link to="/" className="group">
-            <img 
-              src={logo} 
-              alt="IntelliX.AI" 
-              className="h-16 md:h-20 w-auto drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_25px_hsl(var(--primary)/0.7)]" 
+              <img 
+                src={logo} 
+                alt="IntelliX.AI" 
+                className="h-20 md:h-24 w-auto drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_25px_hsl(var(--primary)/0.7)]"
             />
           </Link>
 
