@@ -18,12 +18,24 @@ export function Header() {
   const location = useLocation();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-primary/20 shadow-[0_4px_30px_-10px_hsl(var(--primary)/0.3)]">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="IntelliX.AI" className="h-10 w-auto" />
+        <div className="flex items-center justify-between h-24">
+          {/* Logo Lockup */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <img 
+              src={logo} 
+              alt="IntelliX.AI" 
+              className="h-14 md:h-16 w-auto drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_25px_hsl(var(--primary)/0.7)]" 
+            />
+            <div className="hidden sm:flex items-baseline">
+              <span className="text-2xl md:text-3xl font-bold text-primary text-glow tracking-tight">
+                IntelliX
+              </span>
+              <span className="text-2xl md:text-3xl font-bold gradient-text-gold">
+                .AI
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -34,7 +46,7 @@ export function Header() {
                 to={link.href}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
                   location.pathname === link.href
-                    ? "text-primary"
+                    ? "text-primary text-glow"
                     : "text-foreground/80"
                 }`}
               >
@@ -64,7 +76,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-border/50 animate-fade-in">
+          <div className="lg:hidden py-4 border-t border-primary/20 animate-fade-in">
             <nav className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
