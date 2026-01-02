@@ -35,7 +35,7 @@ export default function QuemSomos() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Quem é a <span className="gradient-text text-glow">IntelliX.AI</span>
+              Quem é a <span className="gradient-text-gold text-glow-gold">IntelliX</span><span className="gradient-text-brand-blue">.AI</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
               Somos uma empresa de tecnologia focada em transformar operações tradicionais 
@@ -113,7 +113,7 @@ export default function QuemSomos() {
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Por que <span className="gradient-text-gold text-glow-gold">IntelliX.AI</span>?
+                Por que <span className="gradient-text-gold text-glow-gold">IntelliX</span><span className="gradient-text-brand-blue">.AI</span>?
               </h2>
             </div>
             
