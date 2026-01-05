@@ -4,12 +4,54 @@ import logo from "@/assets/logo-intellix.png";
 
 export function Footer() {
   return (
-    <footer className="relative bg-gradient-to-br from-card via-background to-[hsl(220_30%_8%)] border-t border-primary/30 overflow-hidden">
-      {/* Subtle particle/halo background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/8 rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-accent/6 rounded-full blur-[80px]" />
-        <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-[60px]" />
+    <footer className="relative bg-gradient-to-t from-[hsl(220_30%_4%)] via-[hsl(220_30%_8%)] to-[hsl(220_30%_12%)] border-t border-primary/30 overflow-hidden">
+      {/* Neural connections background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Neural network SVG */}
+        <svg className="absolute inset-0 w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="1" />
+              <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          
+          {/* Connection lines */}
+          <g stroke="hsl(var(--primary))" strokeWidth="0.5" opacity="0.4">
+            <line x1="10%" y1="20%" x2="25%" y2="35%" className="animate-pulse-slow" />
+            <line x1="25%" y1="35%" x2="40%" y2="25%" className="animate-pulse-slow" style={{ animationDelay: '0.5s' }} />
+            <line x1="40%" y1="25%" x2="55%" y2="40%" className="animate-pulse-slow" style={{ animationDelay: '1s' }} />
+            <line x1="55%" y1="40%" x2="70%" y2="30%" className="animate-pulse-slow" style={{ animationDelay: '0.3s' }} />
+            <line x1="70%" y1="30%" x2="85%" y2="45%" className="animate-pulse-slow" style={{ animationDelay: '0.7s' }} />
+            <line x1="25%" y1="35%" x2="30%" y2="60%" className="animate-pulse-slow" style={{ animationDelay: '0.2s' }} />
+            <line x1="30%" y1="60%" x2="50%" y2="70%" className="animate-pulse-slow" style={{ animationDelay: '0.8s' }} />
+            <line x1="50%" y1="70%" x2="70%" y2="60%" className="animate-pulse-slow" style={{ animationDelay: '0.4s' }} />
+            <line x1="70%" y1="60%" x2="85%" y2="75%" className="animate-pulse-slow" style={{ animationDelay: '1.2s' }} />
+            <line x1="55%" y1="40%" x2="50%" y2="70%" className="animate-pulse-slow" style={{ animationDelay: '0.6s' }} />
+            <line x1="15%" y1="70%" x2="30%" y2="60%" className="animate-pulse-slow" style={{ animationDelay: '0.9s' }} />
+            <line x1="40%" y1="25%" x2="30%" y2="60%" className="animate-pulse-slow" style={{ animationDelay: '1.1s' }} />
+            <line x1="70%" y1="30%" x2="70%" y2="60%" className="animate-pulse-slow" style={{ animationDelay: '0.5s' }} />
+          </g>
+          
+          {/* Neural nodes */}
+          <g>
+            <circle cx="10%" cy="20%" r="4" fill="url(#nodeGlow)" className="animate-pulse-glow" />
+            <circle cx="25%" cy="35%" r="5" fill="url(#nodeGlow)" className="animate-pulse-glow" style={{ animationDelay: '0.3s' }} />
+            <circle cx="40%" cy="25%" r="4" fill="url(#nodeGlow)" className="animate-pulse-glow" style={{ animationDelay: '0.6s' }} />
+            <circle cx="55%" cy="40%" r="6" fill="url(#nodeGlow)" className="animate-pulse-glow" style={{ animationDelay: '0.9s' }} />
+            <circle cx="70%" cy="30%" r="4" fill="url(#nodeGlow)" className="animate-pulse-glow" style={{ animationDelay: '1.2s' }} />
+            <circle cx="85%" cy="45%" r="5" fill="url(#nodeGlow)" className="animate-pulse-glow" style={{ animationDelay: '0.4s' }} />
+            <circle cx="30%" cy="60%" r="5" fill="url(#nodeGlow)" className="animate-pulse-glow" style={{ animationDelay: '0.7s' }} />
+            <circle cx="50%" cy="70%" r="6" fill="url(#nodeGlow)" className="animate-pulse-glow" style={{ animationDelay: '1s' }} />
+            <circle cx="70%" cy="60%" r="4" fill="url(#nodeGlow)" className="animate-pulse-glow" style={{ animationDelay: '0.2s' }} />
+            <circle cx="85%" cy="75%" r="5" fill="url(#nodeGlow)" className="animate-pulse-glow" style={{ animationDelay: '0.5s' }} />
+            <circle cx="15%" cy="70%" r="4" fill="url(#nodeGlow)" className="animate-pulse-glow" style={{ animationDelay: '0.8s' }} />
+          </g>
+        </svg>
+        
+        {/* Subtle glow overlays */}
+        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-[80px]" />
+        <div className="absolute bottom-1/4 right-1/3 w-48 h-48 bg-primary/4 rounded-full blur-[60px]" />
       </div>
 
       <div className="container mx-auto px-4 py-16 relative z-10">
@@ -20,7 +62,7 @@ export function Footer() {
               <img 
                 src={logo} 
                 alt="IntelliX.AI" 
-                className="h-20 md:h-24 w-auto drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_25px_hsl(var(--primary)/0.7)]"
+                className="h-24 md:h-28 w-auto drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_25px_hsl(var(--primary)/0.7)]"
               />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
