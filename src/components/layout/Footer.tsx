@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Instagram, ExternalLink } from "lucide-react";
 import logo from "@/assets/logo-intellix.png";
 
-// Neural Network Background Component - Much more visible
+// Neural Network Background Component - Subtle, elegant, premium
 const NeuralBackground = () => {
   const nodes = [
-    { x: 5, y: 15, size: 6 }, { x: 12, y: 40, size: 8 }, { x: 20, y: 20, size: 5 },
-    { x: 28, y: 55, size: 7 }, { x: 35, y: 30, size: 6 }, { x: 42, y: 70, size: 8 },
-    { x: 50, y: 25, size: 5 }, { x: 58, y: 50, size: 7 }, { x: 65, y: 15, size: 6 },
-    { x: 72, y: 45, size: 8 }, { x: 80, y: 25, size: 5 }, { x: 88, y: 60, size: 7 },
-    { x: 95, y: 35, size: 6 }, { x: 15, y: 75, size: 7 }, { x: 30, y: 85, size: 6 },
-    { x: 45, y: 80, size: 8 }, { x: 60, y: 88, size: 5 }, { x: 75, y: 78, size: 7 },
-    { x: 90, y: 85, size: 6 }, { x: 8, y: 55, size: 5 }, { x: 25, y: 65, size: 6 },
-    { x: 55, y: 65, size: 7 }, { x: 85, y: 70, size: 5 },
+    { x: 5, y: 15, size: 2 }, { x: 12, y: 40, size: 3 }, { x: 20, y: 20, size: 2 },
+    { x: 28, y: 55, size: 2.5 }, { x: 35, y: 30, size: 2 }, { x: 42, y: 70, size: 3 },
+    { x: 50, y: 25, size: 2 }, { x: 58, y: 50, size: 2.5 }, { x: 65, y: 15, size: 2 },
+    { x: 72, y: 45, size: 3 }, { x: 80, y: 25, size: 2 }, { x: 88, y: 60, size: 2.5 },
+    { x: 95, y: 35, size: 2 }, { x: 15, y: 75, size: 2.5 }, { x: 30, y: 85, size: 2 },
+    { x: 45, y: 80, size: 3 }, { x: 60, y: 88, size: 2 }, { x: 75, y: 78, size: 2.5 },
+    { x: 90, y: 85, size: 2 }, { x: 8, y: 55, size: 2 }, { x: 25, y: 65, size: 2 },
+    { x: 55, y: 65, size: 2.5 }, { x: 85, y: 70, size: 2 },
   ];
 
   const connections = [
@@ -20,8 +20,6 @@ const NeuralBackground = () => {
     [0, 19], [1, 20], [2, 4], [3, 20], [5, 21], [6, 8], [7, 21], [9, 22], [11, 22],
     [13, 14], [14, 15], [15, 16], [16, 17], [17, 18],
     [1, 13], [3, 14], [5, 15], [7, 16], [9, 17], [11, 18],
-    [19, 20], [20, 21], [21, 22], [19, 13], [20, 14], [21, 16], [22, 18],
-    [4, 21], [6, 21], [8, 22], [10, 22],
   ];
 
   return (
@@ -29,35 +27,24 @@ const NeuralBackground = () => {
       <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
         <defs>
           <linearGradient id="lineGradientFooter" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
-            <stop offset="50%" stopColor="hsl(190 100% 60%)" stopOpacity="1" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
           </linearGradient>
           <radialGradient id="nodeGlowFooter" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="hsl(190 100% 70%)" stopOpacity="1" />
-            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
             <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
           </radialGradient>
-          <filter id="glowFooter" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <filter id="subtleGlowFooter" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
             <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-          <filter id="strongGlowFooter" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="6" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="coloredBlur" />
               <feMergeNode in="coloredBlur" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
         </defs>
 
-        {/* Connection Lines - More visible */}
+        {/* Connection Lines - Subtle and elegant */}
         {connections.map((conn, i) => {
           const fromNode = nodes[conn[0]];
           const toNode = nodes[conn[1]];
@@ -69,74 +56,43 @@ const NeuralBackground = () => {
               x2={`${toNode.x}%`}
               y2={`${toNode.y}%`}
               stroke="url(#lineGradientFooter)"
-              strokeWidth="2"
-              filter="url(#glowFooter)"
-              opacity="0.7"
-              className="animate-pulse-slow"
-              style={{ animationDelay: `${i * 0.1}s` }}
+              strokeWidth="0.5"
+              opacity="0.25"
             />
           );
         })}
 
-        {/* Nodes - Larger and more glowing */}
+        {/* Nodes - Small and refined */}
         {nodes.map((node, i) => (
           <g key={`node-${i}`}>
-            {/* Outer pulsing ring */}
-            <circle
-              cx={`${node.x}%`}
-              cy={`${node.y}%`}
-              r={node.size * 3}
-              fill="none"
-              stroke="hsl(var(--primary))"
-              strokeWidth="1"
-              opacity="0.4"
-              className="animate-ping"
-              style={{ animationDelay: `${i * 0.2}s`, animationDuration: "3s" }}
-            />
-            {/* Large glow */}
+            {/* Soft glow */}
             <circle
               cx={`${node.x}%`}
               cy={`${node.y}%`}
               r={node.size * 2}
               fill="url(#nodeGlowFooter)"
-              opacity="0.6"
-              filter="url(#strongGlowFooter)"
+              opacity="0.2"
             />
             {/* Core node */}
             <circle
               cx={`${node.x}%`}
               cy={`${node.y}%`}
               r={node.size}
-              fill="hsl(190 100% 65%)"
-              filter="url(#strongGlowFooter)"
-              className="animate-pulse"
-              style={{ animationDelay: `${i * 0.15}s`, animationDuration: "2s" }}
+              fill="hsl(var(--primary))"
+              opacity="0.3"
+              filter="url(#subtleGlowFooter)"
             />
             {/* Bright center */}
             <circle
               cx={`${node.x}%`}
               cy={`${node.y}%`}
               r={node.size * 0.4}
-              fill="white"
-              opacity="0.95"
+              fill="hsl(var(--primary))"
+              opacity="0.5"
             />
           </g>
         ))}
       </svg>
-
-      {/* Additional floating particles */}
-      {[...Array(30)].map((_, i) => (
-        <div
-          key={`particle-${i}`}
-          className="absolute w-1.5 h-1.5 bg-primary rounded-full animate-float shadow-[0_0_10px_hsl(var(--primary))]"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 5}s`,
-            animationDuration: `${4 + Math.random() * 4}s`,
-          }}
-        />
-      ))}
     </div>
   );
 };
@@ -163,15 +119,15 @@ export function Footer() {
   ];
 
   return (
-    <footer className="relative pt-28 pb-10 overflow-hidden">
+    <footer className="relative pt-24 pb-10 overflow-hidden">
       {/* Dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220_40%_2%)] via-[hsl(220_35%_6%)] to-[hsl(220_30%_10%)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220_40%_3%)] via-[hsl(220_35%_5%)] to-background" />
 
-      {/* Neural Network Effect */}
+      {/* Neural Network Effect - Subtle */}
       <NeuralBackground />
 
       {/* Gradient overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/50 to-transparent" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Main Footer Content */}
