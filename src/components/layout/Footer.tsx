@@ -5,46 +5,30 @@ import logo from "@/assets/logo-intellix.png";
 // Neural Network Background Component - Subtle, elegant, premium
 const NeuralBackground = () => {
   const nodes = [
-    { x: 5, y: 15, size: 2 }, { x: 12, y: 40, size: 3 }, { x: 20, y: 20, size: 2 },
-    { x: 28, y: 55, size: 2.5 }, { x: 35, y: 30, size: 2 }, { x: 42, y: 70, size: 3 },
-    { x: 50, y: 25, size: 2 }, { x: 58, y: 50, size: 2.5 }, { x: 65, y: 15, size: 2 },
-    { x: 72, y: 45, size: 3 }, { x: 80, y: 25, size: 2 }, { x: 88, y: 60, size: 2.5 },
-    { x: 95, y: 35, size: 2 }, { x: 15, y: 75, size: 2.5 }, { x: 30, y: 85, size: 2 },
-    { x: 45, y: 80, size: 3 }, { x: 60, y: 88, size: 2 }, { x: 75, y: 78, size: 2.5 },
-    { x: 90, y: 85, size: 2 }, { x: 8, y: 55, size: 2 }, { x: 25, y: 65, size: 2 },
-    { x: 55, y: 65, size: 2.5 }, { x: 85, y: 70, size: 2 },
+    { x: 8, y: 20 }, { x: 18, y: 45 }, { x: 28, y: 25 }, { x: 38, y: 60 },
+    { x: 48, y: 30 }, { x: 58, y: 55 }, { x: 68, y: 20 }, { x: 78, y: 50 },
+    { x: 88, y: 35 }, { x: 15, y: 75 }, { x: 35, y: 80 }, { x: 55, y: 78 },
+    { x: 75, y: 82 }, { x: 92, y: 70 },
   ];
 
   const connections = [
-    [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 12],
-    [0, 19], [1, 20], [2, 4], [3, 20], [5, 21], [6, 8], [7, 21], [9, 22], [11, 22],
-    [13, 14], [14, 15], [15, 16], [16, 17], [17, 18],
-    [1, 13], [3, 14], [5, 15], [7, 16], [9, 17], [11, 18],
+    [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8],
+    [1, 9], [3, 10], [5, 11], [7, 12], [8, 13],
+    [9, 10], [10, 11], [11, 12], [12, 13],
   ];
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden opacity-40">
       <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
         <defs>
           <linearGradient id="lineGradientFooter" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
-            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
+            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
           </linearGradient>
-          <radialGradient id="nodeGlowFooter" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-          </radialGradient>
-          <filter id="subtleGlowFooter" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
         </defs>
 
-        {/* Connection Lines - Subtle and elegant */}
+        {/* Connection Lines */}
         {connections.map((conn, i) => {
           const fromNode = nodes[conn[0]];
           const toNode = nodes[conn[1]];
@@ -56,41 +40,21 @@ const NeuralBackground = () => {
               x2={`${toNode.x}%`}
               y2={`${toNode.y}%`}
               stroke="url(#lineGradientFooter)"
-              strokeWidth="0.5"
-              opacity="0.25"
+              strokeWidth="1"
             />
           );
         })}
 
-        {/* Nodes - Small and refined */}
+        {/* Nodes */}
         {nodes.map((node, i) => (
-          <g key={`node-${i}`}>
-            {/* Soft glow */}
-            <circle
-              cx={`${node.x}%`}
-              cy={`${node.y}%`}
-              r={node.size * 2}
-              fill="url(#nodeGlowFooter)"
-              opacity="0.2"
-            />
-            {/* Core node */}
-            <circle
-              cx={`${node.x}%`}
-              cy={`${node.y}%`}
-              r={node.size}
-              fill="hsl(var(--primary))"
-              opacity="0.3"
-              filter="url(#subtleGlowFooter)"
-            />
-            {/* Bright center */}
-            <circle
-              cx={`${node.x}%`}
-              cy={`${node.y}%`}
-              r={node.size * 0.4}
-              fill="hsl(var(--primary))"
-              opacity="0.5"
-            />
-          </g>
+          <circle
+            key={`node-${i}`}
+            cx={`${node.x}%`}
+            cy={`${node.y}%`}
+            r="3"
+            fill="hsl(var(--primary))"
+            opacity="0.5"
+          />
         ))}
       </svg>
     </div>
