@@ -5,6 +5,24 @@ import { ExternalLink, ArrowRight } from "lucide-react";
 
 const projects = [
   {
+    name: "IntelliX CRM",
+    type: "CRM Personalizado",
+    segment: "Produto IntelliX",
+    description: "Sistema de gestão de relacionamento 100% adaptável ao fluxo de trabalho da sua empresa. Gerencie leads, clientes e oportunidades de forma inteligente com dashboards personalizados.",
+    url: "#",
+    gradient: "from-indigo-500 to-violet-400",
+    isInternal: true,
+  },
+  {
+    name: "IntelliX Disparo",
+    type: "Disparador WhatsApp em Massa",
+    segment: "Produto IntelliX",
+    description: "Plataforma de disparo em massa via API Oficial do WhatsApp. Campanhas segmentadas, automações inteligentes e atendimento escalável com total segurança e conformidade.",
+    url: "#",
+    gradient: "from-green-500 to-emerald-400",
+    isInternal: true,
+  },
+  {
     name: "LeadFinder Pro",
     type: "Plataforma de Prospecção",
     segment: "Vendas B2B",
@@ -97,13 +115,20 @@ export default function Portfolio() {
               <a
                 key={project.name}
                 href={project.url}
-                target="_blank"
+                target={project.isInternal ? "_self" : "_blank"}
                 rel="noopener noreferrer"
-                className="glass-card group hover-lift overflow-hidden animate-fade-in flex flex-col"
+                className={`glass-card group hover-lift overflow-hidden animate-fade-in flex flex-col relative ${project.isInternal ? 'ring-2 ring-primary/40' : ''}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Gradient Header */}
                 <div className={`h-2 bg-gradient-to-r ${project.gradient}`} />
+                
+                {/* Internal Product Badge */}
+                {project.isInternal && (
+                  <span className="absolute top-4 right-4 text-xs font-bold bg-primary text-primary-foreground px-2 py-1 rounded-full">
+                    Produto IntelliX
+                  </span>
+                )}
                 
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex justify-between items-start mb-4">
@@ -113,10 +138,12 @@ export default function Portfolio() {
                       </h3>
                       <p className="text-sm text-muted-foreground">{project.type}</p>
                     </div>
-                    <ExternalLink className="text-muted-foreground group-hover:text-primary transition-colors shrink-0" size={20} />
+                    {!project.isInternal && (
+                      <ExternalLink className="text-muted-foreground group-hover:text-primary transition-colors shrink-0" size={20} />
+                    )}
                   </div>
                   
-                  <span className="inline-block self-start text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full mb-4">
+                  <span className={`inline-block self-start text-xs font-medium px-3 py-1 rounded-full mb-4 ${project.isInternal ? 'bg-primary/20 text-primary' : 'bg-primary/10 text-primary'}`}>
                     {project.segment}
                   </span>
                   
@@ -124,7 +151,7 @@ export default function Portfolio() {
                   
                   <div className="mt-4 pt-4 border-t border-border">
                     <span className="text-sm text-primary font-medium group-hover:underline">
-                      Visitar projeto →
+                      {project.isInternal ? 'Em breve →' : 'Visitar projeto →'}
                     </span>
                   </div>
                 </div>
