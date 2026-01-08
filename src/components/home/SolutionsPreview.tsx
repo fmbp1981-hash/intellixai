@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Search, MessageSquare, Settings, Globe, Puzzle, Sparkles, TrendingUp, Clock, Zap } from "lucide-react";
+import { ArrowRight, Search, MessageSquare, Settings, Globe, Puzzle, Sparkles, TrendingUp, Clock, Zap, Users, Send } from "lucide-react";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
 const solutions = [
@@ -23,6 +23,24 @@ const solutions = [
     bgGlow: "bg-purple-500/20",
   },
   {
+    icon: Users,
+    title: "CRM Personalizado",
+    description: "Sistema de gestão de relacionamento 100% adaptado ao fluxo de trabalho da sua empresa. Gerencie leads, clientes e oportunidades de forma inteligente.",
+    benefits: ["100% sob medida", "Automação inteligente", "Dashboard integrado"],
+    gradient: "from-indigo-500 to-violet-400",
+    shadowColor: "shadow-indigo-500/30",
+    bgGlow: "bg-indigo-500/20",
+  },
+  {
+    icon: Send,
+    title: "Disparador WhatsApp",
+    description: "Plataforma de disparo em massa via API Oficial do WhatsApp. Campanhas segmentadas, automações e atendimento escalável com segurança.",
+    benefits: ["API Oficial WhatsApp", "Disparo em massa", "Automação de campanhas"],
+    gradient: "from-green-500 to-teal-400",
+    shadowColor: "shadow-green-500/30",
+    bgGlow: "bg-green-500/20",
+  },
+  {
     icon: Settings,
     title: "Gestão & Operações",
     description: "Dashboards inteligentes e automação de processos internos. Tome decisões baseadas em dados em tempo real.",
@@ -36,9 +54,9 @@ const solutions = [
     title: "Sites & Landing Pages",
     description: "Sites otimizados para conversão com IA integrada. Design moderno e foco em resultados mensuráveis.",
     benefits: ["SEO otimizado", "Alta conversão", "Design premium"],
-    gradient: "from-green-500 to-emerald-400",
-    shadowColor: "shadow-green-500/30",
-    bgGlow: "bg-green-500/20",
+    gradient: "from-emerald-500 to-lime-400",
+    shadowColor: "shadow-emerald-500/30",
+    bgGlow: "bg-emerald-500/20",
   },
   {
     icon: Puzzle,
@@ -80,13 +98,12 @@ export function SolutionsPreview() {
         </AnimatedSection>
 
         {/* Solutions Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
           {solutions.map((solution, index) => (
             <AnimatedSection
               key={index}
               animation="scale"
-              delay={index * 100}
-              className={index === 4 ? "md:col-span-2 lg:col-span-1 lg:col-start-2" : ""}
+              delay={index * 80}
             >
               <div className={`group h-full glass-card p-8 rounded-3xl border border-border/50 hover:border-primary/40 transition-all duration-500 hover:shadow-2xl ${solution.shadowColor} hover:-translate-y-3 relative overflow-hidden`}>
                 {/* Gradient top bar */}

@@ -66,7 +66,7 @@ export function LeadCaptureForm() {
   }
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="falar-com-equipe" className="py-24 relative overflow-hidden scroll-mt-32">
       {/* Background Effects - More pronounced */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background to-primary/5" />
       <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-primary/15 rounded-full blur-[120px] animate-pulse" />
