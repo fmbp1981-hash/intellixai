@@ -4,6 +4,24 @@ import { Button } from "@/components/ui/button";
 
 const featuredProjects = [
   {
+    name: "IntelliX CRM",
+    type: "CRM Personalizado",
+    segment: "Produto IntelliX",
+    description: "Sistema de gestão de relacionamento 100% adaptável ao fluxo de trabalho da sua empresa.",
+    url: "#",
+    gradient: "from-indigo-500 to-violet-400",
+    isInternal: true,
+  },
+  {
+    name: "IntelliX Disparo",
+    type: "Disparador WhatsApp",
+    segment: "Produto IntelliX",
+    description: "Plataforma de disparo em massa via API Oficial do WhatsApp com automações inteligentes.",
+    url: "#",
+    gradient: "from-green-500 to-emerald-400",
+    isInternal: true,
+  },
+  {
     name: "LeadFinder Pro",
     type: "Plataforma de Prospecção",
     segment: "Vendas B2B",
@@ -50,35 +68,43 @@ export function PortfolioPreview() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {featuredProjects.map((project, index) => (
             <a
               key={project.name}
               href={project.url}
-              target="_blank"
+              target={project.isInternal ? "_self" : "_blank"}
               rel="noopener noreferrer"
-              className="glass-card group hover-lift overflow-hidden animate-fade-in"
+              className={`glass-card group hover-lift overflow-hidden animate-fade-in relative ${project.isInternal ? 'ring-1 ring-primary/30' : ''}`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Gradient Header */}
               <div className={`h-2 bg-gradient-to-r ${project.gradient}`} />
               
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="font-semibold text-xl mb-1 group-hover:text-primary transition-colors">
-                      {project.name}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">{project.type}</p>
-                  </div>
-                  <ExternalLink className="text-muted-foreground group-hover:text-primary transition-colors" size={20} />
+              {/* Internal Product Badge */}
+              {project.isInternal && (
+                <span className="absolute top-4 right-4 text-[10px] font-bold bg-primary text-primary-foreground px-2 py-0.5 rounded-full">
+                  IntelliX
+                </span>
+              )}
+              
+              <div className="p-5">
+                <div className="mb-3">
+                  <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
+                    {project.name}
+                  </h3>
+                  <p className="text-xs text-muted-foreground">{project.type}</p>
                 </div>
                 
-                <span className="inline-block text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full mb-4">
+                <span className={`inline-block text-xs font-medium px-2 py-0.5 rounded-full mb-3 ${project.isInternal ? 'bg-primary/20 text-primary' : 'bg-primary/10 text-primary'}`}>
                   {project.segment}
                 </span>
                 
-                <p className="text-muted-foreground text-sm">{project.description}</p>
+                <p className="text-muted-foreground text-xs line-clamp-3">{project.description}</p>
+                
+                {!project.isInternal && (
+                  <ExternalLink className="absolute bottom-4 right-4 text-muted-foreground group-hover:text-primary transition-colors" size={16} />
+                )}
               </div>
             </a>
           ))}
