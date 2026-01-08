@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Search, MessageSquare, Settings, Globe, Puzzle } from "lucide-react";
+import { ArrowRight, Search, MessageSquare, Settings, Globe, Puzzle, Users, Send } from "lucide-react";
 
 const solutions = [
   {
@@ -27,6 +27,30 @@ const solutions = [
       "Handoff para humanos",
     ],
     gradient: "from-accent to-yellow-400",
+  },
+  {
+    icon: Users,
+    title: "CRM Personalizado",
+    description: "Sistema de gestão de relacionamento 100% adaptado ao fluxo de trabalho da sua empresa. Gerencie leads, clientes e oportunidades de forma inteligente.",
+    features: [
+      "100% adaptado ao seu negócio",
+      "Gestão completa de leads e clientes",
+      "Automação de tarefas e follow-ups",
+      "Dashboard e relatórios personalizados",
+    ],
+    gradient: "from-indigo-500 to-violet-400",
+  },
+  {
+    icon: Send,
+    title: "Disparador WhatsApp",
+    description: "Plataforma de disparo em massa via API Oficial do WhatsApp. Campanhas segmentadas, automações e atendimento escalável com segurança.",
+    features: [
+      "API Oficial do WhatsApp",
+      "Disparo em massa seguro",
+      "Campanhas segmentadas",
+      "Automação de mensagens",
+    ],
+    gradient: "from-green-500 to-teal-400",
   },
   {
     icon: Settings,

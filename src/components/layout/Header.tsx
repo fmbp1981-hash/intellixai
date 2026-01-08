@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, Zap, Briefcase, Stethoscope, Users, Cog, MessageSquare } from "lucide-react";
+import { Menu, X, ChevronDown, Zap, Briefcase, Stethoscope, Users, Cog, MessageSquare, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -14,6 +14,7 @@ const mainNavLinks = [
   { href: "/solucoes", label: "Soluções", icon: Zap },
   { href: "/portfolio", label: "Portfólio", icon: Briefcase },
   { href: "/diagnostico", label: "Diagnóstico", icon: Stethoscope },
+  { href: "/#falar-com-equipe", label: "Fale Conosco", icon: Phone, isAnchor: true },
 ];
 
 const moreLinks = [
@@ -60,6 +61,21 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-2">
             {mainNavLinks.map((link) => {
               const Icon = link.icon;
+              const isAnchorLink = 'isAnchor' in link && link.isAnchor;
+              
+              if (isAnchorLink) {
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="relative px-5 py-3 rounded-xl font-semibold text-base transition-all duration-300 flex items-center gap-2 group text-foreground/90 hover:text-primary hover:bg-primary/10"
+                  >
+                    <Icon className="w-5 h-5 transition-all duration-300 group-hover:text-primary group-hover:scale-110" />
+                    {link.label}
+                  </a>
+                );
+              }
+              
               return (
                 <Link
                   key={link.href}
@@ -141,6 +157,23 @@ export function Header() {
           <nav className="py-6 space-y-2 bg-background/95 backdrop-blur-xl rounded-2xl mb-4 border border-primary/20">
             {[...mainNavLinks, ...moreLinks].map((link, index) => {
               const Icon = link.icon;
+              const isAnchorLink = 'isAnchor' in link && link.isAnchor;
+              
+              if (isAnchorLink) {
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center gap-3 px-6 py-4 text-lg font-semibold transition-all duration-300 text-foreground/80 hover:text-primary hover:bg-primary/10"
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    <Icon className="w-5 h-5" />
+                    {link.label}
+                  </a>
+                );
+              }
+              
               return (
                 <Link
                   key={link.href}
