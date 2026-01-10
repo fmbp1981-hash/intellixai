@@ -5,31 +5,44 @@ import logo from "@/assets/logo-intellix.png";
 // Subtle Neural Network Background
 const NeuralBackground = () => {
   const nodes = [
-    { x: 5, y: 20 }, { x: 20, y: 30 }, { x: 35, y: 15 }, { x: 50, y: 35 },
-    { x: 65, y: 20 }, { x: 80, y: 30 }, { x: 95, y: 25 },
-    { x: 10, y: 55 }, { x: 30, y: 50 }, { x: 50, y: 60 }, { x: 70, y: 50 }, { x: 90, y: 58 },
-    { x: 15, y: 80 }, { x: 40, y: 85 }, { x: 60, y: 78 }, { x: 85, y: 82 },
+    { x: 5, y: 15 }, { x: 15, y: 25 }, { x: 25, y: 10 }, { x: 35, y: 30 },
+    { x: 45, y: 18 }, { x: 55, y: 28 }, { x: 65, y: 12 }, { x: 75, y: 25 },
+    { x: 85, y: 20 }, { x: 95, y: 30 },
+    { x: 8, y: 50 }, { x: 22, y: 45 }, { x: 38, y: 55 }, { x: 52, y: 48 },
+    { x: 68, y: 52 }, { x: 82, y: 45 }, { x: 92, y: 55 },
+    { x: 5, y: 75 }, { x: 18, y: 82 }, { x: 32, y: 78 }, { x: 48, y: 85 },
+    { x: 62, y: 80 }, { x: 78, y: 88 }, { x: 92, y: 75 },
   ];
 
   const connections = [
-    [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6],
-    [0, 7], [2, 8], [3, 9], [4, 10], [6, 11],
-    [7, 8], [8, 9], [9, 10], [10, 11],
-    [7, 12], [9, 13], [10, 14], [11, 15],
-    [12, 13], [13, 14], [14, 15],
+    [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9],
+    [0, 10], [1, 11], [3, 12], [4, 13], [5, 14], [7, 15], [8, 16],
+    [10, 11], [11, 12], [12, 13], [13, 14], [14, 15], [15, 16],
+    [10, 17], [11, 18], [12, 19], [13, 20], [14, 21], [15, 22], [16, 23],
+    [17, 18], [18, 19], [19, 20], [20, 21], [21, 22], [22, 23],
+    [1, 12], [4, 14], [6, 15], [11, 19], [13, 21],
   ];
 
   return (
-    <div className="absolute inset-0 overflow-hidden opacity-30">
+    <div className="absolute inset-0 overflow-hidden">
       <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
         <defs>
           <linearGradient id="footerLineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
-            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
+            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
+          </linearGradient>
+          <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.6">
+              <animate attributeName="stop-opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite" />
+            </stop>
+            <stop offset="100%" stopColor="hsl(190 100% 50%)" stopOpacity="0.6">
+              <animate attributeName="stop-opacity" values="0.8;0.4;0.8" dur="3s" repeatCount="indefinite" />
+            </stop>
           </linearGradient>
         </defs>
 
+        {/* Connection lines */}
         {connections.map((conn, i) => {
           const fromNode = nodes[conn[0]];
           const toNode = nodes[conn[1]];
@@ -41,21 +54,37 @@ const NeuralBackground = () => {
               x2={`${toNode.x}%`}
               y2={`${toNode.y}%`}
               stroke="url(#footerLineGradient)"
-              strokeWidth="0.5"
-              opacity="0.6"
+              strokeWidth="1"
+              opacity="0.5"
             />
           );
         })}
 
+        {/* Nodes */}
         {nodes.map((node, i) => (
-          <circle
-            key={`node-${i}`}
-            cx={`${node.x}%`}
-            cy={`${node.y}%`}
-            r="2"
-            fill="hsl(var(--primary))"
-            opacity="0.4"
-          />
+          <g key={`node-group-${i}`}>
+            <circle
+              cx={`${node.x}%`}
+              cy={`${node.y}%`}
+              r="4"
+              fill="hsl(var(--primary))"
+              opacity="0.15"
+            />
+            <circle
+              cx={`${node.x}%`}
+              cy={`${node.y}%`}
+              r="2.5"
+              fill="url(#nodeGradient)"
+              opacity="0.7"
+            />
+            <circle
+              cx={`${node.x}%`}
+              cy={`${node.y}%`}
+              r="1"
+              fill="white"
+              opacity="0.8"
+            />
+          </g>
         ))}
       </svg>
     </div>
@@ -113,7 +142,7 @@ export function Footer() {
                 href="https://linkedin.com/company/intellixai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary/80 hover:text-primary hover:bg-primary/20 hover:border-primary/40 transition-all duration-300"
+                className="w-11 h-11 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)] transition-all duration-300"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -121,7 +150,7 @@ export function Footer() {
                 href="https://instagram.com/ai_intellix"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary/80 hover:text-primary hover:bg-primary/20 hover:border-primary/40 transition-all duration-300"
+                className="w-11 h-11 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)] transition-all duration-300"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -138,7 +167,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200 text-sm"
+                    className="text-muted-foreground hover:text-primary hover:translate-x-1 inline-block transition-all duration-200 text-sm"
                   >
                     {link.label}
                   </Link>
