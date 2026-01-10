@@ -39,12 +39,12 @@ export function DifferentialSection() {
     <section className="py-24 relative overflow-hidden">
       {/* Background Image - Professional meeting/consulting context */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
         style={{ 
           backgroundImage: "url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop')",
         }}
       />
-      <div className="absolute inset-0 bg-background/92" />
+      <div className="absolute inset-0 bg-background/95" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
