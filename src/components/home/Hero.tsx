@@ -30,16 +30,15 @@ export function Hero() {
                 <span className="text-sm font-medium text-foreground">Consultoria em Inteligência Artificial</span>
               </div>
 
-              {/* Headline - Institutional and professional */}
+              {/* Headline - Institutional and impactful */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 animate-fade-in text-foreground" style={{ animationDelay: "0.1s" }}>
-                Soluções em <span className="gradient-text">Inteligência Artificial</span> para empresas que buscam{" "}
-                <span className="gradient-text-gold">excelência operacional</span>
+                Transforme sua empresa com{" "}
+                <span className="gradient-text-gold">Intelli</span><span className="gradient-text-gold">X</span><span className="gradient-text">.AI</span>
               </h1>
 
-              {/* Subheadline - Institutional tone */}
+              {/* Subheadline - Concise and impactful */}
               <p className="text-lg text-muted-foreground mb-8 animate-fade-in leading-relaxed" style={{ animationDelay: "0.2s" }}>
-                A IntelliX.AI desenvolve sistemas inteligentes sob medida que automatizam processos, 
-                potencializam vendas e elevam a eficiência da sua operação.
+                Automatizamos processos, potencializamos vendas e elevamos sua operação com inteligência artificial sob medida.
               </p>
 
               {/* CTAs - Professional and institutional */}
