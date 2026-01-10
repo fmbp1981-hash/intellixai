@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Building2, Target, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
 export function Hero() {
   return (
@@ -23,27 +24,27 @@ export function Hero() {
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
-            <div>
+            <AnimatedSection animation="fade-right">
               {/* Badge - Corporate and subtle */}
-              <div className="inline-flex items-center gap-2 bg-card/80 border border-border rounded-full px-4 py-2 mb-8 animate-fade-in backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2 bg-card/80 border border-border rounded-full px-4 py-2 mb-8 backdrop-blur-sm">
                 <Building2 className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-foreground">Consultoria em Inteligência Artificial</span>
               </div>
 
               {/* Headline - Institutional and impactful */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 animate-fade-in text-foreground" style={{ animationDelay: "0.1s" }}>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-foreground">
                 Transforme sua operação com{" "}
                 <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span>
                 {" "}— Inteligência Artificial que gera resultados reais
               </h1>
 
               {/* Subheadline - Concise and impactful */}
-              <p className="text-lg text-muted-foreground mb-8 animate-fade-in leading-relaxed" style={{ animationDelay: "0.2s" }}>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 Desenvolvemos soluções personalizadas de IA que automatizam processos, potencializam vendas e elevam a eficiência operacional da sua empresa.
               </p>
 
               {/* CTAs - Professional and institutional */}
-              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in mb-8" style={{ animationDelay: "0.3s" }}>
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link to="/quem-somos">
                   <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-6 rounded-lg transition-all duration-300 group">
                     Conheça a IntelliX
@@ -56,10 +57,9 @@ export function Hero() {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </AnimatedSection>
 
-            {/* Right Content - Corporate values/pillars */}
-            <div className="hidden lg:block animate-fade-in" style={{ animationDelay: "0.4s" }}>
+            <AnimatedSection animation="fade-left" delay={200} className="hidden lg:block">
               <div className="space-y-4">
                 {[
                   { 
@@ -92,7 +92,7 @@ export function Hero() {
                   </div>
                 ))}
               </div>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </div>
