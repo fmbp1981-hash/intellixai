@@ -54,7 +54,7 @@ export function BenefitsSection() {
           </div>
 
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-            O que a <span className="gradient-text">IntelliX.AI</span> entrega
+            O que a <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span> entrega
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Desenvolvemos soluções tecnológicas que transformam a operação das empresas, 

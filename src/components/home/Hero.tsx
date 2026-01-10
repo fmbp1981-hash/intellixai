@@ -32,13 +32,14 @@ export function Hero() {
 
               {/* Headline - Institutional and impactful */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 animate-fade-in text-foreground" style={{ animationDelay: "0.1s" }}>
-                Transforme sua empresa com{" "}
-                <span className="gradient-text-gold">Intelli</span><span className="gradient-text-gold">X</span><span className="gradient-text">.AI</span>
+                Transforme sua operação com{" "}
+                <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span>
+                {" "}— Inteligência Artificial que gera resultados reais
               </h1>
 
               {/* Subheadline - Concise and impactful */}
               <p className="text-lg text-muted-foreground mb-8 animate-fade-in leading-relaxed" style={{ animationDelay: "0.2s" }}>
-                Automatizamos processos, potencializamos vendas e elevamos sua operação com inteligência artificial sob medida.
+                Desenvolvemos soluções personalizadas de IA que automatizam processos, potencializam vendas e elevam a eficiência operacional da sua empresa.
               </p>
 
               {/* CTAs - Professional and institutional */}

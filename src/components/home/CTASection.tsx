@@ -27,7 +27,7 @@ export function CTASection() {
           </h2>
           
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Agende uma conversa com nossa equipe para entender como a IntelliX.AI pode 
+            Agende uma conversa com nossa equipe para entender como a <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span> pode 
             contribuir para a evolução tecnológica da sua empresa.
           </p>
           

@@ -55,7 +55,7 @@ export function DifferentialSection() {
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-              Por que escolher a <span className="gradient-text">IntelliX.AI</span>
+              Por que escolher a <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Combinamos expertise técnica com profundo entendimento de negócios para entregar 
