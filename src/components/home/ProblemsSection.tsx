@@ -1,68 +1,70 @@
-import { AlertTriangle, Clock, Users, TrendingDown, XCircle } from "lucide-react";
+import { Clock, Users, TrendingDown, Database, AlertCircle } from "lucide-react";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
-const problems = [
+const challenges = [
   {
     icon: Clock,
     title: "Processos Manuais",
-    description: "Tarefas repetitivas consomem horas que poderiam ser investidas em crescimento estratégico.",
-    color: "from-red-500 to-orange-500",
+    description: "Operações repetitivas que consomem recursos e limitam a escalabilidade do negócio.",
   },
   {
     icon: Users,
-    title: "Atendimento Lento",
-    description: "Clientes esperam respostas imediatas, mas sua equipe não consegue dar conta da demanda.",
-    color: "from-orange-500 to-amber-500",
+    title: "Capacidade de Atendimento",
+    description: "Demanda crescente que excede a capacidade da equipe em horário comercial.",
   },
   {
     icon: TrendingDown,
-    title: "Leads Perdidos",
-    description: "Oportunidades escapam por falta de follow-up ou qualificação adequada.",
-    color: "from-rose-500 to-red-500",
+    title: "Conversão de Oportunidades",
+    description: "Leads qualificados que não avançam por falta de acompanhamento sistemático.",
   },
   {
-    icon: AlertTriangle,
-    title: "Dados Desorganizados",
-    description: "Informações espalhadas em planilhas e sistemas que não conversam entre si.",
-    color: "from-amber-500 to-yellow-500",
+    icon: Database,
+    title: "Integração de Dados",
+    description: "Informações fragmentadas em múltiplos sistemas sem visão unificada.",
   },
 ];
 
 export function ProblemsSection() {
   return (
-    <section className="py-24 bg-card relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-destructive/5 via-transparent to-transparent" />
-      <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-destructive/10 rounded-full blur-[150px]" />
+    <section className="py-24 relative overflow-hidden">
+      {/* Background Image - Business analytics/data context */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: "url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop')",
+        }}
+      />
+      <div className="absolute inset-0 bg-background/92" />
 
       <div className="container mx-auto px-4 relative z-10">
         <AnimatedSection className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-destructive/15 border border-destructive/30 mb-8">
-            <XCircle className="w-5 h-5 text-destructive animate-pulse" />
-            <span className="text-sm font-bold text-destructive">Problemas Comuns</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 border border-border mb-6 backdrop-blur-sm">
+            <AlertCircle className="w-4 h-4 text-muted-foreground" />
+            <span className="text-sm font-medium text-muted-foreground">Desafios Empresariais</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Esses problemas estão <span className="text-destructive">travando</span> seu crescimento?
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+            Desafios que impactam a eficiência operacional
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Se você reconhece algum desses desafios, sua empresa está <span className="text-destructive font-semibold">deixando dinheiro na mesa</span>.
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Identificamos os principais obstáculos que empresas enfrentam na busca por maior 
+            produtividade e competitividade no mercado atual.
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {problems.map((problem, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {challenges.map((challenge, index) => (
             <AnimatedSection
-              key={problem.title}
-              animation="scale"
+              key={challenge.title}
+              animation="fade-up"
               delay={index * 100}
             >
-              <div className="glass-card p-8 hover-lift group h-full border border-destructive/10 hover:border-destructive/30 transition-all duration-300">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${problem.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                  <problem.icon className="text-white" size={28} />
+              <div className="bg-card/80 backdrop-blur-sm p-8 rounded-xl border border-border hover:border-primary/30 transition-all duration-300 h-full">
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                  <challenge.icon className="text-primary" size={24} />
                 </div>
-                <h3 className="font-bold text-xl mb-3 group-hover:text-destructive transition-colors">{problem.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{problem.description}</p>
+                <h3 className="font-semibold text-lg mb-3 text-foreground">{challenge.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{challenge.description}</p>
               </div>
             </AnimatedSection>
           ))}

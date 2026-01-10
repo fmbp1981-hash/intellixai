@@ -1,80 +1,80 @@
-import { Zap, Target, Clock, TrendingUp, Shield, Headphones, Sparkles } from "lucide-react";
+import { Zap, Target, Clock, TrendingUp, Shield, BarChart3, CheckCircle } from "lucide-react";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
-const benefits = [
+const capabilities = [
   {
     icon: Zap,
-    title: "Automação Inteligente",
-    description: "Tarefas repetitivas executadas automaticamente, liberando sua equipe para o que importa.",
-    gradient: "from-blue-500 to-cyan-400",
+    title: "Automação de Processos",
+    description: "Fluxos de trabalho automatizados que reduzem erros e aumentam a velocidade operacional.",
   },
   {
     icon: Target,
-    title: "Leads Qualificados",
-    description: "Prospecção automatizada que entrega apenas oportunidades com real potencial de conversão.",
-    gradient: "from-purple-500 to-pink-400",
+    title: "Qualificação de Leads",
+    description: "Sistemas inteligentes que identificam e priorizam oportunidades de maior potencial.",
   },
   {
     icon: Clock,
-    title: "Atendimento 24/7",
-    description: "Chatbots inteligentes que respondem, qualificam e agendam mesmo fora do horário comercial.",
-    gradient: "from-green-500 to-emerald-400",
+    title: "Disponibilidade Contínua",
+    description: "Atendimento automatizado que opera 24 horas, 7 dias por semana.",
   },
   {
     icon: TrendingUp,
-    title: "Escala sem Proporção",
-    description: "Aumente a capacidade operacional sem aumentar proporcionalmente os custos.",
-    gradient: "from-orange-500 to-amber-400",
+    title: "Escalabilidade",
+    description: "Infraestrutura que cresce junto com sua empresa sem aumento proporcional de custos.",
   },
   {
     icon: Shield,
-    title: "Dados Centralizados",
-    description: "Informações integradas em um só lugar, com dashboards claros para decisões rápidas.",
-    gradient: "from-rose-500 to-red-400",
+    title: "Centralização de Dados",
+    description: "Visão unificada das informações para tomada de decisões mais assertivas.",
   },
   {
-    icon: Headphones,
-    title: "Interface Simples",
-    description: "Tecnologia complexa nos bastidores, experiência simples para você e sua equipe.",
-    gradient: "from-indigo-500 to-violet-400",
+    icon: BarChart3,
+    title: "Métricas em Tempo Real",
+    description: "Dashboards executivos com indicadores de performance atualizados continuamente.",
   },
 ];
 
 export function BenefitsSection() {
   return (
-    <section className="py-28 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-      <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2" />
+    <section className="py-24 bg-card relative overflow-hidden">
+      {/* Background Image - Technology/innovation context */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop')",
+        }}
+      />
+      <div className="absolute inset-0 bg-card/95" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <AnimatedSection className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/15 border border-primary/30 mb-8 shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
-            <Sparkles className="w-5 h-5 text-primary animate-pulse" />
-            <span className="text-sm font-bold text-primary">Benefícios</span>
+        <AnimatedSection className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <CheckCircle className="w-4 h-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Competências</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            O que você <span className="gradient-text">ganha</span> com a IntelliX.AI
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+            O que a <span className="gradient-text">IntelliX.AI</span> entrega
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Sistemas que trabalham <span className="text-primary font-semibold">para você</span>, não o contrário.
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Desenvolvemos soluções tecnológicas que transformam a operação das empresas, 
+            gerando resultados mensuráveis e sustentáveis.
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {benefits.map((benefit, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {capabilities.map((capability, index) => (
             <AnimatedSection
-              key={benefit.title}
+              key={capability.title}
               animation="fade-up"
               delay={index * 100}
             >
-              <div className="glass-card p-10 hover-lift group h-full border border-border/50 hover:border-primary/30 transition-all duration-300">
-                <div className={`w-18 h-18 rounded-2xl bg-gradient-to-br ${benefit.gradient} flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`} style={{ width: '72px', height: '72px' }}>
-                  <benefit.icon className="text-white" size={32} />
+              <div className="bg-background/60 backdrop-blur-sm p-8 rounded-xl border border-border hover:border-primary/30 transition-all duration-300 h-full">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                  <capability.icon className="text-primary" size={24} />
                 </div>
-                <h3 className="font-bold text-2xl mb-4 group-hover:text-primary transition-colors">{benefit.title}</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed">{benefit.description}</p>
+                <h3 className="font-semibold text-xl mb-3 text-foreground">{capability.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{capability.description}</p>
               </div>
             </AnimatedSection>
           ))}
