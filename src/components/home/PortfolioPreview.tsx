@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
 const featuredProjects = [
   {
@@ -49,64 +50,81 @@ const featuredProjects = [
 
 export function PortfolioPreview() {
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
+    <section className="py-24 bg-card relative overflow-hidden">
+      {/* Background Image - Success/achievement context */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: "url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop')",
+        }}
+      />
+      <div className="absolute inset-0 bg-card/95" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        <AnimatedSection className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-2">
-              Cases de <span className="gradient-text">Sucesso</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
+              <FolderOpen className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-primary">Projetos</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-foreground">
+              Cases e Produtos
             </h2>
             <p className="text-muted-foreground text-lg">
-              Conheça algumas das soluções que já criamos.
+              Conheça as soluções desenvolvidas pela IntelliX.AI
             </p>
           </div>
           <Link to="/portfolio">
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 group">
-              Ver todos os projetos
+            <Button variant="outline" className="border-border text-foreground hover:bg-card hover:border-primary/40 group">
+              Ver portfólio completo
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
             </Button>
           </Link>
-        </div>
+        </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {featuredProjects.map((project, index) => (
-            <a
+            <AnimatedSection
               key={project.name}
-              href={project.url}
-              target={project.isInternal ? "_self" : "_blank"}
-              rel="noopener noreferrer"
-              className={`glass-card group hover-lift overflow-hidden animate-fade-in relative ${project.isInternal ? 'ring-1 ring-primary/30' : ''}`}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              animation="fade-up"
+              delay={index * 80}
             >
-              {/* Gradient Header */}
-              <div className={`h-2 bg-gradient-to-r ${project.gradient}`} />
-              
-              {/* Internal Product Badge */}
-              {project.isInternal && (
-                <span className="absolute top-4 right-4 text-[10px] font-bold bg-primary text-primary-foreground px-2 py-0.5 rounded-full">
-                  IntelliX
-                </span>
-              )}
-              
-              <div className="p-5">
-                <div className="mb-3">
-                  <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
-                    {project.name}
-                  </h3>
-                  <p className="text-xs text-muted-foreground">{project.type}</p>
+              <a
+                href={project.url}
+                target={project.isInternal ? "_self" : "_blank"}
+                rel="noopener noreferrer"
+                className={`block bg-background/60 backdrop-blur-sm rounded-xl border border-border hover:border-primary/30 transition-all duration-300 overflow-hidden h-full ${project.isInternal ? 'ring-1 ring-primary/20' : ''}`}
+              >
+                {/* Gradient Header */}
+                <div className={`h-1 bg-gradient-to-r ${project.gradient}`} />
+                
+                <div className="p-5 relative">
+                  {/* Internal Product Badge */}
+                  {project.isInternal && (
+                    <span className="absolute top-3 right-3 text-[10px] font-medium bg-primary/10 text-primary px-2 py-0.5 rounded-full">
+                      Produto
+                    </span>
+                  )}
+                  
+                  <div className="mb-3">
+                    <h3 className="font-semibold text-base mb-1 text-foreground">
+                      {project.name}
+                    </h3>
+                    <p className="text-xs text-muted-foreground">{project.type}</p>
+                  </div>
+                  
+                  <span className="inline-block text-xs font-medium px-2 py-0.5 rounded-full mb-3 bg-card text-muted-foreground border border-border">
+                    {project.segment}
+                  </span>
+                  
+                  <p className="text-muted-foreground text-sm line-clamp-3">{project.description}</p>
+                  
+                  {!project.isInternal && (
+                    <ExternalLink className="absolute bottom-4 right-4 text-muted-foreground w-4 h-4" />
+                  )}
                 </div>
-                
-                <span className={`inline-block text-xs font-medium px-2 py-0.5 rounded-full mb-3 ${project.isInternal ? 'bg-primary/20 text-primary' : 'bg-primary/10 text-primary'}`}>
-                  {project.segment}
-                </span>
-                
-                <p className="text-muted-foreground text-xs line-clamp-3">{project.description}</p>
-                
-                {!project.isInternal && (
-                  <ExternalLink className="absolute bottom-4 right-4 text-muted-foreground group-hover:text-primary transition-colors" size={16} />
-                )}
-              </div>
-            </a>
+              </a>
+            </AnimatedSection>
           ))}
         </div>
       </div>
