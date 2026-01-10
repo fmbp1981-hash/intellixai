@@ -53,12 +53,12 @@ export function PortfolioPreview() {
     <section className="py-24 bg-card relative overflow-hidden">
       {/* Background Image - Success/achievement context */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
         style={{ 
           backgroundImage: "url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop')",
         }}
       />
-      <div className="absolute inset-0 bg-card/95" />
+      <div className="absolute inset-0 bg-card/98" />
 
       <div className="container mx-auto px-4 relative z-10">
         <AnimatedSection className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
@@ -71,7 +71,7 @@ export function PortfolioPreview() {
               Cases e Produtos
             </h2>
             <p className="text-muted-foreground text-lg">
-              Conheça as soluções desenvolvidas pela IntelliX.AI
+              Conheça as soluções desenvolvidas pela <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span>
             </p>
           </div>
           <Link to="/portfolio">

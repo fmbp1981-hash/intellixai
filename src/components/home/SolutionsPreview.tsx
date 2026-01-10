@@ -53,12 +53,12 @@ export function SolutionsPreview() {
     <section className="py-24 relative overflow-hidden">
       {/* Background Image - Team collaboration/business context */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
         style={{ 
           backgroundImage: "url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop')",
         }}
       />
-      <div className="absolute inset-0 bg-background/93" />
+      <div className="absolute inset-0 bg-background/98" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
@@ -69,7 +69,7 @@ export function SolutionsPreview() {
           </div>
 
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-            Soluções desenvolvidas pela <span className="gradient-text">IntelliX.AI</span>
+            Soluções desenvolvidas pela <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span>
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
