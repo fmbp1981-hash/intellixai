@@ -29,12 +29,12 @@ export function ProblemsSection() {
     <section className="py-24 relative overflow-hidden">
       {/* Background Image - Business analytics/data context */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
         style={{ 
           backgroundImage: "url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop')",
         }}
       />
-      <div className="absolute inset-0 bg-background/92" />
+      <div className="absolute inset-0 bg-background/95" />
 
       <div className="container mx-auto px-4 relative z-10">
         <AnimatedSection className="text-center mb-16">

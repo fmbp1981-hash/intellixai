@@ -33,19 +33,19 @@ const NeuralBackground = () => {
   ];
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden opacity-50">
       <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
         <defs>
           {/* Gradient for lines */}
           <linearGradient id="lineGradientPremium" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
-            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
           </linearGradient>
           
           {/* Glow filter for nodes */}
           <filter id="nodeGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
             <feMerge>
               <feMergeNode in="coloredBlur"/>
               <feMergeNode in="SourceGraphic"/>
@@ -54,11 +54,11 @@ const NeuralBackground = () => {
 
           {/* Animated gradient */}
           <linearGradient id="pulseGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.6">
-              <animate attributeName="stop-opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite" />
+            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4">
+              <animate attributeName="stop-opacity" values="0.2;0.5;0.2" dur="4s" repeatCount="indefinite" />
             </stop>
-            <stop offset="100%" stopColor="hsl(190 100% 50%)" stopOpacity="0.6">
-              <animate attributeName="stop-opacity" values="0.7;0.3;0.7" dur="3s" repeatCount="indefinite" />
+            <stop offset="100%" stopColor="hsl(190 100% 50%)" stopOpacity="0.4">
+              <animate attributeName="stop-opacity" values="0.5;0.2;0.5" dur="4s" repeatCount="indefinite" />
             </stop>
           </linearGradient>
         </defs>
@@ -75,8 +75,8 @@ const NeuralBackground = () => {
               x2={`${toNode.x}%`}
               y2={`${toNode.y}%`}
               stroke="url(#lineGradientPremium)"
-              strokeWidth="1.5"
-              opacity="0.6"
+              strokeWidth="1"
+              opacity="0.5"
             />
           );
         })}
@@ -88,26 +88,26 @@ const NeuralBackground = () => {
             <circle
               cx={`${node.x}%`}
               cy={`${node.y}%`}
-              r="6"
+              r="4"
               fill="hsl(var(--primary))"
-              opacity="0.15"
+              opacity="0.1"
             />
             {/* Main node */}
             <circle
               cx={`${node.x}%`}
               cy={`${node.y}%`}
-              r="3"
+              r="2"
               fill="url(#pulseGradient)"
               filter="url(#nodeGlow)"
-              opacity="0.8"
+              opacity="0.6"
             />
             {/* Center bright point */}
             <circle
               cx={`${node.x}%`}
               cy={`${node.y}%`}
-              r="1.5"
+              r="1"
               fill="white"
-              opacity="0.9"
+              opacity="0.7"
             />
           </g>
         ))}
@@ -118,27 +118,27 @@ const NeuralBackground = () => {
           x2="100%" y2="40%"
           stroke="url(#lineGradientPremium)"
           strokeWidth="0.5"
-          opacity="0.3"
+          opacity="0.2"
         />
         <line
           x1="0%" y1="70%"
           x2="100%" y2="70%"
           stroke="url(#lineGradientPremium)"
           strokeWidth="0.5"
-          opacity="0.2"
+          opacity="0.15"
         />
       </svg>
 
       {/* Floating particles */}
-      {Array.from({ length: 12 }).map((_, i) => (
+      {Array.from({ length: 8 }).map((_, i) => (
         <div
           key={`particle-${i}`}
-          className="absolute w-1 h-1 rounded-full bg-primary/60"
+          className="absolute w-1 h-1 rounded-full bg-primary/40"
           style={{
-            left: `${8 + i * 8}%`,
-            top: `${20 + (i % 4) * 20}%`,
-            animation: `pulse ${2 + (i % 3)}s ease-in-out infinite`,
-            animationDelay: `${i * 0.3}s`,
+            left: `${10 + i * 10}%`,
+            top: `${25 + (i % 3) * 25}%`,
+            animation: `pulse ${3 + (i % 3)}s ease-in-out infinite`,
+            animationDelay: `${i * 0.4}s`,
           }}
         />
       ))}
@@ -187,7 +187,7 @@ export function Footer() {
               <img
                 src={logo}
                 alt="IntelliX.AI"
-                className="h-24 md:h-28 w-auto drop-shadow-[0_0_40px_hsl(var(--primary)/0.7)] transition-all duration-300 group-hover:drop-shadow-[0_0_60px_hsl(var(--primary)/0.9)] group-hover:scale-105"
+                className="h-32 md:h-40 w-auto drop-shadow-[0_0_30px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_50px_hsl(var(--primary)/0.7)] group-hover:scale-105"
               />
             </Link>
             <p className="text-muted-foreground leading-relaxed mb-6">
