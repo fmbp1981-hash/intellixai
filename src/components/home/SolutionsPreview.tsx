@@ -86,10 +86,10 @@ export function SolutionsPreview() {
               animation="fade-up"
               delay={index * 60}
             >
-              <div className="group h-full bg-card/70 backdrop-blur-sm p-6 rounded-xl border border-border hover:border-primary/30 transition-all duration-300">
+              <div className="group h-full bg-card/70 backdrop-blur-sm p-6 rounded-xl border border-border hover:border-primary/50 hover:-translate-y-2 hover:shadow-[0_10px_40px_hsl(var(--primary)/0.15)] transition-all duration-300">
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                  <solution.icon className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                  <solution.icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
 
                 {/* Content */}

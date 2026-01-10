@@ -59,11 +59,11 @@ export function ProblemsSection() {
               animation="fade-up"
               delay={index * 100}
             >
-              <div className="bg-card/80 backdrop-blur-sm p-8 rounded-xl border border-border hover:border-primary/30 transition-all duration-300 h-full">
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                  <challenge.icon className="text-primary" size={24} />
+              <div className="bg-card/80 backdrop-blur-sm p-8 rounded-xl border border-border hover:border-primary/50 hover:-translate-y-2 hover:shadow-[0_10px_40px_hsl(var(--primary)/0.15)] transition-all duration-300 h-full group">
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                  <challenge.icon className="text-primary group-hover:scale-110 transition-transform duration-300" size={24} />
                 </div>
-                <h3 className="font-semibold text-lg mb-3 text-foreground">{challenge.title}</h3>
+                <h3 className="font-semibold text-lg mb-3 text-foreground group-hover:text-primary transition-colors duration-300">{challenge.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{challenge.description}</p>
               </div>
             </AnimatedSection>
