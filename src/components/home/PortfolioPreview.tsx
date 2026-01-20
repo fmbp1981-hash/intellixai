@@ -23,6 +23,14 @@ const featuredProjects = [
     isInternal: true,
   },
   {
+    name: "CavendishGIG",
+    type: "Portal de Governança",
+    segment: "Compliance & Governança",
+    description: "Sistema de gestão e controle corporativo para programas de governança e compliance empresarial.",
+    url: "https://cavendish-gig.vercel.app/",
+    gradient: "from-violet-500 to-purple-400",
+  },
+  {
     name: "LeadFinder Pro",
     type: "Plataforma de Prospecção",
     segment: "Vendas B2B",
