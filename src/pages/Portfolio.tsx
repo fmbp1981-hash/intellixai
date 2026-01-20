@@ -39,7 +39,7 @@ const projects = [
     gradient: "from-accent to-yellow-400",
   },
   {
-    name: "CavendishGIG",
+    name: "Sistema GIG",
     type: "Portal de Governança",
     segment: "Consultoria Empresarial",
     description: "Sistema de gestão e controle corporativo para consultorias especializadas em governança, compliance e gestão de riscos empresariais.",
