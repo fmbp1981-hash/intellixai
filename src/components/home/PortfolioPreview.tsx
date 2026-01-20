@@ -23,7 +23,7 @@ const featuredProjects = [
     isInternal: true,
   },
   {
-    name: "CavendishGIG",
+    name: "Sistema GIG",
     type: "Portal de Governança",
     segment: "Compliance & Governança",
     description: "Sistema de gestão e controle corporativo para programas de governança e compliance empresarial.",
