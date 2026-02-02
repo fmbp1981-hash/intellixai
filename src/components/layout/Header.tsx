@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, Zap, Briefcase, Stethoscope, Users, Cog, MessageSquare, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, Zap, Briefcase, Stethoscope, Users, Cog, MessageSquare, Phone, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,6 +13,7 @@ import logo from "@/assets/logo-intellix.png";
 const mainNavLinks = [
   { href: "/solucoes", label: "Soluções", icon: Zap },
   { href: "/portfolio", label: "Portfólio", icon: Briefcase },
+  { href: "/blog", label: "Blog", icon: BookOpen },
   { href: "/diagnostico", label: "Diagnóstico", icon: Stethoscope },
   { href: "/#falar-com-equipe", label: "Fale Conosco", icon: Phone, isAnchor: true },
 ];
