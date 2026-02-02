@@ -6,6 +6,7 @@ import { DifferentialSection } from "@/components/home/DifferentialSection";
 import { SolutionsPreview } from "@/components/home/SolutionsPreview";
 import { LeadCaptureForm } from "@/components/home/LeadCaptureForm";
 import { PortfolioPreview } from "@/components/home/PortfolioPreview";
+import { BlogPreview } from "@/components/home/BlogPreview";
 import { CTASection } from "@/components/home/CTASection";
 
 const Index = () => {
@@ -17,6 +18,7 @@ const Index = () => {
       <DifferentialSection />
       <BenefitsSection />
       <PortfolioPreview />
+      <BlogPreview />
       <LeadCaptureForm />
       <CTASection />
     </Layout>
