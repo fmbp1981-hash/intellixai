@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Calendar, User, ArrowLeft, Tag } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
@@ -9,6 +10,20 @@ const Blog = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Blog & Insights | Intellix - Automação e IA</title>
+        <meta 
+          name="description" 
+          content="Conteúdo exclusivo sobre automação, inteligência artificial e transformação digital para impulsionar seu negócio." 
+        />
+        <meta property="og:title" content="Blog & Insights | Intellix" />
+        <meta 
+          property="og:description" 
+          content="Conteúdo exclusivo sobre automação, inteligência artificial e transformação digital para impulsionar seu negócio." 
+        />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://intellixai.lovable.app/blog" />
+      </Helmet>
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-4">
           {/* Header */}
