@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Calendar, User, Tag } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { Layout } from "@/components/layout/Layout";
@@ -62,6 +63,24 @@ const BlogPost = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>{post.title} | Intellix Blog</title>
+        <meta name="description" content={post.excerpt} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:type" content="article" />
+        {post.cover_image && <meta property="og:image" content={post.cover_image} />}
+        {post.published_at && (
+          <meta property="article:published_time" content={post.published_at} />
+        )}
+        {post.author && <meta property="article:author" content={post.author} />}
+        {post.category && <meta property="article:section" content={post.category} />}
+        <link rel="canonical" href={`https://intellixai.lovable.app/blog/${post.slug}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt} />
+        {post.cover_image && <meta name="twitter:image" content={post.cover_image} />}
+      </Helmet>
       <article className="pt-32 pb-20">
         <div className="container mx-auto px-4">
           {/* Header */}
