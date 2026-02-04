@@ -35,6 +35,7 @@ export function Hero() {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-foreground">
                 Transforme sua operação com a{" "}
                 <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span>
+                {" "}— É Inteligência Artificial que gera resultados reais
               </h1>
 
               {/* Subheadline - Concise and impactful */}
