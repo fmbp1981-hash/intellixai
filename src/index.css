@@ -217,6 +217,203 @@
       box-shadow: 0 0 50px hsl(38 91% 58% / 0.5);
     }
   }
+
+
+  /* ===== EDITORIAL PROSE STYLES ===== */
+
+  .editorial-drop-cap::first-letter {
+    float: left;
+    font-family: 'Space Grotesk', serif;
+    font-size: 4.5rem;
+    line-height: 0.8;
+    padding-right: 0.75rem;
+    padding-top: 0.25rem;
+    color: hsl(200 75% 38%);
+    font-weight: 700;
+  }
+
+  .editorial-pull-quote {
+    position: relative;
+    border-left: none;
+    border-top: 2px solid hsl(200 75% 38% / 0.3);
+    border-bottom: 2px solid hsl(200 75% 38% / 0.3);
+    padding: 2rem 0;
+    margin: 3rem 0;
+    font-family: 'Space Grotesk', serif;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: hsl(0 0% 98%);
+    font-style: normal;
+    text-align: center;
+  }
+
+  .editorial-pull-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: hsl(240 27% 12%);
+    padding: 0 1rem;
+    font-size: 3rem;
+    color: hsl(38 91% 58%);
+    font-family: 'Space Grotesk', serif;
+    line-height: 1;
+  }
+
+  .editorial-pull-quote p {
+    margin: 0;
+  }
+
+  .editorial-image-wrapper {
+    margin: 2.5rem 0;
+  }
+
+  .editorial-image-wrapper img {
+    border-radius: 0.75rem;
+    width: 100%;
+    height: auto;
+  }
+
+  .editorial-caption {
+    text-align: center;
+    font-size: 0.875rem;
+    color: hsl(240 10% 55%);
+    margin-top: 0.75rem;
+    font-style: italic;
+    padding: 0 1rem;
+  }
+
+  .editorial-divider {
+    border: none;
+    height: auto;
+    text-align: center;
+    margin: 3rem auto;
+    position: relative;
+  }
+
+  .editorial-divider::before {
+    content: '***';
+    display: block;
+    letter-spacing: 1em;
+    color: hsl(200 75% 38% / 0.5);
+    font-size: 1.25rem;
+  }
+
+  .reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(200 75% 38%), hsl(38 91% 58%));
+    z-index: 100;
+    transition: width 50ms linear;
+  }
+
+  .toc-link {
+    @apply text-muted-foreground hover:text-primary transition-colors text-sm py-1 block;
+    padding-left: 0.75rem;
+    border-left: 2px solid transparent;
+  }
+
+  .toc-link-h3 {
+    padding-left: 1.5rem;
+  }
+
+  .toc-link.active {
+    @apply text-primary;
+    border-left: 2px solid hsl(200 75% 38%);
+  }
+
+  .editorial-prose {
+    font-size: 1.125rem;
+    line-height: 1.85;
+    color: hsl(240 10% 75%);
+  }
+
+  .editorial-prose h2 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: hsl(0 0% 98%);
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .editorial-prose h3 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: hsl(0 0% 98%);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .editorial-prose p {
+    margin-bottom: 1.5rem;
+  }
+
+  .editorial-prose a {
+    color: hsl(200 75% 45%);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: hsl(200 75% 38% / 0.3);
+    transition: text-decoration-color 0.2s;
+  }
+
+  .editorial-prose a:hover {
+    text-decoration-color: hsl(200 75% 38%);
+  }
+
+  .editorial-prose strong {
+    color: hsl(0 0% 98%);
+    font-weight: 600;
+  }
+
+  .editorial-prose ul,
+  .editorial-prose ol {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .editorial-prose li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .editorial-prose ul li::marker {
+    color: hsl(200 75% 38%);
+  }
+
+  .editorial-prose ol li::marker {
+    color: hsl(200 75% 38%);
+    font-weight: 600;
+  }
+
+  .editorial-prose code {
+    background: hsl(200 75% 38% / 0.1);
+    color: hsl(200 75% 50%);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+  }
+
+  .editorial-prose pre {
+    background: hsl(240 25% 14%);
+    border: 1px solid hsl(200 75% 38% / 0.15);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    overflow-x: auto;
+    margin: 2rem 0;
+  }
+
+  .editorial-prose pre code {
+    background: none;
+    padding: 0;
+    color: hsl(240 10% 75%);
+  }
 }
 
 @layer utilities {
