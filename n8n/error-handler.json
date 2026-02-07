@@ -1,0 +1,107 @@
+{
+  "name": "IntelliX.AI - Error Handler",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.execution.error }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "error-trigger",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [0, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract error details\nconst execution = $json.execution || {};\nconst workflow = $json.workflow || {};\n\nconst errorNode = execution.lastNodeExecuted || 'Unknown';\nconst errorMessage = execution.error?.message || 'Unknown error';\nconst errorStack = execution.error?.stack || '';\nconst executionId = execution.id || '';\nconst workflowName = workflow.name || 'Unknown';\nconst workflowId = workflow.id || '';\n\n// Determine severity\nlet severity = 'medium';\nif (errorNode.includes('Publish') || errorNode.includes('Instagram')) {\n  severity = 'high';\n} else if (errorNode.includes('Metrics') || errorNode.includes('Log') || errorNode.includes('Sheets')) {\n  severity = 'low';\n}\n\n// Determine error stage\nlet errorStage = 'unknown';\nif (errorNode.includes('RSS') || errorNode.includes('Perplexity') || errorNode.includes('SerpAPI')) {\n  errorStage = 'research';\n} else if (errorNode.includes('Curation') || errorNode.includes('Score')) {\n  errorStage = 'curation';\n} else if (errorNode.includes('Writer') || errorNode.includes('Editor') || errorNode.includes('SEO') || errorNode.includes('Researcher')) {\n  errorStage = 'content_production';\n} else if (errorNode.includes('DALL-E') || errorNode.includes('Image') || errorNode.includes('Unsplash')) {\n  errorStage = 'image_generation';\n} else if (errorNode.includes('Publish') || errorNode.includes('Blog') || errorNode.includes('Instagram')) {\n  errorStage = 'publication';\n}\n\nconst timestamp = new Date().toISOString();\n\nreturn [{\n  json: {\n    severity,\n    errorStage,\n    errorNode,\n    errorMessage,\n    executionId,\n    workflowName,\n    workflowId,\n    timestamp,\n    errorStack: errorStack.substring(0, 500)\n  }\n}];"
+      },
+      "id": "parse-error",
+      "name": "Parse Error Details",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `INSERT INTO workflow_metrics (\n  data, hora,\n  alerta_gerado, alerta_tipo, alerta_mensagem\n) VALUES (\n  CURRENT_DATE,\n  EXTRACT(HOUR FROM NOW())::int,\n  true,\n  '${$json.severity}_${$json.errorStage}',\n  'Erro em ${$json.errorNode}: ${$json.errorMessage.replace(/'/g, \"''\")}'\n);` }}",
+        "options": {}
+      },
+      "id": "log-error-db",
+      "name": "Log Error to Database",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [480, 300],
+      "credentials": {
+        "postgres": {
+          "id": "NEON_CREDENTIAL_ID",
+          "name": "Neon PostgreSQL"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ \nconst errorNode = $('Parse Error Details').item.json.errorNode;\nconst errorMsg = $('Parse Error Details').item.json.errorMessage.replace(/'/g, \"''\");\n\n// Try to update ai_news status if there's an article in progress\n`UPDATE ai_news SET\n  status = 'erro',\n  erro_mensagem = '${errorMsg}',\n  erro_etapa = '${$('Parse Error Details').item.json.errorStage}',\n  tentativas_publicacao = tentativas_publicacao + 1\nWHERE status IN ('em_producao', 'revisao', 'agendado')\n  AND updated_at >= NOW() - INTERVAL '2 hours'\nORDER BY updated_at DESC\nLIMIT 1;`\n}}",
+        "options": {}
+      },
+      "id": "update-article-error",
+      "name": "Update Article Error Status",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [720, 300],
+      "credentials": {
+        "postgres": {
+          "id": "NEON_CREDENTIAL_ID",
+          "name": "Neon PostgreSQL"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [{ "node": "Parse Error Details", "type": "main", "index": 0 }]
+      ]
+    },
+    "Parse Error Details": {
+      "main": [
+        [{ "node": "Log Error to Database", "type": "main", "index": 0 }]
+      ]
+    },
+    "Log Error to Database": {
+      "main": [
+        [{ "node": "Update Article Error Status", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "timezone": "America/Sao_Paulo"
+  },
+  "staticData": null,
+  "tags": [
+    { "name": "error-handler" },
+    { "name": "intellix" }
+  ],
+  "pinData": {},
+  "versionId": "1"
+}

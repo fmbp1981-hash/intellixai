@@ -4,7 +4,7 @@ import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export function BlogPreview() {
-  const { data: posts, isLoading } = useBlogPosts(3);
+  const { data: posts, isLoading } = useBlogPosts(4);
 
   if (isLoading) {
     return (
@@ -18,8 +18,8 @@ export function BlogPreview() {
               Conteúdo exclusivo sobre automação, IA e transformação digital
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[1, 2, 3, 4].map((i) => (
               <div key={i} className="bg-card rounded-2xl overflow-hidden border border-primary/10">
                 <Skeleton className="h-48 w-full" />
                 <div className="p-6 space-y-3">
@@ -52,7 +52,7 @@ export function BlogPreview() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {posts.map((post) => (
             <Link
               key={post.id}

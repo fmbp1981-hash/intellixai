@@ -1,40 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
+import { sql } from "@/integrations/neon/client";
 import type { BlogPost } from "@/types/blog";
 
 async function fetchPublishedPosts(): Promise<BlogPost[]> {
-  const { data, error } = await supabase
-    .from("blog_posts")
-    .select("*")
-    .eq("published", true)
-    .order("published_at", { ascending: false });
-
-  if (error) {
-    console.error("Error fetching blog posts:", error);
-    throw error;
-  }
-
-  return data || [];
+  const rows = await sql`
+    SELECT id, title, slug, excerpt, content, cover_image, category,
+           author, published, published_at, created_at, updated_at
+    FROM blog_posts
+    WHERE published = true
+    ORDER BY published_at DESC
+  `;
+  return rows as BlogPost[];
 }
 
 async function fetchPostBySlug(slug: string): Promise<BlogPost | null> {
-  const { data, error } = await supabase
-    .from("blog_posts")
-    .select("*")
-    .eq("slug", slug)
-    .eq("published", true)
-    .single();
-
-  if (error) {
-    if (error.code === "PGRST116") {
-      // No rows returned
-      return null;
-    }
-    console.error("Error fetching blog post:", error);
-    throw error;
-  }
-
-  return data;
+  const rows = await sql`
+    SELECT id, title, slug, excerpt, content, cover_image, category,
+           author, published, published_at, created_at, updated_at
+    FROM blog_posts
+    WHERE slug = ${slug} AND published = true
+    LIMIT 1
+  `;
+  return (rows[0] as BlogPost) || null;
 }
 
 export function useBlogPosts(limit?: number) {

@@ -1,0 +1,1175 @@
+{
+  "name": "IntelliX.AI - Editorial Automatizado v2",
+  "active": false,
+  "settings": {
+    "timezone": "America/Sao_Paulo",
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "saveExecutionProgress": true
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "nodes": [
+    {
+      "id": "d5e6f7a8-0001-4abc-8def-000000000001",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-280, 200],
+      "parameters": {}
+    },
+    {
+      "id": "d5e6f7a8-0002-4abc-8def-000000000002",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-280, 400],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 7 * * *"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "d5e6f7a8-0003-4abc-8def-000000000003",
+      "name": "Content Calendar Router",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [0, 300],
+      "parameters": {
+        "jsCode": "const now = new Date();\nconst dayOfWeek = now.getDay();\nconst days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];\nconst dayName = days[dayOfWeek];\n\nlet contentType;\nif (dayOfWeek === 0) {\n  contentType = 'resumo_semanal';\n} else if ([1, 2, 4, 6].includes(dayOfWeek)) {\n  contentType = 'editorial';\n} else {\n  contentType = 'promocional';\n}\n\nreturn [{\n  json: {\n    contentType,\n    dayName,\n    dayOfWeek,\n    timestamp: now.toISOString(),\n    executionId: $execution.id\n  }\n}];"
+      }
+    },
+    {
+      "id": "d5e6f7a8-0004-4abc-8def-000000000004",
+      "name": "Content Type Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [280, 300],
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "outputKey": "editorial",
+              "conditions": {
+                "options": {
+                  "version": 2,
+                  "leftValue": "",
+                  "caseSensitive": true
+                },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.contentType }}",
+                    "rightValue": "editorial",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "outputKey": "promocional",
+              "conditions": {
+                "options": {
+                  "version": 2,
+                  "leftValue": "",
+                  "caseSensitive": true
+                },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.contentType }}",
+                    "rightValue": "promocional",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "outputKey": "resumo_semanal",
+              "conditions": {
+                "options": {
+                  "version": 2,
+                  "leftValue": "",
+                  "caseSensitive": true
+                },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.contentType }}",
+                    "rightValue": "resumo_semanal",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0005-4abc-8def-000000000005",
+      "name": "Fetch Brand Config",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [280, 60],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT chave, valor FROM brand_config;",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0006-4abc-8def-000000000006",
+      "name": "Fetch RSS Config",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [560, 100],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id, nome, url, categoria, prioridade FROM rss_feeds WHERE ativa = true ORDER BY prioridade DESC;",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0007-4abc-8def-000000000007",
+      "name": "Fetch Keywords",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [560, 360],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT keyword, categoria, prioridade FROM keywords_config WHERE ativa = true ORDER BY prioridade DESC LIMIT 10;",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0008-4abc-8def-000000000008",
+      "name": "RSS Feed Reader",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.1,
+      "position": [840, 100],
+      "parameters": {
+        "url": "={{ $json.url }}"
+      }
+    },
+    {
+      "id": "d5e6f7a8-0009-4abc-8def-000000000009",
+      "name": "Perplexity Search",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [840, 300],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.perplexity.ai/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: 'sonar-pro', messages: [ { role: 'system', content: 'You are a news researcher. Return the top 5 most important AI news from the last 24 hours. Respond ONLY with a valid JSON array where each item has: title, url, source, summary (2-3 sentences).' }, { role: 'user', content: 'Find the latest AI news about: ' + $input.all().map(i => i.json.keyword).join(', ') } ], max_tokens: 1500, temperature: 0.3 }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0010-4abc-8def-000000000010",
+      "name": "SerpAPI Google News",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [840, 520],
+      "parameters": {
+        "method": "GET",
+        "url": "https://serpapi.com/search.json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpQueryAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "engine", "value": "google_news" },
+            { "name": "q", "value": "={{ $input.all().slice(0, 5).map(i => i.json.keyword).join(' OR ') }}" },
+            { "name": "gl", "value": "us" },
+            { "name": "hl", "value": "en" },
+            { "name": "num", "value": "10" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0011-4abc-8def-000000000011",
+      "name": "Merge RSS + Perplexity",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [1120, 200],
+      "parameters": {
+        "mode": "append"
+      }
+    },
+    {
+      "id": "d5e6f7a8-0012-4abc-8def-000000000012",
+      "name": "Merge All Sources",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [1400, 340],
+      "parameters": {
+        "mode": "append"
+      }
+    },
+    {
+      "id": "d5e6f7a8-0013-4abc-8def-000000000013",
+      "name": "Normalize Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1680, 340],
+      "parameters": {
+        "jsCode": "const allItems = $input.all();\nconst normalized = [];\nconst seenUrls = new Set();\n\nfor (const item of allItems) {\n  const d = item.json;\n  let entries = [];\n\n  // RSS items\n  if (d.title && d.link) {\n    entries.push({\n      titulo: d.title,\n      url_fonte: d.link,\n      fonte: d.creator || d.source || 'RSS',\n      fonte_tipo: 'rss',\n      resumo_bruto: d.contentSnippet || d.content || d.description || '',\n      data_noticia: d.isoDate || d.pubDate || new Date().toISOString()\n    });\n  }\n\n  // Perplexity results\n  if (d.choices && d.choices[0] && d.choices[0].message) {\n    try {\n      const parsed = JSON.parse(d.choices[0].message.content);\n      const arr = Array.isArray(parsed) ? parsed : (parsed.news || parsed.articles || [parsed]);\n      for (const a of arr) {\n        entries.push({\n          titulo: a.title || a.titulo || '',\n          url_fonte: a.url || a.link || '',\n          fonte: a.source || a.fonte || 'Perplexity',\n          fonte_tipo: 'perplexity',\n          resumo_bruto: a.summary || a.resumo || '',\n          data_noticia: a.date || new Date().toISOString()\n        });\n      }\n    } catch (e) {\n      // skip parse errors\n    }\n  }\n\n  // SerpAPI results\n  if (d.news_results && Array.isArray(d.news_results)) {\n    for (const n of d.news_results) {\n      entries.push({\n        titulo: n.title || '',\n        url_fonte: n.link || '',\n        fonte: n.source?.name || n.source || 'Google News',\n        fonte_tipo: 'serpapi',\n        resumo_bruto: n.snippet || '',\n        data_noticia: n.date || new Date().toISOString()\n      });\n    }\n  }\n\n  for (const entry of entries) {\n    if (entry.url_fonte && !seenUrls.has(entry.url_fonte)) {\n      seenUrls.add(entry.url_fonte);\n      normalized.push({ json: entry });\n    }\n  }\n}\n\nreturn normalized.length > 0 ? normalized : [{ json: { error: 'No articles found' } }];"
+      }
+    },
+    {
+      "id": "d5e6f7a8-0014-4abc-8def-000000000014",
+      "name": "AI Curation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1960, 340],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: 'gpt-4o-mini', messages: [ { role: 'system', content: 'You are an AI news curator for IntelliX.AI. Score articles 1-10. Respond in valid JSON with: score_impacto, score_novidade, score_relevancia, score_engajamento, categoria (lancamentos|pesquisa|regulamentacao|mercado|tutoriais|opiniao|eventos), palavras_chave (array), motivo (Portuguese).' }, { role: 'user', content: 'Artigo: ' + $json.titulo + '\\nFonte: ' + $json.fonte + '\\nResumo: ' + $json.resumo_bruto } ], temperature: 0.2, max_tokens: 500, response_format: { type: 'json_object' } }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0015-4abc-8def-000000000015",
+      "name": "Parse Curation Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2240, 340],
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst results = [];\n\nfor (let i = 0; i < items.length; i++) {\n  const item = items[i];\n  try {\n    const curation = JSON.parse(item.json.choices[0].message.content);\n    const score_total = (curation.score_impacto * 0.30) + (curation.score_novidade * 0.25) + (curation.score_relevancia * 0.30) + (curation.score_engajamento * 0.15);\n\n    results.push({\n      json: {\n        ...($('Normalize Data').all()[i]?.json || {}),\n        score_impacto: curation.score_impacto,\n        score_novidade: curation.score_novidade,\n        score_relevancia: curation.score_relevancia,\n        score_engajamento: curation.score_engajamento,\n        score_total: Math.round(score_total * 100) / 100,\n        categoria: curation.categoria,\n        palavras_chave: curation.palavras_chave,\n        motivo: curation.motivo\n      }\n    });\n  } catch (e) {\n    // skip items that fail to parse\n  }\n}\n\nresults.sort((a, b) => b.json.score_total - a.json.score_total);\nreturn results;"
+      }
+    },
+    {
+      "id": "d5e6f7a8-0016-4abc-8def-000000000016",
+      "name": "Score Filter",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [2520, 340],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $json.score_total }}",
+              "rightValue": 7,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0017-4abc-8def-000000000017",
+      "name": "Check Dedup",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [2800, 340],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `SELECT COUNT(*) as count FROM ai_news WHERE url_fonte = '${$json.url_fonte.replace(/'/g, \"''\")}'` }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0018-4abc-8def-000000000018",
+      "name": "Is New?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [3080, 340],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $json.count }}",
+              "rightValue": "0",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0019-4abc-8def-000000000019",
+      "name": "Insert Article",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [3360, 340],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `INSERT INTO ai_news (titulo, fonte, fonte_tipo, url_fonte, resumo_bruto, data_noticia, categoria, palavras_chave, score_impacto, score_novidade, score_relevancia, score_engajamento, score_total, status) VALUES ('${$('Parse Curation Results').item.json.titulo.replace(/'/g, \"''\")}', '${$('Parse Curation Results').item.json.fonte.replace(/'/g, \"''\")}', '${$('Parse Curation Results').item.json.fonte_tipo}', '${$('Parse Curation Results').item.json.url_fonte.replace(/'/g, \"''\")}', '${$('Parse Curation Results').item.json.resumo_bruto.replace(/'/g, \"''\")}', '${$('Parse Curation Results').item.json.data_noticia}', '${$('Parse Curation Results').item.json.categoria}', '${JSON.stringify($('Parse Curation Results').item.json.palavras_chave).replace(/'/g, \"''\")}', ${$('Parse Curation Results').item.json.score_impacto}, ${$('Parse Curation Results').item.json.score_novidade}, ${$('Parse Curation Results').item.json.score_relevancia}, ${$('Parse Curation Results').item.json.score_engajamento}, ${$('Parse Curation Results').item.json.score_total}, 'aprovado') RETURNING id;` }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0020-4abc-8def-000000000020",
+      "name": "Select Best Article",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [3640, 340],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id, titulo, fonte, url_fonte, resumo_bruto, categoria, palavras_chave, score_total FROM ai_news WHERE status = 'aprovado' ORDER BY score_total DESC, created_at ASC LIMIT 1;",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0021-4abc-8def-000000000021",
+      "name": "Update Status",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [3920, 340],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `UPDATE ai_news SET status = 'em_producao' WHERE id = '${$json.id}'` }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0022-4abc-8def-000000000022",
+      "name": "AI Researcher",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [4200, 340],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: 'gpt-4o', messages: [ { role: 'system', content: 'You are a deep research AI for IntelliX.AI. Research the full context of AI news. Respond in JSON with: contexto_completo, impacto_brasil, dados_relevantes (array), angulo_intellix, pontos_principais (array), fontes (array).' }, { role: 'user', content: 'Pesquise sobre:\\nTítulo: ' + $('Select Best Article').item.json.titulo + '\\nFonte: ' + $('Select Best Article').item.json.fonte + '\\nResumo: ' + $('Select Best Article').item.json.resumo_bruto + '\\nCategoria: ' + $('Select Best Article').item.json.categoria } ], temperature: 0.4, max_tokens: 2000, response_format: { type: 'json_object' } }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0023-4abc-8def-000000000023",
+      "name": "AI Writer",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [4480, 340],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: 'gpt-4o', messages: [ { role: 'system', content: 'You are a professional Brazilian Portuguese content writer for IntelliX.AI. Write 800-1200 word articles. Respond in JSON with: titulo, conteudo_blog (HTML with h2, p, ul, strong), conteudo_resumo, ponto_vista_intellix, tempo_leitura.' }, { role: 'user', content: 'Escreva um artigo sobre:\\nTítulo: ' + $('Select Best Article').item.json.titulo + '\\nFonte: ' + $('Select Best Article').item.json.fonte + '\\nResumo: ' + $('Select Best Article').item.json.resumo_bruto + '\\nCategoria: ' + $('Select Best Article').item.json.categoria + '\\n\\nPesquisa aprofundada: ' + $('AI Researcher').item.json.choices[0].message.content + '\\n\\nDiretrizes de marca: Tom de voz e estilo da IntelliX.AI. Use dados do brand_config para tom_voz, palavras_evitar e cta_padrao.' } ], temperature: 0.6, max_tokens: 4000, response_format: { type: 'json_object' } }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0024-4abc-8def-000000000024",
+      "name": "AI Editor",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [4760, 340],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: 'gpt-4o', messages: [ { role: 'system', content: 'You are the editor-in-chief of IntelliX.AI. Review articles for quality. Respond in JSON with: titulo, conteudo_blog (revised HTML), conteudo_resumo, ponto_vista_intellix, tempo_leitura, checklist (titulo_ok, meta_ok, conteudo_ok, pov_ok, subtitulos_ok, cta_ok booleans), qualidade_aprovada (boolean).' }, { role: 'user', content: 'Revise o seguinte artigo:\\n' + $('AI Writer').item.json.choices[0].message.content + '\\n\\nDiretrizes de marca: Verifique tom de voz, palavras proibidas e CTA padrão da IntelliX.AI.' } ], temperature: 0.3, max_tokens: 4000, response_format: { type: 'json_object' } }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0025-4abc-8def-000000000025",
+      "name": "AI SEO",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [5040, 340],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: 'gpt-4o-mini', messages: [ { role: 'system', content: 'You are an SEO specialist. Respond in JSON with: meta_title (max 70 chars), meta_description (max 160 chars), slug (URL-friendly), keywords (array), legenda_instagram (max 2200 chars, Portuguese), hashtags (array of 15-20).' }, { role: 'user', content: 'Otimize o SEO para o seguinte artigo:\\n' + $('AI Editor').item.json.choices[0].message.content } ], temperature: 0.3, max_tokens: 1000, response_format: { type: 'json_object' } }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0026-4abc-8def-000000000026",
+      "name": "Save Final Content",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [5320, 340],
+      "parameters": {
+        "jsCode": "const editorRaw = $('AI Editor').item.json.choices[0].message.content;\nconst seoRaw = $('AI SEO').item.json.choices[0].message.content;\nconst editor = JSON.parse(editorRaw);\nconst seo = JSON.parse(seoRaw);\nconst articleId = $('Select Best Article').item.json.id;\n\nconst esc = (s) => (s || '').replace(/'/g, \"''\");\n\nconst query = `UPDATE ai_news SET\n  titulo = '${esc(editor.titulo)}',\n  conteudo_blog = '${esc(editor.conteudo_blog)}',\n  conteudo_resumo = '${esc(editor.conteudo_resumo)}',\n  ponto_vista_intellix = '${esc(editor.ponto_vista_intellix)}',\n  tempo_leitura = '${esc(String(editor.tempo_leitura))}',\n  meta_title = '${esc(seo.meta_title)}',\n  meta_description = '${esc(seo.meta_description)}',\n  slug = '${esc(seo.slug)}',\n  keywords = '${esc(JSON.stringify(seo.keywords))}',\n  legenda_instagram = '${esc(seo.legenda_instagram)}',\n  hashtags = '${esc(JSON.stringify(seo.hashtags))}',\n  qualidade_aprovada = ${editor.qualidade_aprovada || false},\n  status = 'revisao'\nWHERE id = '${articleId}'`;\n\nreturn [{ json: { query, articleId } }];"
+      }
+    },
+    {
+      "id": "d5e6f7a8-0027-4abc-8def-000000000027",
+      "name": "Execute Save Content",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [5600, 340],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ $json.query }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0028-4abc-8def-000000000028",
+      "name": "Generate Image Prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [5880, 340],
+      "parameters": {
+        "jsCode": "const articleId = $('Save Final Content').item.json.articleId;\nconst titulo = $('Select Best Article').item.json.titulo;\n\nconst prompt = `Professional tech blog cover image. Theme: ${titulo}. Style: Futuristic minimalist, deep indigo (#1e1b4b), electric purple (#6366f1), warm amber (#f59e0b). Abstract tech elements, neural patterns. No text, no people. HD quality.`;\n\nreturn [{ json: { prompt, articleId, titulo } }];"
+      }
+    },
+    {
+      "id": "d5e6f7a8-0029-4abc-8def-000000000029",
+      "name": "DALL-E 3 Generate",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [6160, 340],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/images/generations",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: 'dall-e-3', prompt: $json.prompt, n: 1, size: '1792x1024', quality: 'hd' }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0030-4abc-8def-000000000030",
+      "name": "Image Generated?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [6440, 340],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty"
+              }
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0031-4abc-8def-000000000031",
+      "name": "Unsplash Fallback",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [6440, 600],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.unsplash.com/search/photos",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "query", "value": "={{ $('Generate Image Prompt').item.json.titulo }}" },
+            { "name": "per_page", "value": "1" },
+            { "name": "orientation", "value": "landscape" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0032-4abc-8def-000000000032",
+      "name": "Merge Image Result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [6720, 440],
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst articleId = $('Generate Image Prompt').item.json.articleId;\nlet imageUrl = '';\nlet isFallback = false;\n\nfor (const item of items) {\n  // Try DALL-E result\n  if (item.json.data && item.json.data[0] && item.json.data[0].url) {\n    imageUrl = item.json.data[0].url;\n    break;\n  }\n  // Try Unsplash result\n  if (item.json.results && item.json.results[0] && item.json.results[0].urls) {\n    imageUrl = item.json.results[0].urls.regular;\n    isFallback = true;\n    break;\n  }\n}\n\nif (!imageUrl) {\n  imageUrl = 'https://intellix.ai/placeholder-cover.jpg';\n  isFallback = true;\n}\n\nreturn [{ json: { articleId, imageUrl, isFallback } }];"
+      }
+    },
+    {
+      "id": "d5e6f7a8-0033-4abc-8def-000000000033",
+      "name": "Save Image URL",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [7000, 440],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `UPDATE ai_news SET imagem_capa_url = '${$json.imageUrl.replace(/'/g, \"''\")}', imagem_feed_url = '${$json.imageUrl.replace(/'/g, \"''\")}', imagem_fallback = ${$json.isFallback}, status = 'agendado', checklist_imagens = true WHERE id = '${$json.articleId}'` }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0034-4abc-8def-000000000034",
+      "name": "Fetch Final Article",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [7280, 440],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `SELECT id, titulo, conteudo_blog, conteudo_resumo, ponto_vista_intellix, meta_title, meta_description, slug, keywords, legenda_instagram, hashtags, imagem_capa_url, imagem_feed_url, categoria, tempo_leitura FROM ai_news WHERE id = '${$('Merge Image Result').item.json.articleId}'` }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0035-4abc-8def-000000000035",
+      "name": "Publish to Blog",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [7560, 440],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `INSERT INTO blog_posts (title, slug, excerpt, content, cover_image, category, author, published, published_at) VALUES ('${$json.titulo.replace(/'/g, \"''\")}', '${($json.slug || '').replace(/'/g, \"''\")}', '${($json.conteudo_resumo || $json.meta_description || '').replace(/'/g, \"''\")}', '${($json.conteudo_blog || '').replace(/'/g, \"''\")}', '${($json.imagem_capa_url || '').replace(/'/g, \"''\")}', '${($json.categoria || 'Geral').replace(/'/g, \"''\")}', 'IntelliX.AI', true, NOW()) ON CONFLICT (slug) DO UPDATE SET title = EXCLUDED.title, excerpt = EXCLUDED.excerpt, content = EXCLUDED.content, cover_image = EXCLUDED.cover_image, category = EXCLUDED.category, published = EXCLUDED.published, published_at = NOW() RETURNING id, slug;` }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0036-4abc-8def-000000000036",
+      "name": "Blog Published?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [7840, 440],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists"
+              }
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0037-4abc-8def-000000000037",
+      "name": "Log Blog Success",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [8120, 340],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `UPDATE ai_news SET url_blog = 'https://www.intellixai.com.br/blog/${($json.slug || '').replace(/'/g, \"''\")}', publicado_em = NOW(), status = 'publicado' WHERE id = '${$('Merge Image Result').item.json.articleId}'; INSERT INTO publication_log (content_type, content_id, plataforma, status, url_publicada, mensagem, created_at) VALUES ('ai_news', '${$('Merge Image Result').item.json.articleId}', 'blog', 'success', 'https://www.intellixai.com.br/blog/${($json.slug || '').replace(/'/g, \"''\")}', 'Publicado via Neon PostgreSQL', NOW());` }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0038-4abc-8def-000000000038",
+      "name": "Log Blog Failure",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [8120, 600],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `UPDATE ai_news SET status = 'erro', erro_mensagem = 'Falha ao inserir em blog_posts', erro_etapa = 'publish_blog' WHERE id = '${$('Merge Image Result').item.json.articleId}'; INSERT INTO publication_log (content_type, content_id, plataforma, status, mensagem, created_at) VALUES ('ai_news', '${$('Merge Image Result').item.json.articleId}', 'blog', 'failed', 'Erro ao inserir na tabela blog_posts do Neon', NOW());` }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0039-4abc-8def-000000000039",
+      "name": "Prepare Instagram Caption",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [8400, 340],
+      "parameters": {
+        "jsCode": "const article = $('Fetch Final Article').item.json;\nlet caption = article.legenda_instagram || article.conteudo_resumo || '';\n\nconst cta = '\\n\\n🔗 Link na bio para ler o artigo completo!\\n\\n';\nconst fixedHashtags = '#InteligenciaArtificial #IA #AutomacaoInteligente #IntelliXAI #TechBrasil';\nlet articleHashtags = '';\ntry {\n  const tags = JSON.parse(article.hashtags || '[]');\n  articleHashtags = tags.map(t => t.startsWith('#') ? t : '#' + t).join(' ');\n} catch (e) {\n  articleHashtags = '';\n}\n\nlet fullCaption = caption + cta + articleHashtags + ' ' + fixedHashtags;\n\nif (fullCaption.length > 2200) {\n  fullCaption = fullCaption.substring(0, 2197) + '...';\n}\n\nreturn [{\n  json: {\n    caption: fullCaption,\n    imageUrl: article.imagem_feed_url || article.imagem_capa_url,\n    articleId: article.id\n  }\n}];"
+      }
+    },
+    {
+      "id": "d5e6f7a8-0040-4abc-8def-000000000040",
+      "name": "Instagram Create Media",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [8680, 340],
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v21.0/{INSTAGRAM_BUSINESS_ACCOUNT_ID}/media",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "image_url", "value": "={{ $json.imageUrl }}" },
+            { "name": "caption", "value": "={{ $json.caption }}" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0041-4abc-8def-000000000041",
+      "name": "Instagram Publish Media",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [8960, 340],
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v21.0/{INSTAGRAM_BUSINESS_ACCOUNT_ID}/media_publish",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "creation_id", "value": "={{ $json.id }}" }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0042-4abc-8def-000000000042",
+      "name": "Log Instagram Success",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [9240, 340],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `UPDATE ai_news SET url_instagram = '${($json.id || '').replace(/'/g, \"''\")}' WHERE id = '${$('Prepare Instagram Caption').item.json.articleId}'; INSERT INTO publication_log (article_id, plataforma, status, url, publicado_em) VALUES ('${$('Prepare Instagram Caption').item.json.articleId}', 'instagram', 'success', '${($json.id || '').replace(/'/g, \"''\")}', NOW());` }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0043-4abc-8def-000000000043",
+      "name": "Record Metrics",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [9520, 340],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `INSERT INTO workflow_metrics (execution_id, content_type, articles_found, articles_curated, articles_published, execution_date) VALUES ('${$('Content Calendar Router').item.json.executionId}', '${$('Content Calendar Router').item.json.contentType}', 0, 0, 1, NOW());` }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0044-4abc-8def-000000000044",
+      "name": "Fetch Promo Content",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [560, 740],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id, nome, descricao, problema, solucao, resultados, prioridade, total_publicacoes FROM promo_content WHERE status = 'ativo' ORDER BY total_publicacoes ASC, prioridade DESC LIMIT 1;",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0045-4abc-8def-000000000045",
+      "name": "Update Promo Usage",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [840, 740],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `UPDATE promo_content SET total_publicacoes = total_publicacoes + 1, ultima_publicacao = NOW() WHERE id = '${$json.id}'` }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0046-4abc-8def-000000000046",
+      "name": "Insert Promo as News",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [1120, 740],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ `INSERT INTO ai_news (titulo, fonte, fonte_tipo, url_fonte, resumo_bruto, categoria, status) VALUES ('${$('Fetch Promo Content').item.json.nome.replace(/'/g, \"''\")}', 'IntelliX.AI', 'manual', 'https://intellix.ai/cases/${$('Fetch Promo Content').item.json.id}', '${$('Fetch Promo Content').item.json.descricao.replace(/'/g, \"''\")}', 'case_study', 'em_producao') RETURNING id;` }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0047-4abc-8def-000000000047",
+      "name": "AI Promo Writer",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1400, 740],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: 'gpt-4o', messages: [ { role: 'system', content: 'Write promotional content in Brazilian Portuguese for IntelliX.AI case studies. JSON: titulo, conteudo_blog (HTML), conteudo_resumo, ponto_vista_intellix, meta_title, meta_description, slug, legenda_instagram, hashtags, tempo_leitura.' }, { role: 'user', content: 'Projeto: ' + $('Fetch Promo Content').item.json.nome + '\\nDescrição: ' + $('Fetch Promo Content').item.json.descricao + '\\nProblema: ' + $('Fetch Promo Content').item.json.problema + '\\nSolução: ' + $('Fetch Promo Content').item.json.solucao + '\\nResultados: ' + $('Fetch Promo Content').item.json.resultados } ], temperature: 0.5, max_tokens: 3000, response_format: { type: 'json_object' } }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0048-4abc-8def-000000000048",
+      "name": "Save Promo Content",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1680, 740],
+      "parameters": {
+        "jsCode": "const raw = $('AI Promo Writer').item.json.choices[0].message.content;\nconst content = JSON.parse(raw);\nconst articleId = $('Insert Promo as News').item.json.id;\n\nconst esc = (s) => (s || '').replace(/'/g, \"''\");\n\nconst query = `UPDATE ai_news SET\n  titulo = '${esc(content.titulo)}',\n  conteudo_blog = '${esc(content.conteudo_blog)}',\n  conteudo_resumo = '${esc(content.conteudo_resumo)}',\n  ponto_vista_intellix = '${esc(content.ponto_vista_intellix)}',\n  meta_title = '${esc(content.meta_title)}',\n  meta_description = '${esc(content.meta_description)}',\n  slug = '${esc(content.slug)}',\n  legenda_instagram = '${esc(content.legenda_instagram)}',\n  hashtags = '${esc(JSON.stringify(content.hashtags))}',\n  tempo_leitura = '${esc(String(content.tempo_leitura))}',\n  status = 'revisao'\nWHERE id = '${articleId}'`;\n\nreturn [{ json: { query, articleId } }];"
+      }
+    },
+    {
+      "id": "d5e6f7a8-0049-4abc-8def-000000000049",
+      "name": "Fetch Week Articles",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [560, 1100],
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id, titulo, fonte, url_fonte, resumo_bruto, categoria, palavras_chave, score_total, publicado_em FROM ai_news WHERE status = 'publicado' AND publicado_em >= NOW() - INTERVAL '7 days' ORDER BY score_total DESC LIMIT 10;",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0050-4abc-8def-000000000050",
+      "name": "Insert Weekly Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [840, 1100],
+      "parameters": {
+        "jsCode": "const articles = $input.all();\nconst now = new Date();\nconst weekStart = new Date(now);\nweekStart.setDate(now.getDate() - 7);\n\nconst articleIds = articles.map(a => a.json.id).filter(Boolean);\nconst topArticles = articles.slice(0, 5);\n\nconst summaryData = {\n  semana_inicio: weekStart.toISOString().split('T')[0],\n  semana_fim: now.toISOString().split('T')[0],\n  total_artigos: articles.length,\n  top_article_ids: JSON.stringify(articleIds.slice(0, 5)),\n  articles: topArticles.map(a => ({\n    titulo: a.json.titulo,\n    categoria: a.json.categoria,\n    score: a.json.score_total\n  }))\n};\n\nreturn [{ json: summaryData }];"
+      }
+    },
+    {
+      "id": "d5e6f7a8-0051-4abc-8def-000000000051",
+      "name": "AI Summary Writer",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1120, 1100],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: 'gpt-4o', messages: [ { role: 'system', content: 'Create weekly AI digest in Brazilian Portuguese. JSON: titulo_resumo, introducao, conteudo_resumo (HTML), conclusao, ponto_vista_semanal, legenda_instagram, carrossel_slides (array of 5), hashtags, meta_title, meta_description, slug.' }, { role: 'user', content: 'Resumo semanal de ' + $json.semana_inicio + ' a ' + $json.semana_fim + '\\nTotal de artigos: ' + $json.total_artigos + '\\n\\nArtigos da semana:\\n' + $json.articles.map((a, i) => (i+1) + '. ' + a.titulo + ' (Score: ' + a.score + ', Categoria: ' + a.categoria + ')').join('\\n') } ], temperature: 0.5, max_tokens: 3000, response_format: { type: 'json_object' } }) }}",
+        "options": {}
+      }
+    },
+    {
+      "id": "d5e6f7a8-0052-4abc-8def-000000000052",
+      "name": "Save Summary Content",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1400, 1100],
+      "parameters": {
+        "jsCode": "const raw = $('AI Summary Writer').item.json.choices[0].message.content;\nconst content = JSON.parse(raw);\nconst summaryData = $('Insert Weekly Summary').item.json;\n\nconst esc = (s) => (s || '').replace(/'/g, \"''\");\n\nconst query = `INSERT INTO weekly_summary (semana_inicio, semana_fim, total_artigos, top_article_ids, titulo_resumo, introducao, conteudo_resumo, conclusao, ponto_vista_semanal, legenda_instagram, carrossel_slides, hashtags, meta_title, meta_description, slug, status) VALUES ('${summaryData.semana_inicio}', '${summaryData.semana_fim}', ${summaryData.total_artigos}, '${esc(summaryData.top_article_ids)}', '${esc(content.titulo_resumo)}', '${esc(content.introducao)}', '${esc(content.conteudo_resumo)}', '${esc(content.conclusao)}', '${esc(content.ponto_vista_semanal)}', '${esc(content.legenda_instagram)}', '${esc(JSON.stringify(content.carrossel_slides))}', '${esc(JSON.stringify(content.hashtags))}', '${esc(content.meta_title)}', '${esc(content.meta_description)}', '${esc(content.slug)}', 'agendado')`;\n\nreturn [{ json: { query } }];"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          { "node": "Content Calendar Router", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          { "node": "Content Calendar Router", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Content Calendar Router": {
+      "main": [
+        [
+          { "node": "Content Type Switch", "type": "main", "index": 0 },
+          { "node": "Fetch Brand Config", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Content Type Switch": {
+      "main": [
+        [
+          { "node": "Fetch RSS Config", "type": "main", "index": 0 },
+          { "node": "Fetch Keywords", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "Fetch Promo Content", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "Fetch Week Articles", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Fetch RSS Config": {
+      "main": [
+        [
+          { "node": "RSS Feed Reader", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Fetch Keywords": {
+      "main": [
+        [
+          { "node": "Perplexity Search", "type": "main", "index": 0 },
+          { "node": "SerpAPI Google News", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "RSS Feed Reader": {
+      "main": [
+        [
+          { "node": "Merge RSS + Perplexity", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Perplexity Search": {
+      "main": [
+        [
+          { "node": "Merge RSS + Perplexity", "type": "main", "index": 1 }
+        ]
+      ]
+    },
+    "Merge RSS + Perplexity": {
+      "main": [
+        [
+          { "node": "Merge All Sources", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "SerpAPI Google News": {
+      "main": [
+        [
+          { "node": "Merge All Sources", "type": "main", "index": 1 }
+        ]
+      ]
+    },
+    "Merge All Sources": {
+      "main": [
+        [
+          { "node": "Normalize Data", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Normalize Data": {
+      "main": [
+        [
+          { "node": "AI Curation", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "AI Curation": {
+      "main": [
+        [
+          { "node": "Parse Curation Results", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Parse Curation Results": {
+      "main": [
+        [
+          { "node": "Score Filter", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Score Filter": {
+      "main": [
+        [
+          { "node": "Check Dedup", "type": "main", "index": 0 }
+        ],
+        []
+      ]
+    },
+    "Check Dedup": {
+      "main": [
+        [
+          { "node": "Is New?", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Is New?": {
+      "main": [
+        [
+          { "node": "Insert Article", "type": "main", "index": 0 }
+        ],
+        []
+      ]
+    },
+    "Insert Article": {
+      "main": [
+        [
+          { "node": "Select Best Article", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Select Best Article": {
+      "main": [
+        [
+          { "node": "Update Status", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Update Status": {
+      "main": [
+        [
+          { "node": "AI Researcher", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "AI Researcher": {
+      "main": [
+        [
+          { "node": "AI Writer", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "AI Writer": {
+      "main": [
+        [
+          { "node": "AI Editor", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "AI Editor": {
+      "main": [
+        [
+          { "node": "AI SEO", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "AI SEO": {
+      "main": [
+        [
+          { "node": "Save Final Content", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Save Final Content": {
+      "main": [
+        [
+          { "node": "Execute Save Content", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Execute Save Content": {
+      "main": [
+        [
+          { "node": "Generate Image Prompt", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Generate Image Prompt": {
+      "main": [
+        [
+          { "node": "DALL-E 3 Generate", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "DALL-E 3 Generate": {
+      "main": [
+        [
+          { "node": "Image Generated?", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Image Generated?": {
+      "main": [
+        [
+          { "node": "Merge Image Result", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "Unsplash Fallback", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Unsplash Fallback": {
+      "main": [
+        [
+          { "node": "Merge Image Result", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Merge Image Result": {
+      "main": [
+        [
+          { "node": "Save Image URL", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Save Image URL": {
+      "main": [
+        [
+          { "node": "Fetch Final Article", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Fetch Final Article": {
+      "main": [
+        [
+          { "node": "Publish to Blog", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Publish to Blog": {
+      "main": [
+        [
+          { "node": "Blog Published?", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Blog Published?": {
+      "main": [
+        [
+          { "node": "Log Blog Success", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "Log Blog Failure", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Log Blog Success": {
+      "main": [
+        [
+          { "node": "Prepare Instagram Caption", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Prepare Instagram Caption": {
+      "main": [
+        [
+          { "node": "Instagram Create Media", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Instagram Create Media": {
+      "main": [
+        [
+          { "node": "Instagram Publish Media", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Instagram Publish Media": {
+      "main": [
+        [
+          { "node": "Log Instagram Success", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Log Instagram Success": {
+      "main": [
+        [
+          { "node": "Record Metrics", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Fetch Promo Content": {
+      "main": [
+        [
+          { "node": "Update Promo Usage", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Update Promo Usage": {
+      "main": [
+        [
+          { "node": "Insert Promo as News", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Insert Promo as News": {
+      "main": [
+        [
+          { "node": "AI Promo Writer", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "AI Promo Writer": {
+      "main": [
+        [
+          { "node": "Save Promo Content", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Fetch Week Articles": {
+      "main": [
+        [
+          { "node": "Insert Weekly Summary", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Insert Weekly Summary": {
+      "main": [
+        [
+          { "node": "AI Summary Writer", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "AI Summary Writer": {
+      "main": [
+        [
+          { "node": "Save Summary Content", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  }
+}
