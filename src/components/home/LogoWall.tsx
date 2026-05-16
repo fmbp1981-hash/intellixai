@@ -5,15 +5,15 @@ const clients = [
     name: "Grupo Cavendish",
     description: "Consultoria empresarial",
     logo: "/logos/logo-cavendish.png",
-    logoStyle: "object-contain p-2",
-    containerClass: "w-20 h-20 rounded-2xl bg-white border border-white/10 overflow-hidden",
+    logoStyle: "object-cover",
+    containerClass: "w-20 h-20 rounded-2xl bg-transparent border border-white/10 overflow-hidden",
   },
   {
     name: "XPAG Brasil",
     description: "Recrutamento & seleção",
     logo: "/logos/logo-xpag.png",
     logoStyle: "object-contain p-3",
-    containerClass: "w-20 h-20 rounded-2xl bg-[#0d1b3e] border border-white/10 overflow-hidden",
+    containerClass: "w-20 h-20 rounded-2xl bg-white border border-white/10 overflow-hidden",
   },
   {
     name: "Yolo Coliving",
