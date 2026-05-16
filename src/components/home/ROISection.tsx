@@ -80,54 +80,45 @@ const benefits: ROIBenefit[] = [
 
 export function ROISection() {
   return (
-    <section className="py-24 bg-[#060D1A] relative overflow-hidden">
+    <section className="py-16 bg-[#060D1A] relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <AnimatedSection className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/25 mb-6">
+        <AnimatedSection className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/25 mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             <span className="text-xs font-bold uppercase tracking-widest text-accent/80">Resultados reais</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">
             O que sua empresa ganha em{" "}
             <span className="gradient-text-gold">90 dias</span>{" "}
             com IA aplicada
           </h2>
-          <p className="text-white/50 text-lg max-w-3xl mx-auto leading-relaxed">
-            Não é promessa de palco. São os ganhos que empresas reais têm conseguido extrair com IA bem aplicada — mensurados em estudos de mercado e replicáveis no seu negócio quando o projeto é desenhado certo desde o começo.
+          <p className="text-white/50 text-base max-w-2xl mx-auto leading-relaxed">
+            Ganhos mensurados em estudos de mercado — replicáveis quando o projeto é desenhado certo desde o começo.
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
           {benefits.map((benefit, index) => (
-            <AnimatedSection key={benefit.category} animation="fade-up" delay={index * 80}>
-              <div className="flex flex-col h-full p-7 rounded-2xl border border-white/8 bg-white/4 hover:-translate-y-1 hover:border-white/15 hover:shadow-[0_16px_40px_rgba(0,0,0,0.3)] transition-[transform,box-shadow,border-color] duration-300">
-                <div className="flex items-start gap-4 mb-5">
-                  <div className={`w-11 h-11 rounded-xl ${benefit.iconBg} border flex items-center justify-center flex-shrink-0`}>
-                    <benefit.icon className="w-5 h-5" style={{ color: benefit.iconHex }} />
+            <AnimatedSection key={benefit.category} animation="fade-up" delay={index * 60}>
+              <div className="p-5 rounded-2xl border border-white/8 bg-white/4 hover:-translate-y-0.5 hover:border-white/15 transition-[transform,border-color] duration-300 h-full">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`w-9 h-9 rounded-xl ${benefit.iconBg} border flex items-center justify-center flex-shrink-0`}>
+                    <benefit.icon className="w-4 h-4" style={{ color: benefit.iconHex }} />
                   </div>
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-white/40 mb-1">{benefit.category}</p>
-                    <p className={`text-3xl font-black leading-none ${benefit.statColor}`}>{benefit.statistic}</p>
-                  </div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-white/35 leading-tight">{benefit.category}</p>
                 </div>
-                <h3 className="font-bold text-white text-sm mb-3 leading-snug">{benefit.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed flex-1">{benefit.description}</p>
+                <p className={`text-2xl font-black leading-none mb-1.5 ${benefit.statColor}`}>{benefit.statistic}</p>
+                <p className="text-xs text-white/55 leading-snug">{benefit.title}</p>
               </div>
             </AnimatedSection>
           ))}
         </div>
 
         <AnimatedSection className="text-center">
-          <p className="text-xs text-white/25 max-w-3xl mx-auto mb-8 leading-relaxed">
-            Métricas baseadas em benchmarks do McKinsey Global Institute (2024), Boston Consulting Group (AI at Work 2025) e Harvard Business Review. Cada empresa terá ganhos diferentes conforme processo, maturidade digital e disciplina de implementação.
-          </p>
-          <p className="text-base font-semibold text-white/70 mb-5">
-            Quanto a IA pode gerar de retorno no seu caso específico?
-          </p>
           <Link to="/diagnostico?origem=roi-home">
-            <Button size="lg" className="bg-gradient-to-r from-accent to-yellow-400 text-accent-foreground font-bold px-8 py-6 rounded-xl shadow-[0_0_25px_hsl(var(--accent)/0.4)] hover:shadow-[0_0_40px_hsl(var(--accent)/0.6)] transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 group">
+            <Button size="lg" className="bg-gradient-to-r from-accent to-yellow-400 text-accent-foreground font-bold px-8 shadow-[0_0_25px_hsl(var(--accent)/0.4)] hover:shadow-[0_0_40px_hsl(var(--accent)/0.6)] transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 group">
               Quero entender meu potencial de ROI
               <ArrowRight className="ml-2 group-hover:translate-x-0.5 transition-transform" size={18} />
             </Button>
