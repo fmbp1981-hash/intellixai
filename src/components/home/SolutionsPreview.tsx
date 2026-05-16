@@ -1,131 +1,195 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Search, MessageSquare, Settings, Globe, Puzzle, Users, Send, Briefcase } from "lucide-react";
+import { ArrowRight, Search, Hammer, Map, Users } from "lucide-react";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
-const solutions = [
+const fronts = [
   {
     icon: Search,
-    title: "Prospecção & Vendas",
-    description: "Automatize a captura e qualificação de leads com IA. Agende reuniões automaticamente e aumente suas conversões.",
-    benefits: ["Leads qualificados 24/7", "Agendamento automático", "+40% conversão"],
+    name: "RADAR.AI",
+    nameGold: "RADAR",
+    nameCyan: ".AI",
+    target: "B2B · Diagnóstico estratégico",
+    headline: "Antes de investir em IA, saiba exatamente onde ela gera retorno na sua operação.",
+    deliveries: [
+      "Especialista mergulhado na sua operação por 2 a 4 semanas",
+      "Mapa de oportunidades com ROI estimado por iniciativa",
+      "Plano priorizado: quick wins + roadmap de 6 a 12 meses",
+    ],
+    url: "/radar-ai",
+    // Cyan / primary
+    topBar: "from-cyan-400 to-primary",
+    iconBg: "bg-cyan-400/15 border-cyan-400/30",
+    iconColor: "text-cyan-400",
+    badge: "bg-cyan-400/12 border-cyan-400/30 text-cyan-300",
+    cta: "border-cyan-400/40 text-cyan-300 hover:border-cyan-400/70 hover:bg-cyan-400/8",
+    glow: "hover:shadow-[0_20px_50px_rgba(0,180,220,0.12)]",
+    activeBorder: "hover:border-cyan-400/30",
   },
   {
-    icon: MessageSquare,
-    title: "Atendimento Inteligente",
-    description: "Chatbots com IA que entendem contexto, respondem dúvidas e resolvem problemas sem intervenção humana.",
-    benefits: ["Suporte 24 horas", "Respostas instantâneas", "-70% tempo espera"],
+    icon: Hammer,
+    name: "FORJA.AI",
+    nameGold: "FORJA",
+    nameCyan: ".AI",
+    target: "B2B · Desenvolvimento sob medida",
+    headline: "Quando o problema é único, a solução precisa ser construída do zero — com IA.",
+    deliveries: [
+      "Sistemas e agentes de IA específicos para o seu processo",
+      "Integração com o que você já usa — sem substituir o que funciona",
+      "Código entregue ao cliente. Propriedade intelectual 100% sua.",
+    ],
+    url: "/forja-ai",
+    // Gold / accent
+    topBar: "from-accent to-yellow-400",
+    iconBg: "bg-yellow-400/15 border-yellow-400/30",
+    iconColor: "text-yellow-400",
+    badge: "bg-yellow-400/12 border-yellow-400/30 text-yellow-300",
+    cta: "border-yellow-400/40 text-yellow-300 hover:border-yellow-400/70 hover:bg-yellow-400/8",
+    glow: "hover:shadow-[0_20px_50px_rgba(220,180,0,0.12)]",
+    activeBorder: "hover:border-yellow-400/30",
+  },
+  {
+    icon: Map,
+    name: "TRILHA.AI",
+    nameGold: "TRILHA",
+    nameCyan: ".AI",
+    target: "B2C · Mentoria individual",
+    headline: "Sua trilha de IA personalizada — com plano, sessões práticas 1:1 e acompanhamento.",
+    deliveries: [
+      "Diagnóstico inicial + plano de trilha sob medida",
+      "Sessões 1:1 com Felipe Maranhão usando suas tarefas reais",
+      "Canal direto entre sessões para dúvidas de aplicação",
+    ],
+    url: "/trilha-ai",
+    // Violet
+    topBar: "from-violet-500 to-purple-400",
+    iconBg: "bg-violet-500/15 border-violet-500/30",
+    iconColor: "text-violet-400",
+    badge: "bg-violet-500/12 border-violet-500/30 text-violet-300",
+    cta: "border-violet-500/40 text-violet-300 hover:border-violet-500/70 hover:bg-violet-500/8",
+    glow: "hover:shadow-[0_20px_50px_rgba(139,92,246,0.12)]",
+    activeBorder: "hover:border-violet-500/30",
   },
   {
     icon: Users,
-    title: "CRM Personalizado",
-    description: "Sistema de gestão de relacionamento 100% adaptado ao fluxo de trabalho da sua empresa.",
-    benefits: ["100% sob medida", "Automação inteligente", "Dashboard integrado"],
-  },
-  {
-    icon: Send,
-    title: "Disparador WhatsApp",
-    description: "Plataforma de disparo em massa via API Oficial do WhatsApp com automações inteligentes.",
-    benefits: ["API Oficial WhatsApp", "Disparo em massa", "Automação de campanhas"],
-  },
-  {
-    icon: Settings,
-    title: "Gestão & Operações",
-    description: "Dashboards inteligentes e automação de processos internos com dados em tempo real.",
-    benefits: ["Dados em tempo real", "Processos automatizados", "+60% eficiência"],
-  },
-  {
-    icon: Globe,
-    title: "Sites & Landing Pages",
-    description: "Sites otimizados para conversão com IA integrada e design focado em resultados.",
-    benefits: ["SEO otimizado", "Alta conversão", "Design premium"],
-  },
-  {
-    icon: Puzzle,
-    title: "Soluções Sob Medida",
-    description: "Desenvolvemos soluções personalizadas para desafios únicos do seu negócio.",
-    benefits: ["100% personalizado", "Tecnologia de ponta", "Suporte dedicado"],
+    name: "Virada Inteligente",
+    nameGold: "Virada",
+    nameCyan: " Inteligente",
+    target: "In-company + Turma aberta",
+    headline: "Em 3 horas, sua equipe inteira sai do zero ao uso real de 9 ferramentas de IA.",
+    deliveries: [
+      "Imersão presencial com metodologia Aprenda · Veja · Faça",
+      "Conteúdo customizado com tarefas reais da sua empresa",
+      "30 dias de suporte pós-imersão por WhatsApp",
+    ],
+    url: "/virada-inteligente",
+    // Emerald
+    topBar: "from-emerald-500 to-teal-400",
+    iconBg: "bg-emerald-500/15 border-emerald-500/30",
+    iconColor: "text-emerald-400",
+    badge: "bg-emerald-500/12 border-emerald-500/30 text-emerald-300",
+    cta: "border-emerald-500/40 text-emerald-300 hover:border-emerald-500/70 hover:bg-emerald-500/8",
+    glow: "hover:shadow-[0_20px_50px_rgba(16,185,129,0.12)]",
+    activeBorder: "hover:border-emerald-500/30",
   },
 ];
 
 export function SolutionsPreview() {
   return (
-    <section className="py-24 relative overflow-hidden">
-      {/* Background Image - Team collaboration/business context */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-        style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop')",
-        }}
-      />
-      <div className="absolute inset-0 bg-background/98" />
+    <section className="py-24 bg-[#060D1A] relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/4 via-transparent to-accent/4 pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
+
         {/* Header */}
-        <AnimatedSection className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 border border-border mb-6 backdrop-blur-sm">
-            <Briefcase className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-foreground">Portfólio de Soluções</span>
+        <AnimatedSection className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/12 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            <span className="text-xs font-bold uppercase tracking-widest text-white/60">
+              4 frentes de atuação
+            </span>
           </div>
-
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-            Soluções desenvolvidas pela <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Uma solução <span className="gradient-text">especializada</span>{" "}
+            para cada <span className="gradient-text-gold">estágio do negócio</span>
           </h2>
-
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Oferecemos um portfólio completo de soluções em inteligência artificial, 
-            personalizadas para atender às necessidades específicas de cada cliente.
+          <p className="text-white/50 text-lg max-w-2xl mx-auto">
+            Não existe resposta genérica para problema específico. Cada frente da IntelliX.AI foi criada para um contexto diferente — e entregada por especialista, não por plataforma.
           </p>
         </AnimatedSection>
 
-        {/* Solutions Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-12">
-          {solutions.map((solution, index) => (
-            <AnimatedSection
-              key={index}
-              animation="fade-up"
-              delay={index * 60}
-            >
-              <div className="group h-full bg-card/70 backdrop-blur-sm p-6 rounded-xl border border-border hover:border-primary/50 hover:-translate-y-2 hover:shadow-[0_10px_40px_hsl(var(--primary)/0.15)] transition-all duration-300">
-                {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                  <solution.icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-                </div>
+        {/* Grid 2×2 */}
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
+          {fronts.map((f, i) => (
+            <AnimatedSection key={f.name} animation="fade-up" delay={i * 80}>
+              <div className={`group flex flex-col h-full rounded-2xl border border-white/8 bg-white/4 overflow-hidden ${f.activeBorder} hover:-translate-y-1 ${f.glow} transition-[transform,box-shadow,border-color] duration-300`}>
 
-                {/* Content */}
-                <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {solution.title}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                  {solution.description}
-                </p>
+                {/* Top bar — thicker for visibility */}
+                <div className={`h-[3px] bg-gradient-to-r ${f.topBar} flex-shrink-0`} />
 
-                {/* Benefits */}
-                <div className="space-y-2">
-                  {solution.benefits.map((benefit, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                      <span>{benefit}</span>
+                <div className="p-7 flex flex-col flex-1">
+                  {/* Icon + badge */}
+                  <div className="flex items-start gap-4 mb-5">
+                    <div className={`w-11 h-11 rounded-xl ${f.iconBg} border flex items-center justify-center flex-shrink-0 group-hover:opacity-80 transition-opacity duration-300`}>
+                      <f.icon className={`w-5 h-5 ${f.iconColor}`} />
                     </div>
-                  ))}
+                    <div className="min-w-0">
+                      <h3 className="font-black text-lg text-white leading-tight mb-1">
+                        <span className="gradient-text-gold">{f.nameGold}</span>
+                        <span className="gradient-text">{f.nameCyan}</span>
+                      </h3>
+                      <span className={`inline-flex items-center text-[10px] font-bold px-2 py-0.5 rounded-full border ${f.badge}`}>
+                        {f.target}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Headline */}
+                  <p className="text-sm font-semibold text-white leading-snug mb-4">
+                    {f.headline}
+                  </p>
+
+                  {/* Deliveries */}
+                  <ul className="space-y-2 mb-6 flex-1">
+                    {f.deliveries.map((d) => (
+                      <li key={d} className="flex items-start gap-2 text-xs text-white/60">
+                        <ArrowRight className="w-3 h-3 mt-0.5 flex-shrink-0 text-white/30" />
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA */}
+                  <Link to={f.url}>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className={`w-full border transition-[border-color,background-color] duration-200 group/btn ${f.cta}`}
+                    >
+                      Conhecer a frente
+                      <ArrowRight className="ml-2 w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </AnimatedSection>
           ))}
         </div>
 
-        {/* Main CTA */}
-        <AnimatedSection animation="fade-up" delay={400} className="text-center">
+        {/* Bottom CTA */}
+        <AnimatedSection className="text-center">
+          <p className="text-white/35 text-sm mb-4">Não sabe qual frente faz sentido pro seu momento?</p>
           <Link to="/solucoes">
             <Button
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-6 rounded-lg transition-all duration-300 group"
+              variant="outline"
+              className="border-white/15 text-white/60 hover:border-accent/40 hover:text-accent hover:bg-accent/5 transition-[border-color,color,background-color] duration-200 group"
             >
-              Ver portfólio completo
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              Ver comparativo completo das soluções
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Button>
           </Link>
         </AnimatedSection>
+
       </div>
     </section>
   );

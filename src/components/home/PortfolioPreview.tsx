@@ -1,207 +1,238 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ExternalLink, FolderOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ArrowRight, CheckCircle, ExternalLink } from "lucide-react";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
-const featuredProjects = [
+type Product = {
+  name: string;
+  url: string;
+  isExternal: boolean;
+};
+
+type Case = {
+  client: string;
+  initials: string;
+  segment: string;
+  frente: string;
+  badge: string;
+  description: string;
+  deliveries: string[];
+  products: Product[];
+  gradient: string;
+  avatarGradient: string;
+  borderHover: string;
+};
+
+const cases: Case[] = [
   {
-    name: "CCE - Cavendish Consultoria Empresarial",
-    type: "Site Institucional",
-    segment: "Consultoria Empresarial",
-    description: "Site institucional da Cavendish Consultoria Empresarial, apresentando serviços, equipe e diferenciais para empresas.",
-    url: "https://grupo-cavendish.vercel.app/",
-    gradient: "from-blue-600 to-blue-300",
-    category: "Sites",
-  },
-  {
-    name: "BYH - Cavendish",
-    type: "Site Institucional",
-    segment: "Consultoria Empresarial",
-    description: "Site institucional BYH do Grupo Cavendish, apresentando soluções e diferenciais.",
-    url: "https://grupo-cavendish-byh-site.vercel.app/",
-    gradient: "from-fuchsia-600 to-pink-300",
-    category: "Sites",
-  },
-  {
-    name: "Grupo Cavendish",
-    type: "Site Institucional",
-    segment: "Consultoria Empresarial",
-    description: "Site institucional do Grupo Cavendish, com informações institucionais e serviços.",
-    url: "https://v0-cavendish-group-website.vercel.app/",
-    gradient: "from-amber-600 to-yellow-300",
-    category: "Sites",
-  },
-  {
-    name: "Xpag Brasil",
-    type: "Site Institucional",
-    segment: "Serviços Financeiros",
-    description: "Site institucional da Xpag Brasil, apresentando soluções financeiras inovadoras.",
-    url: "https://xpagbrasil-one-page.vercel.app/",
-    gradient: "from-cyan-600 to-cyan-300",
-    category: "Sites",
-  },
-  {
-    name: "Clear Decision Leap",
-    type: "Landing Page",
-    segment: "Consultoria Empresarial",
-    description: "Landing page para captação de leads e apresentação de soluções do Grupo Cavendish.",
-    url: "https://clear-decision-leap.vercel.app/",
-    gradient: "from-green-600 to-green-300",
-    category: "Landing Pages",
-  },
-  {
-    name: "IntelliX CRM",
-    type: "CRM Personalizado",
-    segment: "Produto IntelliX",
-    description: "Sistema de gestão de relacionamento 100% adaptável ao fluxo de trabalho da sua empresa.",
-    url: "#",
-    gradient: "from-indigo-500 to-violet-400",
-    isInternal: true,
-    category: "Sistemas & Aplicações",
-  },
-  {
-    name: "IntelliX Disparo",
-    type: "Disparador WhatsApp",
-    segment: "Produto IntelliX",
-    description: "Plataforma de disparo em massa via API Oficial do WhatsApp com automações inteligentes.",
-    url: "#",
-    gradient: "from-green-500 to-emerald-400",
-    isInternal: true,
-    category: "Sistemas & Aplicações",
-  },
-  {
-    name: "Sistema GIG",
-    type: "Portal de Governança",
-    segment: "Compliance & Governança",
-    description: "Sistema de gestão e controle corporativo para programas de governança e compliance empresarial.",
-    url: "https://cavendish-gig.vercel.app/",
+    client: "Grupo Cavendish",
+    initials: "GC",
+    segment: "Governança · Real Estate · Consultoria",
+    frente: "FORJA.AI",
+    badge: "4 soluções",
+    description:
+      "Ecossistema digital completo construído sob medida: da governança corporativa à presença digital das marcas do grupo. Quatro entregas especializadas, todas em produção.",
+    deliveries: [
+      "Sistema GIG — governança, compliance e riscos com 39 tabelas",
+      "Fluxo de aprovação com RLS por perfil de acesso",
+      "3 sites institucionais com identidade e performance",
+      "Dashboards executivos com relatórios automáticos",
+    ],
+    products: [
+      { name: "Sistema GIG", url: "https://cavendish-gig.vercel.app/auth", isExternal: true },
+      { name: "Cavendish Consultoria", url: "https://www.cavendishconsultoria.com.br/", isExternal: true },
+      { name: "Grupo Cavendish", url: "https://www.grupocavendish.com.br/", isExternal: true },
+      { name: "Be Your Home", url: "https://www.beyourhome.com.br/", isExternal: true },
+    ],
     gradient: "from-violet-500 to-purple-400",
-    category: "Sistemas & Aplicações",
+    avatarGradient: "from-violet-500/30 to-purple-400/20",
+    borderHover: "hover:border-violet-500/30",
   },
   {
-    name: "LeadFinder Pro",
-    type: "Plataforma de Prospecção",
+    client: "XPAG Brasil",
+    initials: "XP",
     segment: "Vendas B2B",
-    description: "Qualificação automática de leads e automação de outbound para equipes de vendas.",
-    url: "https://prospect-pulse-54.vercel.app/",
+    frente: "FORJA.AI",
+    badge: "2 soluções",
+    description:
+      "Plataforma de prospecção inteligente com IA + presença digital profissional. Do lead qualificado no WhatsApp ao site institucional — soluções 100% personalizadas para o negócio.",
+    deliveries: [
+      "LeadFinder Pro — agente IA + WhatsApp + pipeline B2B",
+      "Scoring automático de leads por perfil ideal de cliente",
+      "Integração nativa Evolution API + WhatsApp",
+      "Site institucional com identidade de marca",
+    ],
+    products: [
+      { name: "LeadFinder Pro", url: "https://prospect-pulse-54.vercel.app/", isExternal: true },
+      { name: "Site XPAG Brasil", url: "https://xpagbrasil-one-page.vercel.app/", isExternal: true },
+    ],
     gradient: "from-primary to-cyan-400",
-    category: "Sistemas & Aplicações",
+    avatarGradient: "from-primary/30 to-cyan-400/20",
+    borderHover: "hover:border-primary/30",
   },
   {
-    name: "Vo.AI",
-    type: "CRM Inteligente",
-    segment: "Agências de Viagem",
-    description: "Atendimento com IA, gestão de clientes e automação de vendas para o setor de turismo.",
-    url: "https://vo-ai.vercel.app/",
+    client: "Yolo Coliving",
+    initials: "YC",
+    segment: "Real Estate · Coliving",
+    frente: "FORJA.AI + Virada Inteligente",
+    badge: "Em entrega",
+    description:
+      "Imersão Virada Inteligente entregue e confirmada. Yolo AI Hub — hub de automação comercial com SDR de IA, SmartMatch e Dashboard — em desenvolvimento final e com entrega prevista para breve.",
+    deliveries: [
+      "Imersão Virada Inteligente — equipe capacitada em 9 ferramentas de IA ✓",
+      "Yolo SDR — agente IA autônomo no WhatsApp 24/7 (em entrega)",
+      "SmartMatch — segmentação inteligente de leads via Bitrix24 (em entrega)",
+      "Dashboard + Kanban com métricas e funil em tempo real (em entrega)",
+    ],
+    products: [
+      { name: "Yolo AI Hub", url: "/virada-inteligente", isExternal: false },
+      { name: "Virada Inteligente", url: "/virada-inteligente", isExternal: false },
+    ],
     gradient: "from-accent to-yellow-400",
-    category: "Sistemas & Aplicações",
-  },
-  {
-    name: "ClinicaFlow",
-    type: "Gestão de Pacientes",
-    segment: "Clínicas Odontológicas",
-    description: "Agenda inteligente, prontuários digitais e controle financeiro integrado.",
-    url: "https://allo-oral-clinic-gest-o.vercel.app/",
-    gradient: "from-emerald-500 to-teal-400",
-    category: "Sistemas & Aplicações",
+    avatarGradient: "from-accent/30 to-yellow-400/20",
+    borderHover: "hover:border-accent/30",
   },
 ];
 
 export function PortfolioPreview() {
-  // Categorias a serem exibidas
-  const categories = [
-    "Sites",
-    "Landing Pages",
-    "Sistemas & Aplicações",
-  ];
-
-  // Função para filtrar projetos por categoria
-  const getProjectsByCategory = (category) =>
-    featuredProjects.filter((project) => project.category === category);
-
   return (
-    <section className="py-24 bg-card relative overflow-hidden">
-      {/* Background Image - Success/achievement context */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-        style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop')",
-        }}
-      />
-      <div className="absolute inset-0 bg-card/98" />
+    <section className="py-24 bg-[#0A1525] relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/4 via-transparent to-accent/4 pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <AnimatedSection className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
+
+        {/* Header */}
+        <AnimatedSection className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-14">
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-              <FolderOpen className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Projetos</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/25 mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+              <span className="text-xs font-bold uppercase tracking-widest text-accent">
+                Projetos vivos em operação
+              </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-foreground">
-              Cases e Produtos
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              Soluções reais,{" "}
+              <span className="gradient-text-gold">resultados verificáveis.</span>
             </h2>
-            <p className="text-muted-foreground text-lg">
-              Conheça as soluções desenvolvidas pela <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span>
+            <p className="text-white/50 text-lg max-w-xl">
+              Cada projeto entregue pela IntelliX.AI está em produção e gerando resultado agora — você pode verificar.
             </p>
           </div>
-          <Link to="/portfolio">
-            <Button variant="outline" className="border-border text-foreground hover:bg-card hover:border-primary/40 group">
-              Ver portfólio completo
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+          <Link to="/cases" className="flex-shrink-0">
+            <Button
+              variant="outline"
+              className="border-white/15 text-white/70 hover:border-accent/40 hover:text-accent hover:bg-accent/5 transition-[border-color,color,background-color] duration-200 group"
+            >
+              Ver todos os cases
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Button>
           </Link>
         </AnimatedSection>
 
-        {/* Renderizar por categoria */}
-        {categories.map((category) => {
-          const projects = getProjectsByCategory(category);
-          if (projects.length === 0) return null;
-          return (
-            <div key={category} className="mb-10">
-              <h3 className="text-xl font-semibold mb-4 text-foreground border-l-4 border-primary pl-3">{category}</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-                {projects.map((project, index) => (
-                  <AnimatedSection
-                    key={project.name}
-                    animation="fade-up"
-                    delay={index * 80}
-                  >
-                    <a
-                      href={project.url}
-                      target={project.isInternal ? "_self" : "_blank"}
-                      rel="noopener noreferrer"
-                      className={`block bg-background/60 backdrop-blur-sm rounded-xl border border-border hover:border-primary/30 transition-all duration-300 overflow-hidden h-full ${project.isInternal ? 'ring-1 ring-primary/20' : ''}`}
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {cases.map((c, i) => (
+            <AnimatedSection key={c.client} animation="fade-up" delay={i * 100}>
+              <div
+                className={`flex flex-col h-full rounded-2xl border border-white/8 bg-white/4 overflow-hidden ${c.borderHover} hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-[transform,box-shadow,border-color] duration-300`}
+              >
+                {/* Gradient top bar */}
+                <div className={`h-1 bg-gradient-to-r ${c.gradient} flex-shrink-0`} />
+
+                <div className="p-7 flex flex-col flex-1">
+                  {/* Client header */}
+                  <div className="flex items-start gap-4 mb-5">
+                    <div
+                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${c.avatarGradient} border border-white/10 flex items-center justify-center flex-shrink-0`}
                     >
-                      {/* Gradient Header */}
-                      <div className={`h-1 bg-gradient-to-r ${project.gradient}`} />
-                      <div className="p-5 relative">
-                        {/* Internal Product Badge */}
-                        {project.isInternal && (
-                          <span className="absolute top-3 right-3 text-[10px] font-medium bg-primary/10 text-primary px-2 py-0.5 rounded-full">
-                            Produto
-                          </span>
-                        )}
-                        <div className="mb-3">
-                          <h3 className="font-semibold text-base mb-1 text-foreground">
-                            {project.name}
-                          </h3>
-                          <p className="text-xs text-muted-foreground">{project.type}</p>
-                        </div>
-                        <span className="inline-block text-xs font-medium px-2 py-0.5 rounded-full mb-3 bg-card text-muted-foreground border border-border">
-                          {project.segment}
+                      <span className="text-sm font-black text-white">{c.initials}</span>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="font-bold text-white text-base leading-tight">{c.client}</h3>
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full bg-gradient-to-r ${c.gradient} bg-opacity-20 text-white`}>
+                          {c.badge}
                         </span>
-                        <p className="text-muted-foreground text-sm line-clamp-3">{project.description}</p>
-                        {!project.isInternal && (
-                          <ExternalLink className="absolute bottom-4 right-4 text-muted-foreground w-4 h-4" />
-                        )}
                       </div>
-                    </a>
-                  </AnimatedSection>
-                ))}
+                      <span className="inline-block text-xs font-medium px-2 py-0.5 rounded-full bg-white/6 border border-white/10 text-white/50 mt-1">
+                        {c.segment}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Frente */}
+                  <p className="text-xs font-bold uppercase tracking-widest text-white/35 mb-3">
+                    Entrega via {c.frente}
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-sm text-white/55 leading-relaxed mb-5">
+                    {c.description}
+                  </p>
+
+                  {/* Deliveries */}
+                  <ul className="space-y-2 mb-6 flex-1">
+                    {c.deliveries.map((d) => (
+                      <li key={d} className="flex items-start gap-2 text-xs text-white/70">
+                        <CheckCircle className="w-3.5 h-3.5 text-accent mt-0.5 flex-shrink-0" />
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Products / Links */}
+                  <div className="border-t border-white/8 pt-5 mt-auto">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-3">
+                      Acessar entregas
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {c.products.map((p) =>
+                        p.isExternal ? (
+                          <a
+                            key={p.name}
+                            href={p.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border border-white/12 bg-white/4 text-white/60 hover:border-white/25 hover:text-white hover:bg-white/8 transition-[border-color,color,background-color] duration-200"
+                          >
+                            {p.name}
+                            <ExternalLink className="w-3 h-3 flex-shrink-0" />
+                          </a>
+                        ) : (
+                          <Link
+                            key={p.name}
+                            to={p.url}
+                            className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border border-accent/30 bg-accent/6 text-accent hover:border-accent/50 hover:bg-accent/10 transition-[border-color,background-color] duration-200"
+                          >
+                            {p.name}
+                            <ArrowRight className="w-3 h-3 flex-shrink-0" />
+                          </Link>
+                        )
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            </AnimatedSection>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <AnimatedSection className="text-center mt-14">
+          <p className="text-white/40 text-sm mb-5">
+            Quer ser o próximo case? Começa com uma conversa de 30 minutos.
+          </p>
+          <Link to="/diagnostico">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-accent to-yellow-400 text-accent-foreground font-bold px-8 shadow-[0_0_25px_hsl(var(--accent)/0.35)] hover:shadow-[0_0_35px_hsl(var(--accent)/0.55)] transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 group"
+            >
+              Agendar diagnóstico gratuito
+              <ArrowRight className="ml-2 group-hover:translate-x-0.5 transition-transform" size={16} />
+            </Button>
+          </Link>
+        </AnimatedSection>
+
       </div>
     </section>
   );

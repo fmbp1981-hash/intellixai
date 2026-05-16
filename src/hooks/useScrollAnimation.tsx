@@ -73,7 +73,7 @@ export const AnimatedSection = ({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-1000 ease-out ${
+      className={`transition-[transform,opacity] duration-1000 ease-out ${
         isVisible ? visibleClasses[animation] : animationClasses[animation]
       } ${className}`}
       style={{ transitionDelay: `${delay}ms` }}

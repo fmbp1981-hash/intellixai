@@ -1,84 +1,91 @@
-import { Zap, Target, Clock, TrendingUp, Shield, BarChart3, CheckCircle } from "lucide-react";
+import { TrendingUp, MessageSquare, Zap, ShieldCheck, Brain, Hammer } from "lucide-react";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
 const capabilities = [
   {
-    icon: Zap,
-    title: "Automação de Processos",
-    description: "Fluxos de trabalho automatizados que reduzem erros e aumentam a velocidade operacional.",
-  },
-  {
-    icon: Target,
-    title: "Qualificação de Leads",
-    description: "Sistemas inteligentes que identificam e priorizam oportunidades de maior potencial.",
-  },
-  {
-    icon: Clock,
-    title: "Disponibilidade Contínua",
-    description: "Atendimento automatizado que opera 24 horas, 7 dias por semana.",
-  },
-  {
     icon: TrendingUp,
-    title: "Escalabilidade",
-    description: "Infraestrutura que cresce junto com sua empresa sem aumento proporcional de custos.",
+    title: "Mais vendas com menos esforço",
+    description: "Sistemas de prospecção e qualificação que entregam lead pronto para a equipe comercial. O time fecha. A IA encontra.",
+    iconHex: "#22d3ee",
+    bg: "bg-cyan-400/10 border-cyan-400/20",
+    hover: "hover:border-cyan-400/40",
   },
   {
-    icon: Shield,
-    title: "Centralização de Dados",
-    description: "Visão unificada das informações para tomada de decisões mais assertivas.",
+    icon: MessageSquare,
+    title: "Atendimento 24/7 que vende",
+    description: "IA que conversa com o cliente fora do expediente, qualifica, agenda e transfere para humano só quando precisa. Sem perder venda no fim de semana.",
+    iconHex: "#facc15",
+    bg: "bg-yellow-400/10 border-yellow-400/20",
+    hover: "hover:border-yellow-400/40",
   },
   {
-    icon: BarChart3,
-    title: "Métricas em Tempo Real",
-    description: "Dashboards executivos com indicadores de performance atualizados continuamente.",
+    icon: Zap,
+    title: "Operação enxuta, decisão rápida",
+    description: "Automação de processos repetitivos liberando até 30% do tempo da equipe para decisões estratégicas. Menos planilha, mais resultado.",
+    iconHex: "#34d399",
+    bg: "bg-emerald-500/10 border-emerald-500/20",
+    hover: "hover:border-emerald-500/40",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Governança e compliance sem dor",
+    description: "Sistemas que monitoram conformidade, geram relatórios automáticos e alertam riscos antes que virem multa. Tranquilidade jurídica em piloto automático.",
+    iconHex: "#a78bfa",
+    bg: "bg-violet-500/10 border-violet-500/20",
+    hover: "hover:border-violet-500/40",
+  },
+  {
+    icon: Brain,
+    title: "Conhecimento que não se perde",
+    description: "Bases de conhecimento inteligentes que respondem dúvidas operacionais em segundos. O novo colaborador chega produtivo na primeira semana.",
+    iconHex: "#22d3ee",
+    bg: "bg-cyan-400/10 border-cyan-400/20",
+    hover: "hover:border-cyan-400/40",
+  },
+  {
+    icon: Hammer,
+    title: "Soluções sob medida quando precisar",
+    description: "Quando o problema é único, a solução também é. A FORJA.AI constrói sistemas proprietários do zero, integrados ao que sua empresa já usa.",
+    iconHex: "#facc15",
+    bg: "bg-yellow-400/10 border-yellow-400/20",
+    hover: "hover:border-yellow-400/40",
   },
 ];
 
 export function BenefitsSection() {
   return (
-    <section className="py-24 bg-card relative overflow-hidden">
-      {/* Background Image - Technology/innovation context */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop')",
-        }}
-      />
-      <div className="absolute inset-0 bg-card/95" />
+    <section className="py-24 bg-[#0A1525] relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/4 via-transparent to-accent/4 pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <AnimatedSection className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <CheckCircle className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Competências</span>
-          </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+        <AnimatedSection className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/25 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            <span className="text-xs font-bold uppercase tracking-widest text-primary/80">Competências</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             O que a <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span> entrega
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Desenvolvemos soluções tecnológicas que transformam a operação das empresas, 
-            gerando resultados mensuráveis e sustentáveis.
+          <p className="text-white/50 text-lg max-w-2xl mx-auto">
+            Seis frentes de aplicação de IA que viraram resultado em empresas reais — cada uma com método próprio e métrica clara.
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {capabilities.map((capability, index) => (
-            <AnimatedSection
-              key={capability.title}
-              animation="fade-up"
-              delay={index * 100}
-            >
-              <div className="bg-background/60 backdrop-blur-sm p-8 rounded-xl border border-border hover:border-primary/50 hover:-translate-y-2 hover:shadow-[0_10px_40px_hsl(var(--primary)/0.15)] transition-all duration-300 h-full group">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                  <capability.icon className="text-primary group-hover:scale-110 transition-transform duration-300" size={24} />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {capabilities.map((cap, index) => (
+            <AnimatedSection key={cap.title} animation="fade-up" delay={index * 80}>
+              <div className={`group flex flex-col h-full rounded-2xl border border-white/8 bg-white/4 p-7 ${cap.hover} hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.3)] transition-[transform,box-shadow,border-color] duration-300`}>
+                <div className={`w-11 h-11 rounded-xl ${cap.bg} border flex items-center justify-center mb-5 flex-shrink-0`}>
+                  <cap.icon className="w-5 h-5" style={{ color: cap.iconHex }} />
                 </div>
-                <h3 className="font-semibold text-xl mb-3 text-foreground group-hover:text-primary transition-colors duration-300">{capability.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{capability.description}</p>
+                <h3 className="font-bold text-white text-base mb-3 leading-snug">{cap.title}</h3>
+                <p className="text-white/50 text-sm leading-relaxed">{cap.description}</p>
               </div>
             </AnimatedSection>
           ))}
         </div>
+
       </div>
     </section>
   );
