@@ -1,98 +1,131 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Building2, Target, Lightbulb } from "lucide-react";
+import { ArrowRight, Target, Lightbulb, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
+const pillars = [
+  {
+    icon: Target,
+    title: "Foco em Resultado",
+    description: "Cada projeto começa com a pergunta que importa: qual número da sua empresa vai melhorar. Não vendemos tecnologia. Vendemos ROI mensurável.",
+    color: "#22d3ee",
+    bg: "bg-cyan-400/8 border-cyan-400/20",
+  },
+  {
+    icon: Lightbulb,
+    title: "Inovação Aplicada",
+    description: "IA de última geração com método de implementação consolidado. Sem experimento, sem promessa vazia. Apenas o que funciona no seu setor.",
+    color: "#facc15",
+    bg: "bg-yellow-400/8 border-yellow-400/20",
+  },
+  {
+    icon: Building2,
+    title: "Parceria Contínua",
+    description: "Não somos fornecedor de projeto. Somos parceiro de transformação. Acompanhamento, métrica clara e ajuste fino mês a mês.",
+    color: "#a78bfa",
+    bg: "bg-violet-500/8 border-violet-500/20",
+  },
+];
+
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image - Corporate office/business environment */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')",
+    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#060D1A]">
+
+      {/* Ambient glows */}
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-primary/12 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-accent/8 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Subtle dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: "radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
         }}
       />
-      
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-background/85" />
-      
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/5" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      {/* Top gradient */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#060D1A] to-transparent pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative z-10 py-24">
         <div className="max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <AnimatedSection animation="fade-right">
-              {/* Badge - Corporate and subtle */}
-              <div className="inline-flex items-center gap-2 bg-card/80 border border-border rounded-full px-4 py-2 mb-8 backdrop-blur-sm">
-                <Building2 className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium text-foreground">Consultoria em Inteligência Artificial</span>
-              </div>
+          <div className="grid lg:grid-cols-[3fr_2fr] gap-10 items-center">
 
-              {/* Headline - Institutional and impactful */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-foreground">
-                Transforme sua operação com a{" "}
-                <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span>
-                {" "}— É Inteligência Artificial que gera resultados reais
-              </h1>
+            {/* Left — Copy */}
+            <div className="flex flex-col gap-0">
 
-              {/* Subheadline - Concise and impactful */}
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Desenvolvemos soluções personalizadas de IA que automatizam processos, potencializam vendas e elevam a eficiência operacional da sua empresa.
-              </p>
+              <AnimatedSection animation="fade-right" delay={0}>
+                <div className="flex w-fit items-center gap-2 bg-white/5 border border-accent/30 rounded-full px-4 py-2 mb-7 backdrop-blur-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                  <span className="text-sm font-semibold text-accent/90">IA aplicada a resultado de negócio</span>
+                </div>
+              </AnimatedSection>
 
-              {/* CTAs - Professional and institutional */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link to="/quem-somos">
-                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-8 py-6 rounded-lg transition-all duration-300 group">
-                    Conheça a IntelliX
-                    <ArrowRight className="ml-2 group-hover:translate-x-0.5 transition-transform" size={18} />
-                  </Button>
-                </Link>
-                <Link to="/contato">
-                  <Button size="lg" variant="outline" className="border-2 border-border text-foreground hover:bg-card hover:border-primary/40 font-medium px-8 py-6 rounded-lg transition-all duration-300">
-                    Fale Conosco
-                  </Button>
-                </Link>
-              </div>
-            </AnimatedSection>
+              <AnimatedSection animation="fade-right" delay={80}>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-6 text-white">
+                  Sua empresa não precisa de{" "}
+                  <span className="gradient-text">mais IA.</span>
+                  <br />
+                  Precisa de mais{" "}
+                  <span className="gradient-text-gold">resultado com IA.</span>
+                </h1>
+              </AnimatedSection>
 
-            <AnimatedSection animation="fade-left" delay={200} className="hidden lg:block">
-              <div className="space-y-4">
-                {[
-                  { 
-                    icon: Target, 
-                    title: "Foco em Resultados", 
-                    description: "Soluções orientadas a métricas e ROI mensurável desde o primeiro mês." 
-                  },
-                  { 
-                    icon: Lightbulb, 
-                    title: "Inovação Aplicada", 
-                    description: "Tecnologia de ponta adaptada à realidade e necessidades do seu negócio." 
-                  },
-                  { 
-                    icon: Building2, 
-                    title: "Parceria de Longo Prazo", 
-                    description: "Acompanhamento contínuo e evolução constante dos sistemas implementados." 
-                  },
-                ].map((item, index) => (
-                  <div 
-                    key={index} 
-                    className="flex items-start gap-4 p-6 bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl hover:border-primary/30 transition-all duration-300"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <item.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
-                    </div>
+              <AnimatedSection animation="fade-right" delay={180}>
+                <p className="text-base md:text-lg text-white/55 mb-8 leading-relaxed max-w-xl">
+                  A{" "}
+                  <strong className="text-white/80">
+                    <span className="gradient-text-gold">IntelliX</span>
+                    <span className="gradient-text">.AI</span>
+                  </strong>{" "}
+                  desenha, constrói e implementa soluções de IA sob medida — que aumentam vendas, reduzem custo operacional e devolvem tempo para a equipe focar no que importa. Sem hype. Com método.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 mb-5">
+                  <Link to="/diagnostico">
+                    <Button
+                      size="lg"
+                      className="bg-gradient-to-r from-accent to-yellow-400 text-accent-foreground font-bold px-8 py-6 rounded-xl shadow-[0_0_30px_hsl(var(--accent)/0.45)] hover:shadow-[0_0_45px_hsl(var(--accent)/0.65)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 group"
+                    >
+                      Agendar diagnóstico gratuito
+                      <ArrowRight className="ml-2 group-hover:translate-x-0.5 transition-transform" size={18} />
+                    </Button>
+                  </Link>
+                  <Link to="/virada-inteligente">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-white/15 text-white/70 hover:border-primary/50 hover:text-primary hover:bg-primary/6 font-semibold px-8 py-6 rounded-xl transition-[border-color,color,background-color] duration-200"
+                    >
+                      Conhecer a Virada Inteligente
+                    </Button>
+                  </Link>
+                </div>
+
+                <p className="text-sm text-white/30">
+                  Atendimento consultivo · Sem compromisso · Resposta em até 24h
+                </p>
+              </AnimatedSection>
+            </div>
+
+            {/* Right — Pillars */}
+            <AnimatedSection animation="fade-left" delay={200} className="hidden lg:flex flex-col gap-3">
+              {pillars.map((item) => (
+                <div
+                  key={item.title}
+                  className={`flex items-start gap-3 p-4 rounded-xl border ${item.bg} hover:border-opacity-40 transition-[border-color] duration-300`}
+                >
+                  <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <item.icon className="w-4 h-4" style={{ color: item.color }} />
                   </div>
-                ))}
-              </div>
+                  <div>
+                    <h3 className="font-bold text-sm text-white mb-1">{item.title}</h3>
+                    <p className="text-xs text-white/45 leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
+              ))}
             </AnimatedSection>
+
           </div>
         </div>
       </div>

@@ -15,13 +15,42 @@ const TOTAL_STEPS = 3;
 // ─── OPTIONS ─────────────────────────────────────────────────────────────────
 
 const segmentos = [
-  "Tecnologia", "Saúde", "Educação", "Varejo", "Serviços",
-  "Indústria", "Financeiro", "Imobiliário", "Turismo", "Consultoria", "Outro",
+  "Serviços profissionais (consultoria, advocacia, contabilidade)",
+  "Saúde (clínicas, hospitais, laboratórios)",
+  "Imobiliário (incorporadoras, imobiliárias, coliving)",
+  "Indústria e manufatura",
+  "Varejo e e-commerce",
+  "Tecnologia e SaaS",
+  "Educação",
+  "Financeiro e fintech",
+  "Hospitalidade (hotéis, turismo)",
+  "Logística e transporte",
+  "Outro",
 ];
 
 const tamanhos = [
-  "1–5 funcionários", "6–15 funcionários", "16–50 funcionários",
-  "51–200 funcionários", "200+ funcionários",
+  "Solo (eu mesmo)",
+  "2 a 10 colaboradores",
+  "11 a 50 colaboradores",
+  "51 a 200 colaboradores",
+  "201 a 500 colaboradores",
+  "Mais de 500 colaboradores",
+];
+
+const cargos = [
+  "Sócio / Fundador / CEO",
+  "Diretor de área",
+  "Gerente",
+  "Coordenador / Líder de time",
+  "Especialista / Analista sênior",
+  "Outro",
+];
+
+const urgencias = [
+  "Esta semana",
+  "Nos próximos 30 dias",
+  "Nos próximos 90 dias",
+  "Sem prazo definido — quero explorar",
 ];
 
 const faturamentos = [
@@ -67,7 +96,7 @@ const comoConheceu = [
 
 const frentes = [
   {
-    value: "RADAR.AI",
+    value: "RADAR.AI — Consultoria estratégica de IA",
     icon: Search,
     label: "RADAR.AI",
     description: "Diagnóstico estratégico — quero mapear onde a IA gera mais ROI antes de investir",
@@ -76,7 +105,7 @@ const frentes = [
     iconColor: "text-primary",
   },
   {
-    value: "FORJA.AI",
+    value: "FORJA.AI — Solução sob medida para minha empresa",
     icon: Hammer,
     label: "FORJA.AI",
     description: "Desenvolvimento sob medida — tenho um problema específico que precisa de solução própria",
@@ -85,7 +114,7 @@ const frentes = [
     iconColor: "text-accent",
   },
   {
-    value: "TRILHA.AI",
+    value: "TRILHA.AI — Mentoria individual para mim",
     icon: Map,
     label: "TRILHA.AI",
     description: "Mentoria individual — quero aprender a aplicar IA no meu próprio trabalho com acompanhamento 1:1",
@@ -94,13 +123,31 @@ const frentes = [
     iconColor: "text-white/70",
   },
   {
-    value: "Virada Inteligente",
+    value: "Virada Inteligente in-company — Treinar minha equipe",
     icon: Users,
-    label: "Virada Inteligente",
-    description: "Imersão in-company ou turma aberta — quero treinar minha equipe em 3 horas",
+    label: "Virada Inteligente in-company",
+    description: "Imersão in-company — quero treinar minha equipe inteira em 3 horas com casos reais",
     color: "border-yellow-500/30 bg-yellow-500/5",
     activeColor: "border-yellow-400 bg-yellow-400/12",
     iconColor: "text-yellow-400",
+  },
+  {
+    value: "Virada Inteligente turma aberta — Participar individualmente",
+    icon: Users,
+    label: "Virada Inteligente turma aberta",
+    description: "Turma aberta — quero participar individualmente da próxima imersão",
+    color: "border-emerald-500/30 bg-emerald-500/5",
+    activeColor: "border-emerald-400 bg-emerald-400/12",
+    iconColor: "text-emerald-400",
+  },
+  {
+    value: "Ainda não sei — preciso de orientação",
+    icon: Search,
+    label: "Ainda não sei",
+    description: "Não tenho certeza ainda — quero orientação para escolher o melhor caminho",
+    color: "border-white/10 bg-white/4",
+    activeColor: "border-white/30 bg-white/10",
+    iconColor: "text-white/50",
   },
 ];
 
@@ -117,9 +164,10 @@ interface FormData {
   faturamento_anual: string;
   tipo_operacao: string;
   usa_ia_hoje: string;
-  frente_interesse: string;
+  frentes_interesse: string[];
   objetivo_principal: string;
   dores_principais: string;
+  urgencia: string;
   como_conheceu: string;
 }
 
@@ -144,9 +192,10 @@ function buildWhatsAppMessage(data: FormData, origem: string): string {
     `Maturidade em IA: ${data.usa_ia_hoje}`,
     "",
     "🎯 *O que precisa*",
-    `Frente de interesse: ${data.frente_interesse}`,
+    `Frentes de interesse: ${data.frentes_interesse.join(", ")}`,
     `Objetivo principal: ${data.objetivo_principal}`,
     `Principais dores: ${data.dores_principais}`,
+    data.urgencia ? `Prazo para começar: ${data.urgencia}` : null,
     data.como_conheceu ? `Como conheceu: ${data.como_conheceu}` : null,
     origem ? `\n📍 Origem: ${origem}` : null,
   ];
@@ -220,8 +269,16 @@ export default function Diagnostico() {
   const [formData, setFormData] = useState<FormData>({
     nome: "", empresa: "", cargo: "", email: "", whatsapp: "",
     segmento: "", tamanho_empresa: "", faturamento_anual: "", tipo_operacao: "", usa_ia_hoje: "",
-    frente_interesse: "", objetivo_principal: "", dores_principais: "", como_conheceu: "",
+    frentes_interesse: [], objetivo_principal: "", dores_principais: "", urgencia: "", como_conheceu: "",
   });
+
+  const toggleFrente = (value: string) =>
+    setFormData(prev => ({
+      ...prev,
+      frentes_interesse: prev.frentes_interesse.includes(value)
+        ? prev.frentes_interesse.filter(f => f !== value)
+        : [...prev.frentes_interesse, value],
+    }));
 
   const set = (name: keyof FormData, value: string) =>
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -229,9 +286,9 @@ export default function Diagnostico() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     set(e.target.name as keyof FormData, e.target.value);
 
-  const step1Valid = !!(formData.nome && formData.empresa && formData.email && formData.whatsapp);
+  const step1Valid = !!(formData.nome && formData.empresa && formData.cargo && formData.email && formData.whatsapp);
   const step2Valid = !!(formData.segmento && formData.tamanho_empresa && formData.faturamento_anual && formData.tipo_operacao && formData.usa_ia_hoje);
-  const step3Valid = !!(formData.frente_interesse && formData.objetivo_principal && formData.dores_principais);
+  const step3Valid = !!(formData.frentes_interesse.length > 0 && formData.objetivo_principal && formData.dores_principais && formData.urgencia);
 
   const isCurrentStepValid = step === 1 ? step1Valid : step === 2 ? step2Valid : step3Valid;
 
@@ -352,9 +409,15 @@ export default function Diagnostico() {
                     </div>
 
                     <div>
-                      <Label htmlFor="cargo" className={labelClass}>Cargo</Label>
-                      <Input id="cargo" name="cargo" value={formData.cargo} onChange={handleChange}
-                        placeholder="Seu cargo ou função" className={inputClass} />
+                      <Label className={labelClass}>Cargo *</Label>
+                      <Select value={formData.cargo} onValueChange={v => set("cargo", v)}>
+                        <SelectTrigger className={inputClass}>
+                          <SelectValue placeholder="Selecione seu cargo" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-[#0D1830] border-white/15">
+                          {cargos.map(c => <SelectItem key={c} value={c} className="text-white focus:bg-white/10">{c}</SelectItem>)}
+                        </SelectContent>
+                      </Select>
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-5">
@@ -451,20 +514,20 @@ export default function Diagnostico() {
                       <p className="text-sm text-white/40 mt-1">Isso define qual frente IntelliX.AI faz mais sentido para o seu caso.</p>
                     </div>
 
-                    {/* Frente de interesse — cards clicáveis */}
+                    {/* Frentes de interesse — multi-select */}
                     <div>
-                      <Label className={labelClass}>Qual frente te interessa mais? *</Label>
+                      <Label className={labelClass}>Por qual frente você se interessa? * <span className="text-white/35 font-normal">(pode selecionar mais de uma)</span></Label>
                       <div className="grid sm:grid-cols-2 gap-3 mt-2">
                         {frentes.map((frente) => {
-                          const isSelected = formData.frente_interesse === frente.value;
+                          const isSelected = formData.frentes_interesse.includes(frente.value);
                           return (
                             <button
                               key={frente.value}
                               type="button"
-                              onClick={() => set("frente_interesse", frente.value)}
+                              onClick={() => toggleFrente(frente.value)}
                               className={`text-left p-4 rounded-xl border transition-[border-color,background-color] duration-200 ${
                                 isSelected ? frente.activeColor : frente.color
-                              } hover:${frente.activeColor}`}
+                              }`}
                             >
                               <div className="flex items-center gap-2 mb-1.5">
                                 <frente.icon className={`w-4 h-4 ${isSelected ? frente.iconColor : "text-white/40"}`} />
@@ -511,6 +574,18 @@ export default function Diagnostico() {
                         required
                         className={`${inputClass} h-auto resize-none`}
                       />
+                    </div>
+
+                    <div>
+                      <Label className={labelClass}>Em que prazo você quer começar? *</Label>
+                      <Select value={formData.urgencia} onValueChange={v => set("urgencia", v)}>
+                        <SelectTrigger className={inputClass}>
+                          <SelectValue placeholder="Selecione o prazo" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-[#0D1830] border-white/15">
+                          {urgencias.map(u => <SelectItem key={u} value={u} className="text-white focus:bg-white/10">{u}</SelectItem>)}
+                        </SelectContent>
+                      </Select>
                     </div>
 
                     <div>
