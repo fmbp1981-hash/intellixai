@@ -75,7 +75,7 @@ const fronts = [
   },
   {
     icon: Users,
-    image: "/virada-brain.png",
+    image: "/virada-brain-clean.png",
     name: "Virada Inteligente",
     nameGold: "Virada",
     nameCyan: " Inteligente",

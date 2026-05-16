@@ -56,7 +56,7 @@ const b2bFronts = [
   },
   {
     icon: Users,
-    image: "/virada-brain.png",
+    image: "/virada-brain-clean.png",
     badge: "Imersão executiva in-company",
     name: "Virada Inteligente",
     nameGold: "Virada",
@@ -105,7 +105,7 @@ const b2cFronts = [
   },
   {
     icon: Users,
-    image: "/virada-brain.png",
+    image: "/virada-brain-clean.png",
     badge: "Imersão em turma aberta",
     name: "Virada Inteligente",
     nameGold: "Virada",
