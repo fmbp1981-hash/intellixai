@@ -6,6 +6,7 @@ import { AnimatedSection } from "@/hooks/useScrollAnimation";
 const fronts = [
   {
     icon: Search,
+    image: "/solucoes/radar-ai.svg",
     name: "RADAR.AI",
     nameGold: "RADAR",
     nameCyan: ".AI",
@@ -28,6 +29,7 @@ const fronts = [
   },
   {
     icon: Hammer,
+    image: "/solucoes/forja-ai.svg",
     name: "FORJA.AI",
     nameGold: "FORJA",
     nameCyan: ".AI",
@@ -50,6 +52,7 @@ const fronts = [
   },
   {
     icon: Map,
+    image: "/solucoes/trilha-ai.svg",
     name: "TRILHA.AI",
     nameGold: "TRILHA",
     nameCyan: ".AI",
@@ -124,8 +127,18 @@ export function SolutionsPreview() {
             <AnimatedSection key={f.name} animation="fade-up" delay={i * 80}>
               <div className={`group flex flex-col h-full rounded-2xl border border-white/8 bg-white/4 overflow-hidden ${f.activeBorder} hover:-translate-y-1 ${f.glow} transition-[transform,box-shadow,border-color] duration-300`}>
 
-                {/* Top bar — thicker for visibility */}
-                <div className={`h-[3px] bg-gradient-to-r ${f.topBar} flex-shrink-0`} />
+                {("image" in f && f.image) ? (
+                  <div className="h-40 overflow-hidden flex-shrink-0 relative">
+                    <img
+                      src={(f as { image: string }).image}
+                      alt={f.name}
+                      className="w-full h-full object-cover object-left"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 pointer-events-none" />
+                  </div>
+                ) : (
+                  <div className={`h-[3px] bg-gradient-to-r ${f.topBar} flex-shrink-0`} />
+                )}
 
                 <div className="p-7 flex flex-col flex-1">
                   {/* Icon + badge */}

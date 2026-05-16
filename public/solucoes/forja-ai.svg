@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" width="800" height="280">
+  <defs>
+    <radialGradient id="fBg" cx="42%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#1a1200"/>
+      <stop offset="100%" stop-color="#060d1a"/>
+    </radialGradient>
+    <radialGradient id="fGlow" cx="38%" cy="55%" r="42%">
+      <stop offset="0%" stop-color="#facc15" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#facc15" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#facc15" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#f59e0b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#facc15" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="fClip">
+      <rect width="800" height="280"/>
+    </clipPath>
+    <filter id="fBlur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="280" fill="url(#fBg)"/>
+  <rect width="800" height="280" fill="url(#fGlow)"/>
+
+  <!-- Subtle grid -->
+  <g stroke="#facc15" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="70" x2="800" y2="70"/>
+    <line x1="0" y1="140" x2="800" y2="140"/>
+    <line x1="0" y1="210" x2="800" y2="210"/>
+    <line x1="133" y1="0" x2="133" y2="280"/>
+    <line x1="266" y1="0" x2="266" y2="280"/>
+    <line x1="399" y1="0" x2="399" y2="280"/>
+    <line x1="532" y1="0" x2="532" y2="280"/>
+    <line x1="665" y1="0" x2="665" y2="280"/>
+  </g>
+
+  <!-- Central forge point at 220, 140 -->
+  <!-- Connection lines (components being assembled) -->
+  <g stroke="#facc15" stroke-opacity="0.3" stroke-width="1.2" stroke-dasharray="4 3" fill="none">
+    <line x1="90"  y1="68"  x2="220" y2="140"/>
+    <line x1="90"  y1="212" x2="220" y2="140"/>
+    <line x1="350" y1="55"  x2="220" y2="140"/>
+    <line x1="350" y1="225" x2="220" y2="140"/>
+    <line x1="55"  y1="140" x2="220" y2="140"/>
+    <line x1="375" y1="140" x2="220" y2="140"/>
+  </g>
+
+  <!-- Outer component blocks -->
+  <!-- Block 1 - top left -->
+  <rect x="50"  y="44"  width="80" height="48" rx="8" fill="#1a1000" stroke="#facc15" stroke-opacity="0.5" stroke-width="1.2"/>
+  <rect x="50"  y="44"  width="80" height="4"  rx="2" fill="#facc15" fill-opacity="0.7"/>
+  <text x="90"  y="72"  font-family="'Courier New', monospace" font-size="9" fill="#facc15" fill-opacity="0.55" text-anchor="middle">SISTEMA</text>
+  <text x="90"  y="84"  font-family="'Courier New', monospace" font-size="9" fill="#facc15" fill-opacity="0.4" text-anchor="middle">MODULE</text>
+
+  <!-- Block 2 - bottom left -->
+  <rect x="50"  y="188" width="80" height="48" rx="8" fill="#1a1000" stroke="#facc15" stroke-opacity="0.4" stroke-width="1.2"/>
+  <rect x="50"  y="188" width="80" height="4"  rx="2" fill="#facc15" fill-opacity="0.5"/>
+  <text x="90"  y="216" font-family="'Courier New', monospace" font-size="9" fill="#facc15" fill-opacity="0.45" text-anchor="middle">AGENTE</text>
+  <text x="90"  y="228" font-family="'Courier New', monospace" font-size="9" fill="#facc15" fill-opacity="0.35" text-anchor="middle">IA</text>
+
+  <!-- Block 3 - top right -->
+  <rect x="320" y="32"  width="80" height="48" rx="8" fill="#1a1000" stroke="#facc15" stroke-opacity="0.4" stroke-width="1.2"/>
+  <rect x="320" y="32"  width="80" height="4"  rx="2" fill="#facc15" fill-opacity="0.5"/>
+  <text x="360" y="60"  font-family="'Courier New', monospace" font-size="9" fill="#facc15" fill-opacity="0.45" text-anchor="middle">API</text>
+  <text x="360" y="72"  font-family="'Courier New', monospace" font-size="9" fill="#facc15" fill-opacity="0.35" text-anchor="middle">CONNECT</text>
+
+  <!-- Block 4 - bottom right -->
+  <rect x="320" y="200" width="80" height="48" rx="8" fill="#1a1000" stroke="#facc15" stroke-opacity="0.35" stroke-width="1.2"/>
+  <rect x="320" y="200" width="80" height="4"  rx="2" fill="#facc15" fill-opacity="0.45"/>
+  <text x="360" y="228" font-family="'Courier New', monospace" font-size="9" fill="#facc15" fill-opacity="0.4" text-anchor="middle">DASHBOARD</text>
+
+  <!-- Block 5 - far left -->
+  <rect x="14"  y="116" width="52" height="48" rx="8" fill="#1a1000" stroke="#facc15" stroke-opacity="0.3" stroke-width="1"/>
+  <rect x="14"  y="116" width="52" height="3"  rx="1.5" fill="#facc15" fill-opacity="0.35"/>
+  <text x="40"  y="144" font-family="'Courier New', monospace" font-size="8" fill="#facc15" fill-opacity="0.35" text-anchor="middle">DATA</text>
+
+  <!-- Center forge core - glowing hexagon -->
+  <!-- Outer glow -->
+  <circle cx="220" cy="140" r="42" fill="#facc15" fill-opacity="0.07" filter="url(#fBlur)"/>
+  <circle cx="220" cy="140" r="28" fill="#facc15" fill-opacity="0.1"/>
+
+  <!-- Hexagon -->
+  <polygon points="220,108 248,124 248,156 220,172 192,156 192,124" fill="#1a1000" stroke="#facc15" stroke-opacity="0.9" stroke-width="2"/>
+  <polygon points="220,114 242,127 242,153 220,166 198,153 198,127" fill="#facc15" fill-opacity="0.12"/>
+
+  <!-- Forge sparks -->
+  <circle cx="220" cy="140" r="6"   fill="#facc15" fill-opacity="0.95"/>
+  <circle cx="220" cy="140" r="3"   fill="#fff" fill-opacity="0.8"/>
+
+  <circle cx="232" cy="120" r="2"   fill="#facc15" fill-opacity="0.7"/>
+  <circle cx="210" cy="118" r="1.5" fill="#facc15" fill-opacity="0.5"/>
+  <circle cx="236" cy="145" r="1.5" fill="#facc15" fill-opacity="0.6"/>
+  <circle cx="205" cy="158" r="2"   fill="#facc15" fill-opacity="0.45"/>
+  <circle cx="225" cy="162" r="1"   fill="#facc15" fill-opacity="0.4"/>
+
+  <!-- Divider -->
+  <line x1="448" y1="25" x2="448" y2="255" stroke="#facc15" stroke-opacity="0.07" stroke-width="1"/>
+
+  <!-- Right panel -->
+  <g font-family="'Courier New', monospace">
+    <text x="480" y="52"  font-size="10" fill="#facc15" fill-opacity="0.38" letter-spacing="2">DESENVOLVIMENTO SOB MEDIDA</text>
+    <line x1="480" y1="60" x2="770" y2="60" stroke="#facc15" stroke-opacity="0.1" stroke-width="1"/>
+
+    <text x="480" y="95"  font-size="11" fill="#facc15" fill-opacity="0.32" letter-spacing="1">PROPRIEDADE INTELECTUAL</text>
+    <text x="480" y="128" font-size="48" font-weight="bold" fill="#facc15" fill-opacity="0.85">100%</text>
+    <text x="480" y="148" font-size="11" fill="#facc15" fill-opacity="0.4">do cliente</text>
+
+    <line x1="480" y1="168" x2="770" y2="168" stroke="#facc15" stroke-opacity="0.08" stroke-width="1"/>
+
+    <!-- Stack list -->
+    <text x="480" y="188" font-size="9" fill="#facc15" fill-opacity="0.28" letter-spacing="1">ENTREGÁVEIS</text>
+
+    <circle cx="488" cy="205" r="3" fill="#facc15" fill-opacity="0.5"/>
+    <text x="498" y="209" font-size="10" fill="#facc15" fill-opacity="0.5">Sistema completo</text>
+
+    <circle cx="488" cy="222" r="3" fill="#facc15" fill-opacity="0.4"/>
+    <text x="498" y="226" font-size="10" fill="#facc15" fill-opacity="0.4">Agentes de IA</text>
+
+    <circle cx="488" cy="239" r="3" fill="#facc15" fill-opacity="0.3"/>
+    <text x="498" y="243" font-size="10" fill="#facc15" fill-opacity="0.3">Integrações sob medida</text>
+
+    <line x1="480" y1="260" x2="770" y2="260" stroke="#facc15" stroke-opacity="0.07" stroke-width="1"/>
+  </g>
+</svg>

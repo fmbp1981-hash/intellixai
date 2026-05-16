@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" width="800" height="280">
+  <defs>
+    <radialGradient id="tBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0e0a1f"/>
+      <stop offset="100%" stop-color="#060d1a"/>
+    </radialGradient>
+    <radialGradient id="tGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tPath" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#7c3aed" stop-opacity="0.3"/>
+      <stop offset="50%"  stop-color="#a78bfa" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="tGlowF">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="tClip">
+      <rect width="800" height="280"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="280" fill="url(#tBg)"/>
+  <rect width="800" height="280" fill="url(#tGlow)"/>
+
+  <!-- Grid -->
+  <g stroke="#a78bfa" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="70"  x2="800" y2="70"/>
+    <line x1="0" y1="140" x2="800" y2="140"/>
+    <line x1="0" y1="210" x2="800" y2="210"/>
+    <line x1="133" y1="0" x2="133" y2="280"/>
+    <line x1="266" y1="0" x2="266" y2="280"/>
+    <line x1="399" y1="0" x2="399" y2="280"/>
+    <line x1="532" y1="0" x2="532" y2="280"/>
+    <line x1="665" y1="0" x2="665" y2="280"/>
+  </g>
+
+  <!-- Journey path: 5 milestones ascending from left to right -->
+  <!-- Nodes at: (60,210), (155,170), (250,130), (345,95), (440,60) -->
+
+  <!-- Path curve connecting nodes -->
+  <path d="M60,210 C100,195 115,185 155,170 C195,155 210,145 250,130 C290,115 305,110 345,95 C385,80 400,72 440,60"
+        fill="none" stroke="url(#tPath)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Glow copy of path (blurred effect via opacity layers) -->
+  <path d="M60,210 C100,195 115,185 155,170 C195,155 210,145 250,130 C290,115 305,110 345,95 C385,80 400,72 440,60"
+        fill="none" stroke="#a78bfa" stroke-width="8" stroke-linecap="round" stroke-opacity="0.08"/>
+
+  <!-- Milestone 1 — Diagnóstico (start, bottom-left) -->
+  <circle cx="60"  cy="210" r="16" fill="#1a1030" stroke="#7c3aed" stroke-opacity="0.5" stroke-width="1.5"/>
+  <circle cx="60"  cy="210" r="8"  fill="#7c3aed" fill-opacity="0.4"/>
+  <circle cx="60"  cy="210" r="4"  fill="#a78bfa" fill-opacity="0.8"/>
+  <text x="60"  y="234" font-family="'Courier New', monospace" font-size="8" fill="#a78bfa" fill-opacity="0.5" text-anchor="middle" letter-spacing="0.5">DIAGNÓSTICO</text>
+
+  <!-- Milestone 2 -->
+  <circle cx="155" cy="170" r="16" fill="#1a1030" stroke="#8b5cf6" stroke-opacity="0.55" stroke-width="1.5"/>
+  <circle cx="155" cy="170" r="8"  fill="#8b5cf6" fill-opacity="0.4"/>
+  <circle cx="155" cy="170" r="4"  fill="#a78bfa" fill-opacity="0.85"/>
+  <text x="155" y="194" font-family="'Courier New', monospace" font-size="8" fill="#a78bfa" fill-opacity="0.5" text-anchor="middle" letter-spacing="0.5">PLANO</text>
+
+  <!-- Milestone 3 (brightest, current) -->
+  <circle cx="250" cy="130" r="22" fill="#1a1030" stroke="#a78bfa" stroke-opacity="0.7" stroke-width="2"/>
+  <circle cx="250" cy="130" r="14" fill="#a78bfa" fill-opacity="0.12"/>
+  <circle cx="250" cy="130" r="8"  fill="#a78bfa" fill-opacity="0.5"/>
+  <circle cx="250" cy="130" r="4"  fill="#a78bfa" fill-opacity="0.95"/>
+  <circle cx="250" cy="130" r="4"  fill="#c4b5fd" fill-opacity="0.6"/>
+  <!-- Current indicator -->
+  <text x="250" y="112" font-family="'Courier New', monospace" font-size="7" fill="#a78bfa" fill-opacity="0.7" text-anchor="middle">AGORA</text>
+  <text x="250" y="154" font-family="'Courier New', monospace" font-size="8" fill="#a78bfa" fill-opacity="0.6" text-anchor="middle" letter-spacing="0.5">SESSÕES 1:1</text>
+
+  <!-- Milestone 4 -->
+  <circle cx="345" cy="95"  r="16" fill="#1a1030" stroke="#8b5cf6" stroke-opacity="0.5" stroke-width="1.5"/>
+  <circle cx="345" cy="95"  r="8"  fill="#7c3aed" fill-opacity="0.35"/>
+  <circle cx="345" cy="95"  r="4"  fill="#a78bfa" fill-opacity="0.7"/>
+  <text x="345" y="74"  font-family="'Courier New', monospace" font-size="8" fill="#a78bfa" fill-opacity="0.45" text-anchor="middle" letter-spacing="0.5">APLICAÇÃO</text>
+
+  <!-- Milestone 5 — Resultado (end, top-right of left panel) -->
+  <circle cx="440" cy="60"  r="18" fill="#1a1030" stroke="#a78bfa" stroke-opacity="0.6" stroke-width="2"/>
+  <circle cx="440" cy="60"  r="10" fill="#a78bfa" fill-opacity="0.2"/>
+  <circle cx="440" cy="60"  r="5"  fill="#a78bfa" fill-opacity="0.8"/>
+  <!-- Star icon replaced with simple dot + cross -->
+  <line x1="440" y1="48" x2="440" y2="72" stroke="#a78bfa" stroke-opacity="0.0" stroke-width="1"/>
+  <text x="440" y="84"  font-family="'Courier New', monospace" font-size="8" fill="#a78bfa" fill-opacity="0.6" text-anchor="middle" letter-spacing="0.5">RESULTADO</text>
+
+  <!-- Divider -->
+  <line x1="470" y1="25" x2="470" y2="255" stroke="#a78bfa" stroke-opacity="0.07" stroke-width="1"/>
+
+  <!-- Right panel -->
+  <g font-family="'Courier New', monospace">
+    <text x="500" y="52"  font-size="10" fill="#a78bfa" fill-opacity="0.38" letter-spacing="2">MENTORIA INDIVIDUAL</text>
+    <line x1="500" y1="60" x2="770" y2="60" stroke="#a78bfa" stroke-opacity="0.1" stroke-width="1"/>
+
+    <text x="500" y="95"  font-size="11" fill="#a78bfa" fill-opacity="0.32" letter-spacing="1">RESULTADO ESPERADO</text>
+    <text x="500" y="135" font-size="44" font-weight="bold" fill="#a78bfa" fill-opacity="0.85">1:1</text>
+    <text x="500" y="158" font-size="11" fill="#a78bfa" fill-opacity="0.4">com especialista</text>
+
+    <line x1="500" y1="175" x2="770" y2="175" stroke="#a78bfa" stroke-opacity="0.08" stroke-width="1"/>
+
+    <text x="500" y="196" font-size="9" fill="#a78bfa" fill-opacity="0.28" letter-spacing="1">SUA TRILHA INCLUI</text>
+
+    <circle cx="508" cy="213" r="3" fill="#a78bfa" fill-opacity="0.5"/>
+    <text x="518" y="217" font-size="10" fill="#a78bfa" fill-opacity="0.5">Plano personalizado</text>
+
+    <circle cx="508" cy="230" r="3" fill="#a78bfa" fill-opacity="0.4"/>
+    <text x="518" y="234" font-size="10" fill="#a78bfa" fill-opacity="0.4">Tarefas reais do seu negócio</text>
+
+    <circle cx="508" cy="247" r="3" fill="#a78bfa" fill-opacity="0.3"/>
+    <text x="518" y="251" font-size="10" fill="#a78bfa" fill-opacity="0.3">Canal direto entre sessões</text>
+
+    <line x1="500" y1="265" x2="770" y2="265" stroke="#a78bfa" stroke-opacity="0.06" stroke-width="1"/>
+  </g>
+
+  <!-- Corner glow -->
+  <radialGradient id="tCorner" cx="100%" cy="0%" r="80%">
+    <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.08"/>
+    <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="800" height="280" fill="url(#tCorner)"/>
+</svg>

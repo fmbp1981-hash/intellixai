@@ -10,6 +10,7 @@ import { AnimatedSection } from "@/hooks/useScrollAnimation";
 const b2bFronts = [
   {
     icon: Search,
+    image: "/solucoes/radar-ai.svg",
     badge: "Consultoria estratégica",
     name: "RADAR.AI",
     nameGold: "RADAR",
@@ -32,6 +33,7 @@ const b2bFronts = [
   },
   {
     icon: Hammer,
+    image: "/solucoes/forja-ai.svg",
     badge: "Desenvolvimento sob medida",
     name: "FORJA.AI",
     nameGold: "FORJA",
@@ -79,6 +81,7 @@ const b2bFronts = [
 const b2cFronts = [
   {
     icon: Map,
+    image: "/solucoes/trilha-ai.svg",
     badge: "Mentoria individual",
     name: "TRILHA.AI",
     nameGold: "TRILHA",
@@ -129,11 +132,23 @@ type Front = typeof b2bFronts[0];
 
 function FrontCard({ front, delay = 0 }: { front: Front; delay?: number }) {
   const Icon = front.icon;
+  const hasImage = "image" in front && Boolean(front.image);
   return (
     <AnimatedSection animation="fade-up" delay={delay}>
       <div className={`group flex flex-col h-full rounded-2xl border border-white/8 bg-white/4 overflow-hidden ${front.borderHover} hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-[transform,box-shadow,border-color] duration-300`}>
 
-        <div className={`h-[3px] bg-gradient-to-r ${front.topBar} flex-shrink-0`} />
+        {hasImage ? (
+          <div className="h-40 overflow-hidden flex-shrink-0 relative">
+            <img
+              src={(front as { image: string }).image}
+              alt={front.name}
+              className="w-full h-full object-cover object-left"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 pointer-events-none" />
+          </div>
+        ) : (
+          <div className={`h-[3px] bg-gradient-to-r ${front.topBar} flex-shrink-0`} />
+        )}
 
         <div className="p-7 md:p-8 flex flex-col flex-1">
 
