@@ -24,7 +24,9 @@ type Phase = { title: string; deliveries: string[] };
 type Case = {
   slug: string;
   client: string;
-  initials: string;
+  logo: string;
+  logoClass: string;
+  logoContainer: string;
   segment: string;
   frente: string;
   gradient: string;
@@ -45,7 +47,9 @@ const cases: Record<string, Case> = {
   "grupo-cavendish": {
     slug: "grupo-cavendish",
     client: "Grupo Cavendish",
-    initials: "GC",
+    logo: "/logos/logo-cavendish.png",
+    logoClass: "object-contain p-1.5",
+    logoContainer: "bg-white",
     segment: "Governança · Real Estate · Consultoria",
     frente: "FORJA.AI",
     gradient: "from-violet-500 to-purple-400",
@@ -114,7 +118,9 @@ const cases: Record<string, Case> = {
   "xpag-brasil": {
     slug: "xpag-brasil",
     client: "XPAG Brasil",
-    initials: "XP",
+    logo: "/logos/logo-xpag.png",
+    logoClass: "object-contain p-2.5",
+    logoContainer: "bg-[#0d1b3e]",
     segment: "Vendas B2B",
     frente: "FORJA.AI",
     gradient: "from-primary to-cyan-400",
@@ -180,7 +186,9 @@ const cases: Record<string, Case> = {
   "yolo-coliving": {
     slug: "yolo-coliving",
     client: "Yolo Coliving",
-    initials: "YC",
+    logo: "/logos/logo-yolo.jpg",
+    logoClass: "object-cover",
+    logoContainer: "bg-transparent",
     segment: "Real Estate · Coliving",
     frente: "FORJA.AI + Virada Inteligente",
     gradient: "from-accent to-yellow-400",
@@ -286,8 +294,8 @@ export default function CaseDetail() {
 
           <AnimatedSection animation="fade-up" delay={80}>
             <div className="flex items-start gap-5 mb-8">
-              <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${c.avatarGradient} border border-white/10 flex items-center justify-center flex-shrink-0`}>
-                <span className="text-xl font-black text-white">{c.initials}</span>
+              <div className={`w-16 h-16 rounded-2xl ${c.logoContainer} border border-white/10 overflow-hidden flex-shrink-0`}>
+                <img src={c.logo} alt={c.client} className={`w-full h-full ${c.logoClass}`} />
               </div>
               <div>
                 <div className="flex flex-wrap items-center gap-2 mb-1">

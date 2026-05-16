@@ -14,7 +14,9 @@ type Product = {
 type Case = {
   client: string;
   segment: string;
-  initials: string;
+  logo: string;
+  logoClass: string;
+  logoContainer: string;
   badge: string;
   frente: string;
   slug: string;
@@ -31,7 +33,9 @@ const cases: Case[] = [
   {
     client: "Grupo Cavendish",
     segment: "Governança · Real Estate · Consultoria",
-    initials: "GC",
+    logo: "/logos/logo-cavendish.png",
+    logoClass: "object-contain p-1.5",
+    logoContainer: "bg-white",
     badge: "4 soluções entregues",
     frente: "FORJA.AI",
     slug: "grupo-cavendish",
@@ -58,7 +62,9 @@ const cases: Case[] = [
   {
     client: "XPAG Brasil",
     segment: "Vendas B2B",
-    initials: "XP",
+    logo: "/logos/logo-xpag.png",
+    logoClass: "object-contain p-2.5",
+    logoContainer: "bg-[#0d1b3e]",
     badge: "2 soluções entregues",
     frente: "FORJA.AI",
     slug: "xpag-brasil",
@@ -83,7 +89,9 @@ const cases: Case[] = [
   {
     client: "Yolo Coliving",
     segment: "Real Estate · Coliving",
-    initials: "YC",
+    logo: "/logos/logo-yolo.jpg",
+    logoClass: "object-cover",
+    logoContainer: "bg-transparent",
     badge: "Em entrega",
     frente: "FORJA.AI + Virada Inteligente",
     slug: "yolo-coliving",
@@ -157,9 +165,9 @@ export default function Cases() {
                     {/* Header row */}
                     <div className="flex flex-col sm:flex-row gap-5 mb-7">
                       <div
-                        className={`w-14 h-14 rounded-xl bg-gradient-to-br ${c.avatarGradient} border border-white/10 flex items-center justify-center flex-shrink-0`}
+                        className={`w-14 h-14 rounded-xl ${c.logoContainer} border border-white/10 overflow-hidden flex-shrink-0`}
                       >
-                        <span className="text-lg font-black text-white">{c.initials}</span>
+                        <img src={c.logo} alt={c.client} className={`w-full h-full ${c.logoClass}`} />
                       </div>
 
                       <div className="flex-1 min-w-0">

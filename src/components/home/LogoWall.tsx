@@ -3,24 +3,24 @@ import { AnimatedSection } from "@/hooks/useScrollAnimation";
 const clients = [
   {
     name: "Grupo Cavendish",
-    initials: "GC",
     description: "Consultoria empresarial",
-    iconHex: "#22d3ee",
-    bg: "bg-cyan-400/8 border-cyan-400/20",
+    logo: "/logos/logo-cavendish.png",
+    logoStyle: "object-contain p-2",
+    containerClass: "w-20 h-20 rounded-2xl bg-white border border-white/10 overflow-hidden",
   },
   {
     name: "XPAG Brasil",
-    initials: "XP",
     description: "Recrutamento & seleção",
-    iconHex: "#facc15",
-    bg: "bg-yellow-400/8 border-yellow-400/20",
+    logo: "/logos/logo-xpag.png",
+    logoStyle: "object-contain p-3",
+    containerClass: "w-20 h-20 rounded-2xl bg-[#0d1b3e] border border-white/10 overflow-hidden",
   },
   {
     name: "Yolo Coliving",
-    initials: "YC",
     description: "Moradia e comunidade",
-    iconHex: "#a78bfa",
-    bg: "bg-violet-500/8 border-violet-500/20",
+    logo: "/logos/logo-yolo.jpg",
+    logoStyle: "object-cover",
+    containerClass: "w-20 h-20 rounded-full border border-white/10 overflow-hidden",
   },
 ];
 
@@ -41,12 +41,12 @@ export function LogoWall() {
           {clients.map((client) => (
             <AnimatedSection key={client.name} animation="fade-up">
               <div className="group flex flex-col items-center gap-3">
-                <div
-                  className={`w-16 h-16 rounded-2xl ${client.bg} border flex items-center justify-center group-hover:scale-105 transition-transform duration-300`}
-                >
-                  <span className="text-base font-black" style={{ color: client.iconHex }}>
-                    {client.initials}
-                  </span>
+                <div className={`${client.containerClass} group-hover:scale-105 transition-transform duration-300 flex items-center justify-center`}>
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className={`w-full h-full ${client.logoStyle}`}
+                  />
                 </div>
                 <div className="text-center">
                   <p className="text-xs font-semibold text-white/55 group-hover:text-white/80 transition-colors duration-300">

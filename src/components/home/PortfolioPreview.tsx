@@ -11,7 +11,9 @@ type Product = {
 
 type Case = {
   client: string;
-  initials: string;
+  logo: string;
+  logoClass: string;
+  logoContainer: string;
   segment: string;
   frente: string;
   badge: string;
@@ -26,7 +28,9 @@ type Case = {
 const cases: Case[] = [
   {
     client: "Grupo Cavendish",
-    initials: "GC",
+    logo: "/logos/logo-cavendish.png",
+    logoClass: "object-contain p-1.5",
+    logoContainer: "bg-white",
     segment: "Governança · Real Estate · Consultoria",
     frente: "FORJA.AI",
     badge: "4 soluções",
@@ -50,7 +54,9 @@ const cases: Case[] = [
   },
   {
     client: "XPAG Brasil",
-    initials: "XP",
+    logo: "/logos/logo-xpag.png",
+    logoClass: "object-contain p-2.5",
+    logoContainer: "bg-[#0d1b3e]",
     segment: "Vendas B2B",
     frente: "FORJA.AI",
     badge: "2 soluções",
@@ -72,7 +78,9 @@ const cases: Case[] = [
   },
   {
     client: "Yolo Coliving",
-    initials: "YC",
+    logo: "/logos/logo-yolo.jpg",
+    logoClass: "object-cover",
+    logoContainer: "bg-transparent",
     segment: "Real Estate · Coliving",
     frente: "FORJA.AI + Virada Inteligente",
     badge: "Em entrega",
@@ -143,9 +151,9 @@ export function PortfolioPreview() {
                   {/* Client header */}
                   <div className="flex items-start gap-4 mb-5">
                     <div
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${c.avatarGradient} border border-white/10 flex items-center justify-center flex-shrink-0`}
+                      className={`w-12 h-12 rounded-xl ${c.logoContainer} border border-white/10 overflow-hidden flex-shrink-0`}
                     >
-                      <span className="text-sm font-black text-white">{c.initials}</span>
+                      <img src={c.logo} alt={c.client} className={`w-full h-full ${c.logoClass}`} />
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 flex-wrap">
