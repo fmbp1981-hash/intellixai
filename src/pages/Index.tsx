@@ -3,7 +3,6 @@ import { Hero } from "@/components/home/Hero";
 import { LogoWall } from "@/components/home/LogoWall";
 import { BenefitsSection } from "@/components/home/BenefitsSection";
 import { ROISection } from "@/components/home/ROISection";
-import { DifferentialSection } from "@/components/home/DifferentialSection";
 import { SolutionsPreview } from "@/components/home/SolutionsPreview";
 import { PortfolioPreview } from "@/components/home/PortfolioPreview";
 import { LeadCaptureForm } from "@/components/home/LeadCaptureForm";
@@ -25,7 +24,6 @@ const Index = () => {
       <LogoWall />
       <BenefitsSection />
       <ROISection />
-      <DifferentialSection />
       <SolutionsPreview />
       <PortfolioPreview />
       <LeadCaptureForm />

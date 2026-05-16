@@ -7,7 +7,7 @@ const fronts = [
   {
     icon: Search,
     image: "/solucoes/radar-ai.svg",
-    imageContainerClass: "h-40",
+    imageContainerClass: "h-32",
     imageClass: "w-full h-full object-cover object-left",
     name: "RADAR.AI",
     nameGold: "RADAR",
@@ -32,7 +32,7 @@ const fronts = [
   {
     icon: Hammer,
     image: "/solucoes/forja-ai.svg",
-    imageContainerClass: "h-40",
+    imageContainerClass: "h-32",
     imageClass: "w-full h-full object-cover object-left",
     name: "FORJA.AI",
     nameGold: "FORJA",
@@ -57,7 +57,7 @@ const fronts = [
   {
     icon: Map,
     image: "/solucoes/trilha-ai.svg",
-    imageContainerClass: "h-40",
+    imageContainerClass: "h-32",
     imageClass: "w-full h-full object-cover object-left",
     name: "TRILHA.AI",
     nameGold: "TRILHA",
@@ -82,7 +82,7 @@ const fronts = [
   {
     icon: Users,
     image: "/virada-brain-clean.png",
-    imageContainerClass: "h-28 bg-[#060d1a] flex items-center justify-center",
+    imageContainerClass: "h-36 bg-[#060d1a] flex items-center justify-center",
     imageClass: "h-full w-auto object-contain",
     name: "Virada Inteligente",
     nameGold: "Virada",
@@ -149,7 +149,7 @@ export function SolutionsPreview() {
                   <div className={`h-[3px] bg-gradient-to-r ${f.topBar} flex-shrink-0`} />
                 )}
 
-                <div className="p-7 flex flex-col flex-1">
+                <div className="p-5 flex flex-col flex-1">
                   {/* Icon + badge */}
                   <div className="flex items-start gap-4 mb-5">
                     <div className={`w-11 h-11 rounded-xl ${f.iconBg} border flex items-center justify-center flex-shrink-0 group-hover:opacity-80 transition-opacity duration-300`}>

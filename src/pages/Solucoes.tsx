@@ -11,7 +11,7 @@ const b2bFronts = [
   {
     icon: Search,
     image: "/solucoes/radar-ai.svg",
-    imageContainerClass: "h-40",
+    imageContainerClass: "h-32",
     imageClass: "w-full h-full object-cover object-left",
     badge: "Consultoria estratégica",
     name: "RADAR.AI",
@@ -36,7 +36,7 @@ const b2bFronts = [
   {
     icon: Hammer,
     image: "/solucoes/forja-ai.svg",
-    imageContainerClass: "h-40",
+    imageContainerClass: "h-32",
     imageClass: "w-full h-full object-cover object-left",
     badge: "Desenvolvimento sob medida",
     name: "FORJA.AI",
@@ -61,7 +61,7 @@ const b2bFronts = [
   {
     icon: Users,
     image: "/virada-brain-clean.png",
-    imageContainerClass: "h-28 bg-[#060d1a] flex items-center justify-center",
+    imageContainerClass: "h-36 bg-[#060d1a] flex items-center justify-center",
     imageClass: "h-full w-auto object-contain",
     badge: "Imersão executiva in-company",
     name: "Virada Inteligente",
@@ -89,7 +89,7 @@ const b2cFronts = [
   {
     icon: Map,
     image: "/solucoes/trilha-ai.svg",
-    imageContainerClass: "h-40",
+    imageContainerClass: "h-32",
     imageClass: "w-full h-full object-cover object-left",
     badge: "Mentoria individual",
     name: "TRILHA.AI",
@@ -114,7 +114,7 @@ const b2cFronts = [
   {
     icon: Users,
     image: "/virada-brain-clean.png",
-    imageContainerClass: "h-28 bg-[#060d1a] flex items-center justify-center",
+    imageContainerClass: "h-36 bg-[#060d1a] flex items-center justify-center",
     imageClass: "h-full w-auto object-contain",
     badge: "Imersão em turma aberta",
     name: "Virada Inteligente",
@@ -162,7 +162,7 @@ function FrontCard({ front, delay = 0 }: { front: Front; delay?: number }) {
           <div className={`h-[3px] bg-gradient-to-r ${front.topBar} flex-shrink-0`} />
         )}
 
-        <div className="p-7 md:p-8 flex flex-col flex-1">
+        <div className="p-5 md:p-6 flex flex-col flex-1">
 
           {/* Badge + icon */}
           <div className="flex items-start gap-4 mb-5">

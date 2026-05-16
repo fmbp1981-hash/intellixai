@@ -1,5 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { Helmet } from "react-helmet-async";
+import { DifferentialSection } from "@/components/home/DifferentialSection";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Search, Lightbulb, PenTool, Cpu, MonitorSmartphone, TrendingUp } from "lucide-react";
@@ -163,6 +164,8 @@ export default function ComoTrabalhamos() {
           </AnimatedSection>
         </div>
       </section>
+
+      <DifferentialSection />
 
     </Layout>
   );
