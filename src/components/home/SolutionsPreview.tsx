@@ -7,7 +7,7 @@ const fronts = [
   {
     icon: Search,
     image: "/solucoes/radar-ai.svg",
-    imageContainerClass: "h-24",
+    imageContainerClass: "h-28",
     imageClass: "w-full h-full object-cover object-left",
     name: "RADAR.AI",
     nameGold: "RADAR",
@@ -32,7 +32,7 @@ const fronts = [
   {
     icon: Hammer,
     image: "/solucoes/forja-ai.svg",
-    imageContainerClass: "h-24",
+    imageContainerClass: "h-28",
     imageClass: "w-full h-full object-cover object-left",
     name: "FORJA.AI",
     nameGold: "FORJA",
@@ -57,7 +57,7 @@ const fronts = [
   {
     icon: Map,
     image: "/solucoes/trilha-ai.svg",
-    imageContainerClass: "h-24",
+    imageContainerClass: "h-28",
     imageClass: "w-full h-full object-cover object-left",
     name: "TRILHA.AI",
     nameGold: "TRILHA",
@@ -82,7 +82,7 @@ const fronts = [
   {
     icon: Users,
     image: "/virada-brain-clean.png",
-    imageContainerClass: "h-28 bg-[#060d1a] flex items-center justify-center",
+    imageContainerClass: "h-32 bg-[#060d1a] flex items-center justify-center",
     imageClass: "h-full w-auto object-contain",
     name: "Virada Inteligente",
     nameGold: "Virada",
@@ -149,7 +149,7 @@ export function SolutionsPreview() {
                   <div className={`h-[3px] bg-gradient-to-r ${f.topBar} flex-shrink-0`} />
                 )}
 
-                <div className="p-4 flex flex-col flex-1">
+                <div className="p-5 flex flex-col flex-1">
                   {/* Icon + name + badge */}
                   <div className="flex items-start gap-3 mb-4">
                     <div className={`w-9 h-9 rounded-xl ${f.iconBg} border flex items-center justify-center flex-shrink-0 group-hover:opacity-80 transition-opacity duration-300`}>
@@ -167,9 +167,19 @@ export function SolutionsPreview() {
                   </div>
 
                   {/* Headline */}
-                  <p className="text-xs font-semibold text-white leading-snug mb-4 flex-1">
+                  <p className="text-sm font-semibold text-white leading-snug mb-4">
                     {f.headline}
                   </p>
+
+                  {/* Deliveries */}
+                  <ul className="space-y-2 mb-5 flex-1">
+                    {f.deliveries.slice(0, 2).map((d) => (
+                      <li key={d} className="flex items-start gap-2 text-xs text-white/55 leading-snug">
+                        <ArrowRight className="w-3 h-3 mt-0.5 flex-shrink-0 text-white/25" />
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
 
                   {/* CTA */}
                   <Link to={f.url}>
@@ -178,7 +188,7 @@ export function SolutionsPreview() {
                       size="sm"
                       className={`w-full border text-xs transition-[border-color,background-color] duration-200 group/btn ${f.cta}`}
                     >
-                      Conhecer
+                      Conhecer a frente
                       <ArrowRight className="ml-1.5 w-3 h-3 group-hover/btn:translate-x-0.5 transition-transform" />
                     </Button>
                   </Link>
