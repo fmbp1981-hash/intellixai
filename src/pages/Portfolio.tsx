@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -91,6 +92,14 @@ const projects = [
 export default function Portfolio() {
   return (
     <Layout>
+      <Helmet>
+        <title>Portfólio de Projetos | IntelliX.AI</title>
+        <meta name="description" content="Conheça os projetos e sistemas desenvolvidos pela IntelliX.AI — CRM, automações, agentes de IA e soluções customizadas para empresas." />
+        <meta property="og:title" content="Portfólio de Projetos | IntelliX.AI" />
+        <meta property="og:description" content="Conheça os projetos e sistemas desenvolvidos pela IntelliX.AI — CRM, automações, agentes de IA e soluções customizadas." />
+        <meta property="og:url" content="https://intellixai.com.br/portfolio" />
+        <link rel="canonical" href="https://intellixai.com.br/portfolio" />
+      </Helmet>
       {/* Hero */}
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />

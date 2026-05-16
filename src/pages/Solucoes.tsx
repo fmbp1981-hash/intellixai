@@ -1,181 +1,288 @@
+import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Search, MessageSquare, Settings, Globe, Puzzle, Users, Send } from "lucide-react";
+import { ArrowRight, CheckCircle, Building2, User, Search, Hammer, Map, Users } from "lucide-react";
+import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
-const solutions = [
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const b2bFronts = [
   {
     icon: Search,
-    title: "Prospecção & Vendas",
-    description: "Sistemas inteligentes para qualificação automática de leads, automação de outbound e gestão de pipeline de vendas.",
-    features: [
-      "Qualificação automática de leads",
-      "Automação de follow-ups",
-      "Scoring de leads com IA",
-      "Integração com CRMs",
+    badge: "Consultoria estratégica",
+    name: "RADAR.AI",
+    nameGold: "RADAR",
+    nameCyan: ".AI",
+    tagline: "Onde está a IA que mais gera resultado no seu negócio — antes de você gastar um centavo em projeto.",
+    bullets: [
+      "Diagnóstico completo em 2 a 4 semanas",
+      "Mapa de oportunidades com ROI estimado por iniciativa",
+      "Plano priorizado: quick wins + roadmap de 6 a 12 meses",
     ],
-    gradient: "from-primary to-cyan-400",
+    ctaLabel: "Conhecer o RADAR.AI",
+    ctaHref: "/radar-ai",
+    topBar: "from-cyan-400 to-primary",
+    iconBg: "bg-cyan-400/12 border-cyan-400/25",
+    iconColor: "#22d3ee",
+    badgeClass: "bg-cyan-400/10 border-cyan-400/25 text-cyan-300",
+    checkColor: "text-cyan-400",
+    cta: "border-cyan-400/35 text-cyan-300 hover:border-cyan-400/60 hover:bg-cyan-400/6",
+    borderHover: "hover:border-cyan-400/25",
   },
   {
-    icon: MessageSquare,
-    title: "Atendimento Inteligente",
-    description: "Chatbots e assistentes virtuais que entendem, respondem e qualificam seus clientes 24 horas por dia.",
-    features: [
-      "Chatbots com IA conversacional",
-      "Atendimento 24/7",
-      "Qualificação automática",
-      "Handoff para humanos",
+    icon: Hammer,
+    badge: "Desenvolvimento sob medida",
+    name: "FORJA.AI",
+    nameGold: "FORJA",
+    nameCyan: ".AI",
+    tagline: "Quando o problema é único, a solução também é. Sistemas de IA construídos do zero para sua empresa.",
+    bullets: [
+      "Sistemas e agentes de IA específicos para o seu processo",
+      "Integração com seus sistemas atuais — sem substituir o que funciona",
+      "Propriedade intelectual do código 100% entregue ao cliente",
     ],
-    gradient: "from-accent to-yellow-400",
+    ctaLabel: "Conhecer a FORJA.AI",
+    ctaHref: "/forja-ai",
+    topBar: "from-accent to-yellow-400",
+    iconBg: "bg-yellow-400/12 border-yellow-400/25",
+    iconColor: "#facc15",
+    badgeClass: "bg-yellow-400/10 border-yellow-400/25 text-yellow-300",
+    checkColor: "text-yellow-400",
+    cta: "border-yellow-400/35 text-yellow-300 hover:border-yellow-400/60 hover:bg-yellow-400/6",
+    borderHover: "hover:border-yellow-400/25",
   },
   {
     icon: Users,
-    title: "CRM Personalizado",
-    description: "Sistema de gestão de relacionamento 100% adaptado ao fluxo de trabalho da sua empresa. Gerencie leads, clientes e oportunidades de forma inteligente.",
-    features: [
-      "100% adaptado ao seu negócio",
-      "Gestão completa de leads e clientes",
-      "Automação de tarefas e follow-ups",
-      "Dashboard e relatórios personalizados",
+    badge: "Imersão executiva in-company",
+    name: "Virada Inteligente",
+    nameGold: "Virada",
+    nameCyan: " Inteligente",
+    tagline: "Em 3 horas, sua equipe inteira sai do zero ao uso real de 9 ferramentas de IA no dia a dia.",
+    bullets: [
+      "Formato in-company com tarefas reais da sua empresa",
+      "Cada participante sai com 1 tarefa concreta resolvida com IA",
+      "30 dias de suporte por WhatsApp após a imersão",
     ],
-    gradient: "from-indigo-500 to-violet-400",
-  },
-  {
-    icon: Send,
-    title: "Disparador WhatsApp",
-    description: "Plataforma de disparo em massa via API Oficial do WhatsApp. Campanhas segmentadas, automações e atendimento escalável com segurança.",
-    features: [
-      "API Oficial do WhatsApp",
-      "Disparo em massa seguro",
-      "Campanhas segmentadas",
-      "Automação de mensagens",
-    ],
-    gradient: "from-green-500 to-teal-400",
-  },
-  {
-    icon: Settings,
-    title: "Gestão & Operações",
-    description: "Plataformas completas para gestão de clínicas, escritórios, operações e processos internos.",
-    features: [
-      "Gestão de agenda e pacientes",
-      "Prontuários digitais",
-      "Controle financeiro",
-      "Dashboards gerenciais",
-    ],
-    gradient: "from-emerald-500 to-teal-400",
-  },
-  {
-    icon: Globe,
-    title: "Sites & Landing Pages",
-    description: "Presença digital profissional com sites institucionais e landing pages de alta conversão.",
-    features: [
-      "Design responsivo",
-      "Otimização para conversão",
-      "SEO integrado",
-      "Integração com analytics",
-    ],
-    gradient: "from-violet-500 to-purple-400",
-  },
-  {
-    icon: Puzzle,
-    title: "Soluções Sob Medida",
-    description: "Desenvolvimento personalizado de sistemas específicos para as necessidades únicas do seu negócio.",
-    features: [
-      "Análise de processos",
-      "Arquitetura personalizada",
-      "Integrações customizadas",
-      "Suporte dedicado",
-    ],
-    gradient: "from-rose-500 to-pink-400",
+    ctaLabel: "Conhecer a Virada Inteligente",
+    ctaHref: "/virada-inteligente",
+    topBar: "from-emerald-500 to-teal-400",
+    iconBg: "bg-emerald-500/12 border-emerald-500/25",
+    iconColor: "#34d399",
+    badgeClass: "bg-emerald-500/10 border-emerald-500/25 text-emerald-300",
+    checkColor: "text-emerald-400",
+    cta: "border-emerald-500/35 text-emerald-300 hover:border-emerald-500/60 hover:bg-emerald-500/6",
+    borderHover: "hover:border-emerald-500/25",
   },
 ];
+
+const b2cFronts = [
+  {
+    icon: Map,
+    badge: "Mentoria individual",
+    name: "TRILHA.AI",
+    nameGold: "TRILHA",
+    nameCyan: ".AI",
+    tagline: "Mentoria 1:1 para líderes e empreendedores que querem aplicar IA no próprio negócio — não no slide do próximo trimestre.",
+    bullets: [
+      "Sessões individuais online ou presenciais em Recife",
+      "Plano de trilha personalizado com suas tarefas reais",
+      "Canal direto entre sessões para dúvidas de aplicação",
+    ],
+    ctaLabel: "Conhecer a TRILHA.AI",
+    ctaHref: "/trilha-ai",
+    topBar: "from-violet-500 to-purple-400",
+    iconBg: "bg-violet-500/12 border-violet-500/25",
+    iconColor: "#a78bfa",
+    badgeClass: "bg-violet-500/10 border-violet-500/25 text-violet-300",
+    checkColor: "text-violet-400",
+    cta: "border-violet-500/35 text-violet-300 hover:border-violet-500/60 hover:bg-violet-500/6",
+    borderHover: "hover:border-violet-500/25",
+  },
+  {
+    icon: Users,
+    badge: "Imersão em turma aberta",
+    name: "Virada Inteligente",
+    nameGold: "Virada",
+    nameCyan: " Inteligente",
+    tagline: "A mesma imersão executiva que treinou equipes inteiras, agora em formato de turma aberta para profissionais e líderes.",
+    bullets: [
+      "3 horas presenciais com 9 ferramentas de IA ao vivo",
+      "Aplicação prática em tarefas reais do seu trabalho",
+      "Vagas limitadas — turmas com até 20 participantes",
+    ],
+    ctaLabel: "Ver próximas turmas",
+    ctaHref: "/virada-inteligente#turmas",
+    topBar: "from-emerald-500 to-teal-400",
+    iconBg: "bg-emerald-500/12 border-emerald-500/25",
+    iconColor: "#34d399",
+    badgeClass: "bg-emerald-500/10 border-emerald-500/25 text-emerald-300",
+    checkColor: "text-emerald-400",
+    cta: "border-emerald-500/35 text-emerald-300 hover:border-emerald-500/60 hover:bg-emerald-500/6",
+    borderHover: "hover:border-emerald-500/25",
+  },
+];
+
+// ─── Components ───────────────────────────────────────────────────────────────
+
+type Front = typeof b2bFronts[0];
+
+function FrontCard({ front, delay = 0 }: { front: Front; delay?: number }) {
+  const Icon = front.icon;
+  return (
+    <AnimatedSection animation="fade-up" delay={delay}>
+      <div className={`group flex flex-col h-full rounded-2xl border border-white/8 bg-white/4 overflow-hidden ${front.borderHover} hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-[transform,box-shadow,border-color] duration-300`}>
+
+        <div className={`h-[3px] bg-gradient-to-r ${front.topBar} flex-shrink-0`} />
+
+        <div className="p-7 md:p-8 flex flex-col flex-1">
+
+          {/* Badge + icon */}
+          <div className="flex items-start gap-4 mb-5">
+            <div className={`w-11 h-11 rounded-xl ${front.iconBg} border flex items-center justify-center flex-shrink-0`}>
+              <Icon className="w-5 h-5" style={{ color: front.iconColor }} />
+            </div>
+            <div className="min-w-0">
+              <h3 className="font-black text-lg text-white leading-tight mb-1">
+                <span className="gradient-text-gold">{front.nameGold}</span>
+                <span className="gradient-text">{front.nameCyan}</span>
+              </h3>
+              <span className={`inline-flex items-center text-[10px] font-bold px-2 py-0.5 rounded-full border ${front.badgeClass}`}>
+                {front.badge}
+              </span>
+            </div>
+          </div>
+
+          {/* Tagline */}
+          <p className="text-sm font-semibold text-white leading-snug mb-5">
+            {front.tagline}
+          </p>
+
+          {/* Bullets */}
+          <ul className="space-y-2.5 mb-7 flex-1">
+            {front.bullets.map((bullet) => (
+              <li key={bullet} className="flex items-start gap-2.5">
+                <CheckCircle className={`w-4 h-4 ${front.checkColor} mt-0.5 flex-shrink-0`} />
+                <span className="text-sm text-white/65 leading-snug">{bullet}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA */}
+          <Link to={front.ctaHref}>
+            <Button
+              variant="outline"
+              size="sm"
+              className={`w-full border transition-[border-color,background-color] duration-200 group/btn ${front.cta}`}
+            >
+              {front.ctaLabel}
+              <ArrowRight className="ml-2 w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </AnimatedSection>
+  );
+}
+
+function SectionDivider({ label, type }: { label: string; type: "B2B" | "B2C" }) {
+  const isB2B = type === "B2B";
+  return (
+    <div className="flex items-center gap-4 my-12">
+      <div className={`flex-1 h-px bg-gradient-to-r from-transparent ${isB2B ? "to-primary/30" : "to-violet-500/30"}`} />
+      <div className={`flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-bold uppercase tracking-widest ${
+        isB2B
+          ? "border-primary/25 bg-primary/8 text-primary"
+          : "border-violet-500/25 bg-violet-500/8 text-violet-300"
+      }`}>
+        {isB2B ? <Building2 className="w-3.5 h-3.5" /> : <User className="w-3.5 h-3.5" />}
+        {label}
+      </div>
+      <div className={`flex-1 h-px bg-gradient-to-l from-transparent ${isB2B ? "to-primary/30" : "to-violet-500/30"}`} />
+    </div>
+  );
+}
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function Solucoes() {
   return (
     <Layout>
+      <Helmet>
+        <title>Soluções de IA para Empresas | IntelliX.AI</title>
+        <meta name="description" content="IA sob medida para empresas B2B e para o crescimento pessoal e profissional. Conheça o ecossistema IntelliX: RADAR.AI, FORJA.AI, TRILHA.AI e mais." />
+        <meta property="og:title" content="Soluções de IA para Empresas | IntelliX.AI" />
+        <meta property="og:description" content="IA sob medida para empresas B2B e para o crescimento pessoal e profissional. Conheça o ecossistema IntelliX." />
+        <meta property="og:url" content="https://intellixai.com.br/solucoes" />
+        <link rel="canonical" href="https://intellixai.com.br/solucoes" />
+      </Helmet>
+
       {/* Hero */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
+      <section className="py-24 bg-[#060D1A] relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/8 via-transparent to-transparent pointer-events-none" />
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Nossas <span className="gradient-text">Soluções</span>
+          <AnimatedSection className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/25 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+              <span className="text-xs font-bold uppercase tracking-widest text-accent">4 frentes de atuação</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Soluções organizadas pelo que{" "}
+              <span className="gradient-text-gold">o seu momento</span>{" "}
+              <span className="gradient-text">exige</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Frameworks adaptáveis que resolvem problemas reais de diferentes segmentos. 
-              Cada solução é personalizada para o seu contexto específico.
+            <p className="text-xl text-white/50 leading-relaxed">
+              Empresa, líder ou profissional — escolha por onde começar. Cada frente tem método próprio e entrega mensurável.
             </p>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* Solutions Grid */}
-      <section className="py-20">
+      {/* Frentes */}
+      <section className="pb-20 bg-[#0A1525]">
         <div className="container mx-auto px-4">
-          <div className="space-y-12">
-            {solutions.map((solution, index) => (
-              <div 
-                key={solution.title}
-                className="glass-card overflow-hidden animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className={`h-2 bg-gradient-to-r ${solution.gradient}`} />
-                <div className="p-8 lg:p-12">
-                  <div className="grid lg:grid-cols-2 gap-8 items-center">
-                    <div>
-                      <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                        <solution.icon className="text-primary" size={32} />
-                      </div>
-                      <h2 className="text-2xl md:text-3xl font-bold mb-4">{solution.title}</h2>
-                      <p className="text-muted-foreground text-lg mb-6">{solution.description}</p>
-                      <Link to="/diagnostico">
-                        <Button className="bg-primary text-primary-foreground hover:bg-primary/90 group">
-                          Quero essa solução
-                          <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-                        </Button>
-                      </Link>
-                    </div>
-                    <div className="bg-card/50 rounded-xl p-6">
-                      <h4 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground">
-                        O que inclui
-                      </h4>
-                      <ul className="space-y-3">
-                        {solution.features.map((feature) => (
-                          <li key={feature} className="flex items-center gap-3">
-                            <div className="w-2 h-2 rounded-full bg-primary" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+          <SectionDivider label="Para Empresas · B2B" type="B2B" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-4">
+            {b2bFronts.map((front, i) => (
+              <FrontCard key={front.name + front.badge} front={front} delay={i * 80} />
             ))}
           </div>
+
+          <SectionDivider label="Para Profissionais · B2C" type="B2C" />
+          <div className="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+            {b2cFronts.map((front, i) => (
+              <FrontCard key={front.name + front.badge} front={front} delay={i * 80} />
+            ))}
+          </div>
+
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-card">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Não encontrou o que procura?
+      <section className="py-24 bg-[#060D1A] relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/4 via-transparent to-primary/4 pointer-events-none" />
+        <div className="container mx-auto px-4 relative z-10">
+          <AnimatedSection className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Não sabe por qual frente começar?
             </h2>
-            <p className="text-muted-foreground text-lg mb-8">
-              Desenvolvemos soluções sob medida para qualquer desafio. 
-              Conte-nos sobre seu problema e criaremos a solução ideal.
+            <p className="text-white/50 text-lg mb-8 leading-relaxed">
+              O Diagnóstico Gratuito mapeia exatamente onde a IA gera mais resultado no seu negócio — antes de qualquer investimento.
             </p>
             <Link to="/diagnostico">
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold glow-gold group">
-                Falar sobre meu projeto
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-accent to-yellow-400 text-accent-foreground font-bold px-8 shadow-[0_0_25px_hsl(var(--accent)/0.4)] hover:shadow-[0_0_35px_hsl(var(--accent)/0.6)] transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 group"
+              >
+                Agendar diagnóstico gratuito
+                <ArrowRight className="ml-2 group-hover:translate-x-0.5 transition-transform" size={18} />
               </Button>
             </Link>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
+
     </Layout>
   );
 }
