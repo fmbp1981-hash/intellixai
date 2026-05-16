@@ -7,6 +7,8 @@ const fronts = [
   {
     icon: Search,
     image: "/solucoes/radar-ai.svg",
+    imageContainerClass: "h-40",
+    imageClass: "w-full h-full object-cover object-left",
     name: "RADAR.AI",
     nameGold: "RADAR",
     nameCyan: ".AI",
@@ -30,6 +32,8 @@ const fronts = [
   {
     icon: Hammer,
     image: "/solucoes/forja-ai.svg",
+    imageContainerClass: "h-40",
+    imageClass: "w-full h-full object-cover object-left",
     name: "FORJA.AI",
     nameGold: "FORJA",
     nameCyan: ".AI",
@@ -53,6 +57,8 @@ const fronts = [
   {
     icon: Map,
     image: "/solucoes/trilha-ai.svg",
+    imageContainerClass: "h-40",
+    imageClass: "w-full h-full object-cover object-left",
     name: "TRILHA.AI",
     nameGold: "TRILHA",
     nameCyan: ".AI",
@@ -75,6 +81,9 @@ const fronts = [
   },
   {
     icon: Users,
+    image: "/virada-brain-clean.png",
+    imageContainerClass: "h-28 bg-[#060d1a] flex items-center justify-center",
+    imageClass: "h-full w-auto object-contain",
     name: "Virada Inteligente",
     nameGold: "Virada",
     nameCyan: " Inteligente",
@@ -128,11 +137,11 @@ export function SolutionsPreview() {
               <div className={`group flex flex-col h-full rounded-2xl border border-white/8 bg-white/4 overflow-hidden ${f.activeBorder} hover:-translate-y-1 ${f.glow} transition-[transform,box-shadow,border-color] duration-300`}>
 
                 {("image" in f && f.image) ? (
-                  <div className="h-40 overflow-hidden flex-shrink-0 relative">
+                  <div className={`overflow-hidden flex-shrink-0 relative ${ (f as { imageContainerClass?: string }).imageContainerClass ?? "h-40" }`}>
                     <img
                       src={(f as { image: string }).image}
                       alt={f.name}
-                      className="w-full h-full object-cover object-left"
+                      className={(f as { imageClass?: string }).imageClass ?? "w-full h-full object-cover object-left"}
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 pointer-events-none" />
                   </div>

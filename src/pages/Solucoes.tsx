@@ -11,6 +11,8 @@ const b2bFronts = [
   {
     icon: Search,
     image: "/solucoes/radar-ai.svg",
+    imageContainerClass: "h-40",
+    imageClass: "w-full h-full object-cover object-left",
     badge: "Consultoria estratégica",
     name: "RADAR.AI",
     nameGold: "RADAR",
@@ -34,6 +36,8 @@ const b2bFronts = [
   {
     icon: Hammer,
     image: "/solucoes/forja-ai.svg",
+    imageContainerClass: "h-40",
+    imageClass: "w-full h-full object-cover object-left",
     badge: "Desenvolvimento sob medida",
     name: "FORJA.AI",
     nameGold: "FORJA",
@@ -56,6 +60,9 @@ const b2bFronts = [
   },
   {
     icon: Users,
+    image: "/virada-brain-clean.png",
+    imageContainerClass: "h-28 bg-[#060d1a] flex items-center justify-center",
+    imageClass: "h-full w-auto object-contain",
     badge: "Imersão executiva in-company",
     name: "Virada Inteligente",
     nameGold: "Virada",
@@ -82,6 +89,8 @@ const b2cFronts = [
   {
     icon: Map,
     image: "/solucoes/trilha-ai.svg",
+    imageContainerClass: "h-40",
+    imageClass: "w-full h-full object-cover object-left",
     badge: "Mentoria individual",
     name: "TRILHA.AI",
     nameGold: "TRILHA",
@@ -104,6 +113,9 @@ const b2cFronts = [
   },
   {
     icon: Users,
+    image: "/virada-brain-clean.png",
+    imageContainerClass: "h-28 bg-[#060d1a] flex items-center justify-center",
+    imageClass: "h-full w-auto object-contain",
     badge: "Imersão em turma aberta",
     name: "Virada Inteligente",
     nameGold: "Virada",
@@ -138,11 +150,11 @@ function FrontCard({ front, delay = 0 }: { front: Front; delay?: number }) {
       <div className={`group flex flex-col h-full rounded-2xl border border-white/8 bg-white/4 overflow-hidden ${front.borderHover} hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-[transform,box-shadow,border-color] duration-300`}>
 
         {hasImage ? (
-          <div className="h-40 overflow-hidden flex-shrink-0 relative">
+          <div className={`overflow-hidden flex-shrink-0 relative ${ (front as { imageContainerClass?: string }).imageContainerClass ?? "h-40" }`}>
             <img
               src={(front as { image: string }).image}
               alt={front.name}
-              className="w-full h-full object-cover object-left"
+              className={(front as { imageClass?: string }).imageClass ?? "w-full h-full object-cover object-left"}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 pointer-events-none" />
           </div>
