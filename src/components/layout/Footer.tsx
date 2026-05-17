@@ -78,7 +78,9 @@ export function Footer() {
     <footer className="relative pt-20 pb-8 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-t from-[#030810] via-[#060D1A] to-[#0A1525]" />
       <NeuralBackground />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
+      {/* Border top premium — cyan → gold */}
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--primary)/0.5) 25%, hsl(var(--accent)/0.5) 75%, transparent 100%)" }} />
+      <div className="absolute top-0 left-0 right-0 h-8 pointer-events-none" style={{ background: "radial-gradient(ellipse 50% 100% at 50% 0%, hsl(var(--primary)/0.07), transparent)" }} />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
@@ -177,7 +179,13 @@ export function Footer() {
         {/* Copyright */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/25">
           <p>© {currentYear} IntelliX.AI. Todos os direitos reservados.</p>
-          <p className="text-white/15">Recife, PE · Brasil</p>
+          <div className="flex items-center gap-4">
+            <span className="text-white/15">Recife, PE · Brasil</span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-white/8 bg-white/[0.03] text-[10px] text-white/30">
+              <span className="w-1 h-1 rounded-full bg-accent/60 animate-pulse" />
+              Feito com IA
+            </span>
+          </div>
         </div>
       </div>
     </footer>
