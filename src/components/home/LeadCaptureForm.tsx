@@ -57,7 +57,7 @@ export function LeadCaptureForm() {
 
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
                 Fale com a equipe{" "}
-                <span className="gradient-text-gold">IntelliX.AI</span>
+                <span className="gradient-text-gold">IntelliX</span><span className="gradient-text">.AI</span>
               </h2>
 
               <p className="text-white/50 text-lg leading-relaxed mb-8">
