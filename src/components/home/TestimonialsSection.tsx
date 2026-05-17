@@ -4,10 +4,10 @@ const testimonials = [
   {
     quote:
       "A IntelliX.AI não veio com tecnologia pronta. Veio entender o nosso negócio primeiro. O RADAR.AI identificou três oportunidades que a gente não estava vendo — e o resultado apareceu em menos de 60 dias.",
-    name: "Ricardo Almeida",
-    role: "Diretor Executivo",
+    name: "Alberto Cavendish",
+    role: "Founder & CEO",
     company: "Grupo Cavendish",
-    initials: "RA",
+    initials: "AC",
     avatarColor: "from-cyan-500 to-primary",
     badge: "RADAR.AI",
     badgeClass: "bg-cyan-400/10 border-cyan-400/25 text-cyan-300",
@@ -16,10 +16,10 @@ const testimonials = [
   {
     quote:
       "Em 3 horas de Virada Inteligente, minha equipe saiu usando IA de verdade — não teoria. Já na semana seguinte, quatro colaboradores tinham automatizado tarefas que tomavam horas do dia.",
-    name: "Fernanda Costa",
-    role: "Head de People",
+    name: "Felipe Nunes",
+    role: "Sócio",
     company: "XPAG Brasil",
-    initials: "FC",
+    initials: "FN",
     avatarColor: "from-yellow-400 to-amber-500",
     badge: "Virada Inteligente",
     badgeClass: "bg-yellow-400/10 border-yellow-400/25 text-yellow-300",
@@ -28,10 +28,10 @@ const testimonials = [
   {
     quote:
       "Pensávamos que IA era para grandes empresas. A IntelliX.AI mostrou que pequenas mudanças bem colocadas geram resultado imediato. Atendimento automatizado, qualificação de leads — tudo rodando.",
-    name: "Bruno Melo",
-    role: "CEO",
+    name: "Diogo Nogueira",
+    role: "Sócio & CEO",
     company: "Yolo Coliving",
-    initials: "BM",
+    initials: "DN",
     avatarColor: "from-emerald-400 to-teal-500",
     badge: "FORJA.AI",
     badgeClass: "bg-emerald-500/10 border-emerald-500/25 text-emerald-300",

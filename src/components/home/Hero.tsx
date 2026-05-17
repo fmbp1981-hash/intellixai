@@ -48,6 +48,50 @@ export function Hero() {
         }}
       />
 
+      {/* ── Perspective grid ── */}
+      <div className="absolute bottom-0 left-0 right-0 h-[55%] pointer-events-none overflow-hidden">
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: "-60%",
+            right: "-60%",
+            height: "100%",
+            backgroundImage:
+              "linear-gradient(rgba(34,211,238,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.07) 1px, transparent 1px)",
+            backgroundSize: "52px 52px",
+            transform: "perspective(480px) rotateX(72deg)",
+            transformOrigin: "bottom center",
+            maskImage: "linear-gradient(to top, black 0%, black 25%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to top, black 0%, black 25%, transparent 100%)",
+          }}
+        />
+        {/* Glow center line */}
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px"
+          style={{
+            height: "60%",
+            background: "linear-gradient(to top, hsl(var(--primary)/0.35), transparent)",
+          }}
+        />
+      </div>
+
+      {/* ── Radial pulse rings ── */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {[1, 2, 3].map((i) => (
+          <div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: `${i * 260}px`,
+              height: `${i * 260}px`,
+              border: "1px solid hsl(var(--primary) / 0.07)",
+              animation: `ring-expand 6s ease-out ${i * 1.8}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* ── Vinheta top / bottom ── */}
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#060D1A] to-transparent pointer-events-none" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#060D1A] to-transparent pointer-events-none" />
