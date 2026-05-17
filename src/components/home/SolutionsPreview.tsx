@@ -134,7 +134,7 @@ export function SolutionsPreview() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {fronts.map((f, i) => (
             <AnimatedSection key={f.name} animation="fade-up" delay={i * 60}>
-              <div className={`group flex flex-col h-full rounded-2xl border border-white/8 bg-white/4 overflow-hidden ${f.activeBorder} hover:-translate-y-1 ${f.glow} transition-[transform,box-shadow,border-color] duration-300`}>
+              <div className={`card-glass group flex flex-col h-full rounded-2xl overflow-hidden ${f.activeBorder} hover:-translate-y-1 ${f.glow}`}>
 
                 {("image" in f && f.image) ? (
                   <div className={`overflow-hidden flex-shrink-0 relative ${ (f as { imageContainerClass?: string }).imageContainerClass ?? "h-24" }`}>

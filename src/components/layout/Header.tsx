@@ -49,10 +49,20 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-[#060D1A]/95 backdrop-blur-xl border-b border-primary/30 shadow-[0_4px_40px_-10px_hsl(var(--primary)/0.4)]"
-          : "bg-[#060D1A]/80 backdrop-blur-xl border-b border-primary/20"
+          ? "bg-[#060D1A]/90 backdrop-blur-2xl saturate-150"
+          : "bg-[#060D1A]/75 backdrop-blur-xl"
       }`}
     >
+      {/* Gradient hairline bottom border */}
+      <div className={`absolute inset-x-0 bottom-0 h-px transition-opacity duration-500 pointer-events-none ${isScrolled ? "opacity-100" : "opacity-40"}`}
+        style={{ background: "linear-gradient(90deg, transparent 0%, hsl(var(--primary)/0.5) 30%, hsl(var(--accent)/0.4) 70%, transparent 100%)" }}
+      />
+      {/* Ambient glow below header when scrolled */}
+      {isScrolled && (
+        <div className="absolute inset-x-0 bottom-0 h-8 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 60% 100% at 50% 100%, hsl(var(--primary)/0.08), transparent)" }}
+        />
+      )}
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-28">
           {/* Logo */}
