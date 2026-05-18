@@ -322,9 +322,11 @@ export default function ForjaAI() {
               </AnimatedSection>
             </div>
 
-            {/* Right — stats/proof */}
+            {/* Right — SVG + stats/proof */}
             <AnimatedSection animation="fade-left" delay={300} className="hidden xl:block">
-              <div className="space-y-4">
+              <div className="flex flex-col items-center gap-6">
+              <img src="/solucoes/forja-ai.svg" alt="" className="w-52 h-52 animate-forge-pulse" aria-hidden="true" />
+              <div className="space-y-4 w-full">
                 {[
                   { label: "Código entregue ao cliente", sub: "Propriedade intelectual 100% sua — sem lock-in", accent: true },
                   { label: "Integrado ao que você já usa", sub: "CRM, ERP, WhatsApp, planilha — sem substituir o que funciona", accent: false },
@@ -346,6 +348,7 @@ export default function ForjaAI() {
                     </div>
                   </div>
                 ))}
+              </div>
               </div>
             </AnimatedSection>
 

@@ -214,14 +214,14 @@ export default function RadarAI() {
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#060D1A]">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-accent/5 pointer-events-none" />
 
-        {/* Radar pulse — signature detail */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/3 hidden lg:block pointer-events-none" aria-hidden="true">
-          <div className="relative w-[600px] h-[600px] flex items-center justify-center">
-            <div className="absolute inset-0 rounded-full border border-primary/20 animate-ping" style={{ animationDuration: "3s" }} />
-            <div className="absolute inset-[60px] rounded-full border border-primary/15 animate-ping" style={{ animationDuration: "3s", animationDelay: "0.75s" }} />
-            <div className="absolute inset-[120px] rounded-full border border-accent/20 animate-ping" style={{ animationDuration: "3s", animationDelay: "1.5s" }} />
-            <div className="absolute inset-[180px] rounded-full border border-accent/25 animate-ping" style={{ animationDuration: "3s", animationDelay: "2.25s" }} />
-            <div className="w-8 h-8 rounded-full bg-accent/40 border border-accent/60 blur-sm" />
+        {/* Radar SVG — signature detail */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 hidden lg:block pointer-events-none" aria-hidden="true">
+          <div className="relative w-[520px] h-[520px]">
+            <img src="/solucoes/radar-ai.svg" alt="" className="w-full h-full opacity-65" />
+            <div
+              className="absolute inset-0 rounded-full animate-radar-spin"
+              style={{ background: "conic-gradient(from 0deg, transparent 75%, hsl(200 75% 48% / 0.22) 88%, transparent 100%)" }}
+            />
           </div>
         </div>
 
@@ -382,8 +382,8 @@ export default function RadarAI() {
                     {phase.number}
                   </span>
 
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-3 mb-3 flex-wrap">
+                  <div className="relative z-10 pr-12">
+                    <div className="flex flex-col gap-1.5 mb-3">
                       <span className="text-xs font-black text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded-full">
                         Fase {phase.number}
                       </span>

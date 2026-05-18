@@ -1,138 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" width="800" height="280">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
   <defs>
-    <radialGradient id="fBg" cx="37%" cy="50%" r="55%">
-      <stop offset="0%" stop-color="#1a1200"/>
-      <stop offset="100%" stop-color="#060d1a"/>
+    <radialGradient id="forgeGlow" cx="50%" cy="65%" r="45%">
+      <stop offset="0%" stop-color="#F5A623" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#F5A623" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="fAmbient" cx="37%" cy="50%" r="42%">
-      <stop offset="0%" stop-color="#facc15" stop-opacity="0.14"/>
-      <stop offset="100%" stop-color="#facc15" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="fGlow" x="-80%" y="-80%" width="260%" height="260%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="fSoftGlow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <linearGradient id="fRightFade" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#060d1a" stop-opacity="0"/>
-      <stop offset="55%"  stop-color="#060d1a" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#060d1a" stop-opacity="0.85"/>
+    <linearGradient id="anvilGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5A623" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#E8860A" stop-opacity="0.9"/>
     </linearGradient>
   </defs>
-
-  <!-- Background -->
-  <rect width="800" height="280" fill="url(#fBg)"/>
-  <rect width="800" height="280" fill="url(#fAmbient)"/>
-
-  <!-- ── GEAR / COG structure (center at 255, 140) ── -->
-  <!-- Gear outline ring (faint) -->
-  <circle cx="255" cy="140" r="100" fill="none" stroke="#facc15" stroke-opacity="0.08" stroke-width="1"/>
-  <circle cx="255" cy="140" r="55"  fill="none" stroke="#facc15" stroke-opacity="0.14" stroke-width="1"/>
-
-  <!-- Inner ring connecting lines (honeycomb spokes) -->
-  <!-- Spoke to i1 (0°) = (315,140) -->
-  <line x1="255" y1="140" x2="315" y2="140" stroke="#facc15" stroke-opacity="0.35" stroke-width="1.2"/>
-  <!-- Spoke to i2 (60°) = (255+55*0.5, 140+55*0.866) = (282.5, 187.6) -->
-  <line x1="255" y1="140" x2="283" y2="188" stroke="#facc15" stroke-opacity="0.35" stroke-width="1.2"/>
-  <!-- Spoke to i3 (120°) = (255-27.5, 140+47.6) = (227.5, 187.6) -->
-  <line x1="255" y1="140" x2="227" y2="188" stroke="#facc15" stroke-opacity="0.35" stroke-width="1.2"/>
-  <!-- Spoke to i4 (180°) = (195, 140) -->
-  <line x1="255" y1="140" x2="195" y2="140" stroke="#facc15" stroke-opacity="0.35" stroke-width="1.2"/>
-  <!-- Spoke to i5 (240°) = (227.5, 92.4) -->
-  <line x1="255" y1="140" x2="227" y2="92" stroke="#facc15" stroke-opacity="0.35" stroke-width="1.2"/>
-  <!-- Spoke to i6 (300°) = (282.5, 92.4) -->
-  <line x1="255" y1="140" x2="283" y2="92" stroke="#facc15" stroke-opacity="0.35" stroke-width="1.2"/>
-
-  <!-- Inner ring hex edges -->
-  <line x1="315" y1="140" x2="283" y2="188" stroke="#facc15" stroke-opacity="0.22" stroke-width="1"/>
-  <line x1="283" y1="188" x2="227" y2="188" stroke="#facc15" stroke-opacity="0.22" stroke-width="1"/>
-  <line x1="227" y1="188" x2="195" y2="140" stroke="#facc15" stroke-opacity="0.22" stroke-width="1"/>
-  <line x1="195" y1="140" x2="227" y2="92"  stroke="#facc15" stroke-opacity="0.22" stroke-width="1"/>
-  <line x1="227" y1="92"  x2="283" y2="92"  stroke="#facc15" stroke-opacity="0.22" stroke-width="1"/>
-  <line x1="283" y1="92"  x2="315" y2="140" stroke="#facc15" stroke-opacity="0.22" stroke-width="1"/>
-
-  <!-- Outer ring lines (30°, 90°, 150°, 210°, 270°, 330°) -->
-  <!-- o1 (30°): 255+100*0.866=341.6, 140+100*0.5=190 -->
-  <line x1="315" y1="140" x2="342" y2="190" stroke="#facc15" stroke-opacity="0.2" stroke-width="1"/>
-  <line x1="283" y1="188" x2="342" y2="190" stroke="#facc15" stroke-opacity="0.2" stroke-width="1"/>
-  <!-- o2 (90°): 255, 240 -->
-  <line x1="283" y1="188" x2="255" y2="240" stroke="#facc15" stroke-opacity="0.2" stroke-width="1"/>
-  <line x1="227" y1="188" x2="255" y2="240" stroke="#facc15" stroke-opacity="0.2" stroke-width="1"/>
-  <!-- o3 (150°): 255-86.6=168.4, 190 -->
-  <line x1="227" y1="188" x2="168" y2="190" stroke="#facc15" stroke-opacity="0.2" stroke-width="1"/>
-  <line x1="195" y1="140" x2="168" y2="190" stroke="#facc15" stroke-opacity="0.2" stroke-width="1"/>
-  <!-- o4 (210°): 255-86.6=168.4, 140-50=90 -->
-  <line x1="195" y1="140" x2="168" y2="90"  stroke="#facc15" stroke-opacity="0.2" stroke-width="1"/>
-  <line x1="227" y1="92"  x2="168" y2="90"  stroke="#facc15" stroke-opacity="0.2" stroke-width="1"/>
-  <!-- o5 (270°): 255, 40 -->
-  <line x1="227" y1="92"  x2="255" y2="40"  stroke="#facc15" stroke-opacity="0.2" stroke-width="1"/>
-  <line x1="283" y1="92"  x2="255" y2="40"  stroke="#facc15" stroke-opacity="0.2" stroke-width="1"/>
-  <!-- o6 (330°): 341.6, 90 -->
-  <line x1="283" y1="92"  x2="342" y2="90"  stroke="#facc15" stroke-opacity="0.2" stroke-width="1"/>
-  <line x1="315" y1="140" x2="342" y2="90"  stroke="#facc15" stroke-opacity="0.2" stroke-width="1"/>
-
-  <!-- ── NODES ── -->
-
-  <!-- Center forge (brightest) -->
-  <circle cx="255" cy="140" r="18" fill="#facc15" fill-opacity="0.1" filter="url(#fGlow)"/>
-  <circle cx="255" cy="140" r="8"  fill="#facc15" fill-opacity="0.9" filter="url(#fGlow)"/>
-  <circle cx="255" cy="140" r="4"  fill="#ffffff" fill-opacity="0.95"/>
-
-  <!-- Inner ring nodes (i1–i6) -->
-  <circle cx="315" cy="140" r="6"  fill="#facc15" fill-opacity="0.8" filter="url(#fSoftGlow)"/>
-  <circle cx="315" cy="140" r="3"  fill="#fff"    fill-opacity="0.85"/>
-
-  <circle cx="283" cy="188" r="6"  fill="#facc15" fill-opacity="0.8" filter="url(#fSoftGlow)"/>
-  <circle cx="283" cy="188" r="3"  fill="#fff"    fill-opacity="0.85"/>
-
-  <circle cx="227" cy="188" r="6"  fill="#facc15" fill-opacity="0.75" filter="url(#fSoftGlow)"/>
-  <circle cx="227" cy="188" r="3"  fill="#fff"    fill-opacity="0.8"/>
-
-  <circle cx="195" cy="140" r="6"  fill="#facc15" fill-opacity="0.75" filter="url(#fSoftGlow)"/>
-  <circle cx="195" cy="140" r="3"  fill="#fff"    fill-opacity="0.8"/>
-
-  <circle cx="227" cy="92"  r="6"  fill="#facc15" fill-opacity="0.8" filter="url(#fSoftGlow)"/>
-  <circle cx="227" cy="92"  r="3"  fill="#fff"    fill-opacity="0.85"/>
-
-  <circle cx="283" cy="92"  r="6"  fill="#facc15" fill-opacity="0.8" filter="url(#fSoftGlow)"/>
-  <circle cx="283" cy="92"  r="3"  fill="#fff"    fill-opacity="0.85"/>
-
-  <!-- Outer gear teeth nodes (o1–o6) -->
-  <circle cx="342" cy="190" r="5"  fill="#facc15" fill-opacity="0.65" filter="url(#fSoftGlow)"/>
-  <circle cx="342" cy="190" r="2.5" fill="#fff"   fill-opacity="0.7"/>
-
-  <circle cx="255" cy="240" r="5"  fill="#facc15" fill-opacity="0.6"  filter="url(#fSoftGlow)"/>
-  <circle cx="255" cy="240" r="2.5" fill="#fff"   fill-opacity="0.65"/>
-
-  <circle cx="168" cy="190" r="5"  fill="#facc15" fill-opacity="0.6"  filter="url(#fSoftGlow)"/>
-  <circle cx="168" cy="190" r="2.5" fill="#fff"   fill-opacity="0.65"/>
-
-  <circle cx="168" cy="90"  r="5"  fill="#facc15" fill-opacity="0.65" filter="url(#fSoftGlow)"/>
-  <circle cx="168" cy="90"  r="2.5" fill="#fff"   fill-opacity="0.7"/>
-
-  <circle cx="255" cy="40"  r="5"  fill="#facc15" fill-opacity="0.65" filter="url(#fSoftGlow)"/>
-  <circle cx="255" cy="40"  r="2.5" fill="#fff"   fill-opacity="0.7"/>
-
-  <circle cx="342" cy="90"  r="5"  fill="#facc15" fill-opacity="0.7"  filter="url(#fSoftGlow)"/>
-  <circle cx="342" cy="90"  r="2.5" fill="#fff"   fill-opacity="0.75"/>
-
-  <!-- Subtle background nodes -->
-  <circle cx="70"  cy="55"  r="2"  fill="#facc15" fill-opacity="0.2"/>
-  <circle cx="420" cy="210" r="2"  fill="#facc15" fill-opacity="0.15"/>
-  <circle cx="55"  cy="195" r="1.5" fill="#facc15" fill-opacity="0.18"/>
-  <circle cx="410" cy="50"  r="1.5" fill="#facc15" fill-opacity="0.12"/>
-  <circle cx="440" cy="140" r="1.5" fill="#facc15" fill-opacity="0.12"/>
-
-  <!-- Right fade -->
-  <rect width="800" height="280" fill="url(#fRightFade)"/>
+  <ellipse cx="200" cy="290" rx="130" ry="45" fill="url(#forgeGlow)"/>
+  <path d="M200 110 C200 88, 222 68, 212 44 C234 58, 246 86, 234 118 C264 90, 270 58, 260 30 C286 62, 280 104, 264 136 C276 124, 288 146, 272 168 C260 185, 234 196, 212 190 C184 200, 158 188, 145 167 C129 142, 135 116, 148 130 C132 98, 138 62, 165 42 C158 68, 176 86, 200 110Z" fill="#F5A623" fill-opacity="0.07" stroke="#F5A623" stroke-opacity="0.22" stroke-width="1"/>
+  <path d="M200 138 C200 122, 213 106, 207 93 C220 103, 225 122, 218 143 C231 127, 233 105, 227 89 C242 106, 239 132, 228 153 C234 145, 240 157, 229 168 C221 176, 207 181, 196 179 C180 182, 166 175, 159 166 C150 154, 154 141, 162 149 C151 129, 157 107, 171 99 C168 114, 180 123, 200 138Z" fill="#F5A623" fill-opacity="0.14" stroke="#F5A623" stroke-opacity="0.38" stroke-width="1"/>
+  <rect x="110" y="234" width="180" height="34" rx="3" fill="#F5A623" fill-opacity="0.08" stroke="#F5A623" stroke-opacity="0.28" stroke-width="1.5"/>
+  <rect x="130" y="268" width="140" height="58" rx="4" fill="#F5A623" fill-opacity="0.06" stroke="#F5A623" stroke-opacity="0.22" stroke-width="1.5"/>
+  <path d="M158 234 L96 196 L96 158" stroke="#0E94BB" stroke-opacity="0.28" stroke-width="1" stroke-dasharray="4 4"/>
+  <path d="M242 234 L304 196 L304 152" stroke="#0E94BB" stroke-opacity="0.28" stroke-width="1" stroke-dasharray="4 4"/>
+  <circle cx="96" cy="158" r="4" fill="#0E94BB" fill-opacity="0.5"/>
+  <circle cx="304" cy="152" r="4" fill="#0E94BB" fill-opacity="0.5"/>
+  <circle cx="64" cy="132" r="3" fill="#0E94BB" fill-opacity="0.3"/>
+  <circle cx="336" cy="120" r="3" fill="#0E94BB" fill-opacity="0.3"/>
+  <path d="M96 158 L64 132" stroke="#0E94BB" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="3 3"/>
+  <path d="M304 152 L336 120" stroke="#0E94BB" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="3 3"/>
+  <circle cx="163" cy="175" r="2.5" fill="#F5A623" fill-opacity="0.7"/>
+  <circle cx="237" cy="170" r="2" fill="#F5A623" fill-opacity="0.65"/>
+  <circle cx="152" cy="148" r="1.8" fill="#F5A623" fill-opacity="0.55"/>
+  <circle cx="248" cy="143" r="1.8" fill="#F5A623" fill-opacity="0.55"/>
+  <circle cx="146" cy="196" r="2" fill="#F5A623" fill-opacity="0.4"/>
+  <circle cx="254" cy="193" r="2" fill="#F5A623" fill-opacity="0.4"/>
 </svg>

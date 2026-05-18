@@ -226,9 +226,11 @@ export default function TrilhaAI() {
         <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="container mx-auto px-4 relative z-10 py-24">
-          <div className="max-w-4xl mx-auto">
+          <div className="grid xl:grid-cols-[58%_42%] gap-12 items-center max-w-6xl mx-auto">
 
-            <AnimatedSection animation="fade-up" delay={0}>
+            {/* Left — text */}
+            <div>
+            <AnimatedSection animation="fade-right" delay={0}>
               <div className="flex w-fit items-center gap-2 bg-white/5 border border-accent/30 rounded-full px-4 py-2 mb-8 backdrop-blur-sm">
                 <Map className="w-3.5 h-3.5 text-accent flex-shrink-0" />
                 <span className="text-xs font-semibold text-white/80 tracking-wide">
@@ -237,7 +239,7 @@ export default function TrilhaAI() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection animation="fade-up" delay={100}>
+            <AnimatedSection animation="fade-right" delay={100}>
               <h1 className="text-5xl md:text-6xl xl:text-7xl font-black leading-[1.05] mb-6 tracking-tight">
                 <span className="gradient-text-gold">TRILHA</span>
                 <span className="gradient-text">.AI</span>
@@ -250,7 +252,7 @@ export default function TrilhaAI() {
               </h1>
             </AnimatedSection>
 
-            <AnimatedSection animation="fade-up" delay={200}>
+            <AnimatedSection animation="fade-right" delay={200}>
               <p className="text-xl md:text-2xl text-white/55 leading-relaxed mb-4 max-w-2xl">
                 Mentoria 1:1 com Felipe Maranhão para profissionais e empreendedores que querem aplicar IA no próprio trabalho — com plano personalizado, sessões práticas e acompanhamento contínuo.
               </p>
@@ -279,6 +281,17 @@ export default function TrilhaAI() {
                   </Button>
                 </a>
               </div>
+            </AnimatedSection>
+            </div>
+
+            {/* Right — SVG illustration */}
+            <AnimatedSection animation="fade-left" delay={300} className="hidden xl:flex items-center justify-center">
+              <img
+                src="/solucoes/trilha-ai.svg"
+                alt=""
+                className="w-80 h-80 animate-trilha-float"
+                aria-hidden="true"
+              />
             </AnimatedSection>
 
           </div>

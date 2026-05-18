@@ -583,6 +583,42 @@
     50%       { box-shadow: 0 0 50px hsl(38 91% 58% / 0.65), 0 0 90px hsl(38 91% 58% / 0.25); }
   }
 
+  .animate-radar-spin {
+    animation: radarSpin 8s linear infinite;
+    transform-origin: center;
+  }
+
+  .animate-forge-pulse {
+    animation: forgePulse 2.8s ease-in-out infinite;
+  }
+
+  .animate-trilha-float {
+    animation: trilhaFloat 5s ease-in-out infinite;
+  }
+
+  @keyframes radarSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  @keyframes forgePulse {
+    0%, 100% {
+      opacity: 0.82;
+      transform: scale(1);
+      filter: drop-shadow(0 0 10px hsl(38 91% 58% / 0.35));
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.04);
+      filter: drop-shadow(0 0 28px hsl(38 91% 58% / 0.7));
+    }
+  }
+
+  @keyframes trilhaFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+  }
+
 
   @media (prefers-reduced-motion: reduce) {
     .animate-orb-1,
