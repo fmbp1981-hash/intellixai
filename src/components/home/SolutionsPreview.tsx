@@ -7,8 +7,8 @@ const fronts = [
   {
     icon: Search,
     image: "/solucoes/radar-ai.svg",
-    imageContainerClass: "h-28",
-    imageClass: "w-full h-full object-cover object-left",
+    imageContainerClass: "h-28 bg-[#060d1a] flex items-center justify-center",
+    imageClass: "h-full w-auto object-contain opacity-80",
     name: "RADAR.AI",
     nameGold: "RADAR",
     nameCyan: ".AI",
@@ -32,8 +32,8 @@ const fronts = [
   {
     icon: Hammer,
     image: "/solucoes/forja-ai.svg",
-    imageContainerClass: "h-28",
-    imageClass: "w-full h-full object-cover object-left",
+    imageContainerClass: "h-28 bg-[#0d0900] flex items-center justify-center",
+    imageClass: "h-full w-auto object-contain opacity-80",
     name: "FORJA.AI",
     nameGold: "FORJA",
     nameCyan: ".AI",
@@ -57,8 +57,8 @@ const fronts = [
   {
     icon: Map,
     image: "/solucoes/trilha-ai.svg",
-    imageContainerClass: "h-28",
-    imageClass: "w-full h-full object-cover object-left",
+    imageContainerClass: "h-28 bg-[#06040f] flex items-center justify-center",
+    imageClass: "h-full w-auto object-contain opacity-80",
     name: "TRILHA.AI",
     nameGold: "TRILHA",
     nameCyan: ".AI",

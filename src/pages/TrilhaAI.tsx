@@ -289,7 +289,7 @@ export default function TrilhaAI() {
               <img
                 src="/solucoes/trilha-ai.svg"
                 alt=""
-                className="w-80 h-80 animate-trilha-float"
+                className="w-64 h-64 animate-trilha-float"
                 aria-hidden="true"
               />
             </AnimatedSection>

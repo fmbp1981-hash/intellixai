@@ -11,8 +11,8 @@ const b2bFronts = [
   {
     icon: Search,
     image: "/solucoes/radar-ai.svg",
-    imageContainerClass: "h-32",
-    imageClass: "w-full h-full object-cover object-left",
+    imageContainerClass: "h-32 bg-[#060d1a] flex items-center justify-center",
+    imageClass: "h-full w-auto object-contain opacity-80",
     badge: "Consultoria estratégica",
     name: "RADAR.AI",
     nameGold: "RADAR",
@@ -36,8 +36,8 @@ const b2bFronts = [
   {
     icon: Hammer,
     image: "/solucoes/forja-ai.svg",
-    imageContainerClass: "h-32",
-    imageClass: "w-full h-full object-cover object-left",
+    imageContainerClass: "h-32 bg-[#0d0900] flex items-center justify-center",
+    imageClass: "h-full w-auto object-contain opacity-80",
     badge: "Desenvolvimento sob medida",
     name: "FORJA.AI",
     nameGold: "FORJA",
@@ -89,8 +89,8 @@ const b2cFronts = [
   {
     icon: Map,
     image: "/solucoes/trilha-ai.svg",
-    imageContainerClass: "h-32",
-    imageClass: "w-full h-full object-cover object-left",
+    imageContainerClass: "h-32 bg-[#06040f] flex items-center justify-center",
+    imageClass: "h-full w-auto object-contain opacity-80",
     badge: "Mentoria individual",
     name: "TRILHA.AI",
     nameGold: "TRILHA",

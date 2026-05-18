@@ -325,7 +325,7 @@ export default function ForjaAI() {
             {/* Right — SVG + stats/proof */}
             <AnimatedSection animation="fade-left" delay={300} className="hidden xl:block">
               <div className="flex flex-col items-center gap-6">
-              <img src="/solucoes/forja-ai.svg" alt="" className="w-52 h-52 animate-forge-pulse" aria-hidden="true" />
+              <img src="/solucoes/forja-ai.svg" alt="" className="w-40 h-40 animate-forge-pulse" aria-hidden="true" />
               <div className="space-y-4 w-full">
                 {[
                   { label: "Código entregue ao cliente", sub: "Propriedade intelectual 100% sua — sem lock-in", accent: true },

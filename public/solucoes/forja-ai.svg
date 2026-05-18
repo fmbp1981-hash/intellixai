@@ -1,31 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
   <defs>
-    <radialGradient id="forgeGlow" cx="50%" cy="65%" r="45%">
-      <stop offset="0%" stop-color="#F5A623" stop-opacity="0.35"/>
+    <radialGradient id="fg" cx="50%" cy="65%" r="45%">
+      <stop offset="0%" stop-color="#F5A623" stop-opacity="0.3"/>
       <stop offset="100%" stop-color="#F5A623" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="anvilGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F5A623" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#E8860A" stop-opacity="0.9"/>
-    </linearGradient>
   </defs>
-  <ellipse cx="200" cy="290" rx="130" ry="45" fill="url(#forgeGlow)"/>
-  <path d="M200 110 C200 88, 222 68, 212 44 C234 58, 246 86, 234 118 C264 90, 270 58, 260 30 C286 62, 280 104, 264 136 C276 124, 288 146, 272 168 C260 185, 234 196, 212 190 C184 200, 158 188, 145 167 C129 142, 135 116, 148 130 C132 98, 138 62, 165 42 C158 68, 176 86, 200 110Z" fill="#F5A623" fill-opacity="0.07" stroke="#F5A623" stroke-opacity="0.22" stroke-width="1"/>
-  <path d="M200 138 C200 122, 213 106, 207 93 C220 103, 225 122, 218 143 C231 127, 233 105, 227 89 C242 106, 239 132, 228 153 C234 145, 240 157, 229 168 C221 176, 207 181, 196 179 C180 182, 166 175, 159 166 C150 154, 154 141, 162 149 C151 129, 157 107, 171 99 C168 114, 180 123, 200 138Z" fill="#F5A623" fill-opacity="0.14" stroke="#F5A623" stroke-opacity="0.38" stroke-width="1"/>
-  <rect x="110" y="234" width="180" height="34" rx="3" fill="#F5A623" fill-opacity="0.08" stroke="#F5A623" stroke-opacity="0.28" stroke-width="1.5"/>
-  <rect x="130" y="268" width="140" height="58" rx="4" fill="#F5A623" fill-opacity="0.06" stroke="#F5A623" stroke-opacity="0.22" stroke-width="1.5"/>
-  <path d="M158 234 L96 196 L96 158" stroke="#0E94BB" stroke-opacity="0.28" stroke-width="1" stroke-dasharray="4 4"/>
-  <path d="M242 234 L304 196 L304 152" stroke="#0E94BB" stroke-opacity="0.28" stroke-width="1" stroke-dasharray="4 4"/>
-  <circle cx="96" cy="158" r="4" fill="#0E94BB" fill-opacity="0.5"/>
-  <circle cx="304" cy="152" r="4" fill="#0E94BB" fill-opacity="0.5"/>
-  <circle cx="64" cy="132" r="3" fill="#0E94BB" fill-opacity="0.3"/>
-  <circle cx="336" cy="120" r="3" fill="#0E94BB" fill-opacity="0.3"/>
-  <path d="M96 158 L64 132" stroke="#0E94BB" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="3 3"/>
-  <path d="M304 152 L336 120" stroke="#0E94BB" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="3 3"/>
-  <circle cx="163" cy="175" r="2.5" fill="#F5A623" fill-opacity="0.7"/>
-  <circle cx="237" cy="170" r="2" fill="#F5A623" fill-opacity="0.65"/>
-  <circle cx="152" cy="148" r="1.8" fill="#F5A623" fill-opacity="0.55"/>
-  <circle cx="248" cy="143" r="1.8" fill="#F5A623" fill-opacity="0.55"/>
-  <circle cx="146" cy="196" r="2" fill="#F5A623" fill-opacity="0.4"/>
-  <circle cx="254" cy="193" r="2" fill="#F5A623" fill-opacity="0.4"/>
+  <!-- glow base -->
+  <ellipse cx="100" cy="158" rx="68" ry="22" fill="url(#fg)"/>
+  <!-- anvil horn -->
+  <path d="M38 118 L78 100 L138 100 L162 118 Z" fill="#F5A623" fill-opacity="0.10" stroke="#F5A623" stroke-opacity="0.45" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- anvil body -->
+  <rect x="64" y="118" width="72" height="32" rx="3" fill="#F5A623" fill-opacity="0.08" stroke="#F5A623" stroke-opacity="0.38" stroke-width="1.5"/>
+  <!-- anvil base -->
+  <rect x="54" y="150" width="92" height="18" rx="3" fill="#F5A623" fill-opacity="0.07" stroke="#F5A623" stroke-opacity="0.30" stroke-width="1.5"/>
+  <!-- hammer head -->
+  <rect x="82" y="46" width="36" height="20" rx="3" fill="#F5A623" fill-opacity="0.14" stroke="#F5A623" stroke-opacity="0.55" stroke-width="1.5"/>
+  <!-- hammer handle -->
+  <line x1="100" y1="66" x2="100" y2="95" stroke="#F5A623" stroke-opacity="0.35" stroke-width="2" stroke-linecap="round"/>
+  <!-- circuit traces -->
+  <path d="M28 96 L64 118" stroke="#0E94BB" stroke-opacity="0.28" stroke-width="1" stroke-dasharray="3 3"/>
+  <path d="M172 96 L136 118" stroke="#0E94BB" stroke-opacity="0.28" stroke-width="1" stroke-dasharray="3 3"/>
+  <circle cx="28" cy="96" r="3.5" fill="#0E94BB" fill-opacity="0.45"/>
+  <circle cx="172" cy="96" r="3.5" fill="#0E94BB" fill-opacity="0.45"/>
+  <circle cx="14" cy="80" r="2.5" fill="#0E94BB" fill-opacity="0.25"/>
+  <circle cx="186" cy="80" r="2.5" fill="#0E94BB" fill-opacity="0.25"/>
+  <path d="M28 96 L14 80" stroke="#0E94BB" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="2 3"/>
+  <path d="M172 96 L186 80" stroke="#0E94BB" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="2 3"/>
+  <!-- sparks -->
+  <circle cx="130" cy="84" r="2" fill="#F5A623" fill-opacity="0.75"/>
+  <circle cx="142" cy="72" r="1.5" fill="#F5A623" fill-opacity="0.55"/>
+  <circle cx="150" cy="88" r="1.5" fill="#F5A623" fill-opacity="0.45"/>
+  <circle cx="70" cy="82" r="2" fill="#F5A623" fill-opacity="0.65"/>
+  <circle cx="58" cy="70" r="1.5" fill="#F5A623" fill-opacity="0.45"/>
 </svg>

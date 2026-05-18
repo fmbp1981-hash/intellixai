@@ -1,30 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
   <defs>
-    <linearGradient id="pathGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#F5A623" stop-opacity="0.7"/>
-      <stop offset="50%" stop-color="#0E94BB" stop-opacity="0.7"/>
-      <stop offset="100%" stop-color="#F5A623" stop-opacity="0.5"/>
+    <linearGradient id="pg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F5A623" stop-opacity="0.75"/>
+      <stop offset="55%" stop-color="#0E94BB" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#F5A623" stop-opacity="0.6"/>
     </linearGradient>
   </defs>
-  <line x1="0" y1="100" x2="400" y2="100" stroke="white" stroke-opacity="0.03" stroke-width="1"/>
-  <line x1="0" y1="200" x2="400" y2="200" stroke="white" stroke-opacity="0.03" stroke-width="1"/>
-  <line x1="0" y1="300" x2="400" y2="300" stroke="white" stroke-opacity="0.03" stroke-width="1"/>
-  <line x1="100" y1="0" x2="100" y2="400" stroke="white" stroke-opacity="0.03" stroke-width="1"/>
-  <line x1="200" y1="0" x2="200" y2="400" stroke="white" stroke-opacity="0.03" stroke-width="1"/>
-  <line x1="300" y1="0" x2="300" y2="400" stroke="white" stroke-opacity="0.03" stroke-width="1"/>
-  <path d="M80 360 C80 338, 102 318, 144 308 C186 298, 224 312, 246 290 C268 268, 254 238, 284 218 C314 198, 342 212, 342 178 C342 148, 312 128, 314 98 C316 68, 332 48, 322 28" stroke="url(#pathGrad)" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.65"/>
-  <circle cx="80" cy="360" r="13" fill="#F5A623" fill-opacity="0.12" stroke="#F5A623" stroke-opacity="0.6" stroke-width="1.5"/>
-  <circle cx="80" cy="360" r="5.5" fill="#F5A623" fill-opacity="0.85"/>
-  <circle cx="246" cy="290" r="13" fill="#0E94BB" fill-opacity="0.12" stroke="#0E94BB" stroke-opacity="0.5" stroke-width="1.5"/>
-  <circle cx="246" cy="290" r="5.5" fill="#0E94BB" fill-opacity="0.85"/>
-  <circle cx="342" cy="178" r="13" fill="#F5A623" fill-opacity="0.12" stroke="#F5A623" stroke-opacity="0.5" stroke-width="1.5"/>
-  <circle cx="342" cy="178" r="5.5" fill="#F5A623" fill-opacity="0.75"/>
-  <circle cx="322" cy="28" r="17" fill="#F5A623" fill-opacity="0.18" stroke="#F5A623" stroke-opacity="0.7" stroke-width="2"/>
-  <circle cx="322" cy="28" r="7" fill="#F5A623" fill-opacity="0.9"/>
-  <path d="M322 18 L324.5 25 L331 25 L326 29 L328 36 L322 32 L316 36 L318 29 L313 25 L319.5 25 Z" fill="#F5A623" fill-opacity="0.95"/>
-  <circle cx="112" cy="336" r="2" fill="#F5A623" fill-opacity="0.4"/>
-  <circle cx="158" cy="306" r="2" fill="#F5A623" fill-opacity="0.3"/>
-  <circle cx="268" cy="256" r="2" fill="#0E94BB" fill-opacity="0.4"/>
-  <circle cx="290" cy="232" r="2" fill="#0E94BB" fill-opacity="0.3"/>
-  <circle cx="330" cy="140" r="2" fill="#F5A623" fill-opacity="0.3"/>
+  <!-- path -->
+  <path d="M40 170 C40 150, 58 138, 80 138 C102 138, 114 152, 130 140 C146 128, 142 106, 160 90 C168 82, 174 76, 166 54" stroke="url(#pg)" stroke-width="2" stroke-dasharray="5 4" opacity="0.7" stroke-linecap="round"/>
+  <!-- waypoint 1 -->
+  <circle cx="40" cy="170" r="10" fill="#F5A623" fill-opacity="0.12" stroke="#F5A623" stroke-opacity="0.55" stroke-width="1.5"/>
+  <circle cx="40" cy="170" r="4.5" fill="#F5A623" fill-opacity="0.85"/>
+  <text x="54" y="175" fill="#F5A623" fill-opacity="0.35" font-size="9" font-family="system-ui" font-weight="600">Início</text>
+  <!-- waypoint 2 -->
+  <circle cx="130" cy="140" r="10" fill="#0E94BB" fill-opacity="0.12" stroke="#0E94BB" stroke-opacity="0.5" stroke-width="1.5"/>
+  <circle cx="130" cy="140" r="4.5" fill="#0E94BB" fill-opacity="0.85"/>
+  <!-- waypoint 3 -->
+  <circle cx="160" cy="90" r="10" fill="#F5A623" fill-opacity="0.12" stroke="#F5A623" stroke-opacity="0.45" stroke-width="1.5"/>
+  <circle cx="160" cy="90" r="4.5" fill="#F5A623" fill-opacity="0.75"/>
+  <!-- destination star -->
+  <circle cx="166" cy="54" r="13" fill="#F5A623" fill-opacity="0.16" stroke="#F5A623" stroke-opacity="0.65" stroke-width="2"/>
+  <path d="M166 44 L168.5 51 L176 51 L170 55.5 L172.5 62.5 L166 58 L159.5 62.5 L162 55.5 L156 51 L163.5 51 Z" fill="#F5A623" fill-opacity="0.9"/>
+  <!-- milestone dots -->
+  <circle cx="70" cy="155" r="1.8" fill="#F5A623" fill-opacity="0.38"/>
+  <circle cx="98" cy="145" r="1.8" fill="#0E94BB" fill-opacity="0.38"/>
+  <circle cx="148" cy="114" r="1.8" fill="#0E94BB" fill-opacity="0.35"/>
+  <circle cx="162" cy="72" r="1.8" fill="#F5A623" fill-opacity="0.35"/>
 </svg>
