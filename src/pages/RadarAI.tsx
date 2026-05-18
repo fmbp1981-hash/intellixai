@@ -378,7 +378,7 @@ export default function RadarAI() {
             {phases.map((phase, i) => (
               <AnimatedSection key={phase.number} animation="fade-up" delay={i * 80}>
                 <div className={`relative h-full p-7 rounded-2xl border ${phase.color} bg-white/4 hover:bg-white/6 transition-[background-color,border-color] duration-300 overflow-hidden`}>
-                  <span className="absolute bottom-3 right-5 text-7xl font-black text-white/4 select-none leading-none pointer-events-none">
+                  <span className="absolute inset-0 flex items-center justify-center text-[9rem] font-black text-white/[0.04] select-none leading-none pointer-events-none">
                     {phase.number}
                   </span>
 
