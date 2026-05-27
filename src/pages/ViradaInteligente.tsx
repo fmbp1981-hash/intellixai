@@ -68,10 +68,10 @@ const phases = [
   {
     number: "02",
     name: "Imersão presencial",
-    objective: "Equipe inteira sair usando 9 ferramentas de IA com tarefas reais.",
+    objective: "Equipe inteira sair do zero ao uso real das principais ferramentas de IA com tarefas reais.",
     deliveries: [
-      "3 horas presenciais com até 20 participantes",
-      "9 ferramentas: Claude, ChatGPT, Perplexity, Gemini, Fireflies, NotebookLM, Gamma, Manus, AI Studio",
+      "4 horas presenciais com até 20 participantes (turma aberta) ou 15 (in-company)",
+      "Ferramentas de IA Generativa cobrindo o espectro do trabalho moderno: texto, pesquisa, reuniões, apresentações, análise de dados, agentes autônomos e mais",
       "Cada participante resolve no mínimo 1 tarefa real durante a imersão",
       "Material físico ou digital entregue na hora",
     ],
@@ -102,7 +102,7 @@ const phases = [
 
 const differentials = [
   "Casos reais da sua empresa, não simulação. Cada exemplo usado durante a imersão sai do seu próprio dia a dia operacional.",
-  "9 ferramentas em 3 horas, não 3 ferramentas em 9 horas. A Virada cobre todo o espectro do trabalho moderno: texto, pesquisa, reunião, apresentação, agente autônomo e visual.",
+  "Cobre o espectro do trabalho moderno em 4 horas. Texto, pesquisa, reunião, apresentação, análise de dados, agente autônomo e visual — sem precisar de 40 horas de curso.",
   "Ministrada pelo fundador. Felipe Maranhão (Engenheiro Mecatrônico, MBA em IA para Negócios) está pessoalmente na sala. Não é instrutor terceirizado.",
   "Sai com tarefa resolvida, não com certificado. O objetivo é que a próxima reunião já use IA. Resultado mensurável em 7 dias.",
 ];
@@ -139,8 +139,8 @@ const faqs = [
     a: "A Virada é exclusivamente presencial. A metodologia \"Aprenda · Veja · Faça\" depende da presença física para o acompanhamento individual durante a prática guiada. Imersões online não entregam o mesmo resultado.",
   },
   {
-    q: "Quais ferramentas exatamente são ensinadas?",
-    a: "Claude.ai, ChatGPT, Perplexity, Gemini, Fireflies, NotebookLM, Gamma, Manus.ai e Google AI Studio. Cobre todo o espectro do trabalho moderno: assistente de texto, pesquisa com fontes, reuniões e conhecimento, apresentações, agente autônomo e criação visual.",
+    q: "Quais ferramentas são ensinadas?",
+    a: "A Virada cobre o espectro do trabalho moderno com IA — sem fixar uma quantidade exata, porque algumas ferramentas exigem mais tempo e outras cobrem múltiplas necessidades. O conteúdo inclui ferramentas para escrita, pesquisa com fontes, atas de reunião, apresentações, análise de dados, agentes autônomos e criação visual. Exemplos frequentemente usados: Claude, ChatGPT, Perplexity, Gemini, Fireflies, NotebookLM, Gamma e Google AI Studio. A customização pré-imersão garante que o foco vai para o que mais impacta a rotina da sua equipe.",
   },
   {
     q: "O que cada participante sai levando?",
@@ -206,7 +206,7 @@ export default function ViradaInteligente() {
                 <div className="flex w-fit items-center gap-2 bg-white/5 border border-accent/30 rounded-full px-4 py-2 mb-8 backdrop-blur-sm">
                   <Sparkles className="w-3.5 h-3.5 text-accent flex-shrink-0" />
                   <span className="text-xs font-semibold text-white/80 tracking-wide">
-                    Imersão executiva · 3 horas · Presencial
+                    Imersão executiva · 4 horas · Presencial
                   </span>
                 </div>
               </AnimatedSection>
@@ -224,8 +224,8 @@ export default function ViradaInteligente() {
 
               <AnimatedSection animation="fade-left" delay={260}>
                 <p className="text-lg md:text-xl text-white/60 leading-relaxed mb-8 max-w-lg">
-                  Em <strong className="text-white font-bold">3 horas</strong>, sua equipe inteira sai do zero ao uso real de{" "}
-                  <strong className="text-white font-bold">9 ferramentas de IA</strong>{" "}
+                  Em <strong className="text-white font-bold">4 horas</strong>, sua equipe inteira sai do zero ao uso real das{" "}
+                  <strong className="text-white font-bold">principais ferramentas de IA</strong>{" "}
                   no dia a dia. Sem teoria, sem palco. Mão na massa do início ao fim.
                 </p>
 
@@ -277,7 +277,7 @@ export default function ViradaInteligente() {
               <span className="gradient-text">com IA</span>
             </h2>
             <p className="text-lg text-white/55 max-w-3xl mx-auto leading-relaxed">
-              Uma imersão executiva de 3 horas — formato in-company ou turma aberta — onde sua equipe aprende a aplicar 9 das principais ferramentas de IA em tarefas reais do trabalho.
+              Uma imersão executiva de 4 horas — formato in-company ou turma aberta — onde sua equipe aprende a aplicar as principais ferramentas de IA Generativa em tarefas reais do trabalho.
               Sem pré-requisito técnico. Sem teoria longa. A metodologia é simples:{" "}
               <strong className="text-white">aprenda, veja funcionando, faça com a sua própria tarefa, sai usando.</strong>
             </p>
@@ -323,7 +323,7 @@ export default function ViradaInteligente() {
               {
                 label: "A virada acontece aqui",
                 color: "border-accent/70",
-                text: "Em 3 horas presenciais, sua equipe usa 9 ferramentas de IA com tarefas reais do trabalho dela. Não slide. Não simulação. A planilha que ela faz toda semana, o e-mail que ela escreve todo dia, o relatório que ela tem medo de fazer. Sai com isso pronto e sabendo refazer sozinha amanhã. Essa é a virada. Não é treinamento. É operação inicial.",
+                text: "Em 4 horas presenciais, sua equipe usa as principais ferramentas de IA com tarefas reais do trabalho dela. Não slide. Não simulação. A planilha que ela faz toda semana, o e-mail que ela escreve todo dia, o relatório que ela tem medo de fazer. Sai com isso pronto e sabendo refazer sozinha amanhã. Essa é a virada. Não é treinamento. É operação inicial.",
               },
             ].map((block, i) => (
               <AnimatedSection key={block.label} animation="fade-up" delay={i * 100}>
@@ -345,7 +345,7 @@ export default function ViradaInteligente() {
               Como funciona a <span className="gradient-text-gold">Virada Inteligente</span>
             </h2>
             <p className="text-white/50 text-lg">
-              Quatro fases. Três horas. Equipe saindo de lá usando IA em tarefa real do trabalho.
+              Quatro fases. Quatro horas. Equipe saindo de lá usando IA em tarefa real do trabalho.
             </p>
           </AnimatedSection>
 
@@ -611,7 +611,7 @@ export default function ViradaInteligente() {
               <span className="gradient-text-gold">começa hoje.</span>
             </h2>
             <p className="text-lg text-white/50 mb-10 leading-relaxed">
-              3 horas presenciais, 9 ferramentas, equipe inteira saindo de lá usando IA em tarefa real.{" "}
+              4 horas presenciais, espectro completo de ferramentas de IA, equipe inteira saindo de lá usando IA em tarefa real.{" "}
               Sem hype, sem teoria, sem promessa vazia.
             </p>
 

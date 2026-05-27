@@ -126,7 +126,7 @@ const frentes = [
     value: "Virada Inteligente in-company — Treinar minha equipe",
     icon: Users,
     label: "Virada Inteligente in-company",
-    description: "Imersão in-company — quero treinar minha equipe inteira em 3 horas com casos reais",
+    description: "Imersão in-company — quero treinar minha equipe inteira em 4 horas com casos reais",
     color: "border-yellow-500/30 bg-yellow-500/5",
     activeColor: "border-yellow-400 bg-yellow-400/12",
     iconColor: "text-yellow-400",

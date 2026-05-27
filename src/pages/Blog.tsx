@@ -48,12 +48,12 @@ const Blog = () => {
         <title>Blog & Insights | IntelliX.AI - Automação e IA</title>
         <meta
           name="description"
-          content="Conteúdo exclusivo sobre automação, inteligência artificial e transformação digital para impulsionar seu negócio."
+          content="Conteúdo exclusivo sobre automação e inteligência artificial aplicada ao negócio real para impulsionar seu resultado."
         />
         <meta property="og:title" content="Blog & Insights | IntelliX.AI" />
         <meta
           property="og:description"
-          content="Conteúdo exclusivo sobre automação, inteligência artificial e transformação digital para impulsionar seu negócio."
+          content="Conteúdo exclusivo sobre automação e inteligência artificial aplicada ao negócio real para impulsionar seu resultado."
         />
         <meta property="og:type" content="website" />
         <link rel="canonical" href="https://intellixai.lovable.app/blog" />

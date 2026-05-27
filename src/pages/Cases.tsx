@@ -99,7 +99,7 @@ const cases: Case[] = [
     description:
       "A IntelliX.AI já entregou a imersão Virada Inteligente para toda a equipe do Yolo Coliving. Agora, o Yolo AI Hub está em desenvolvimento final: três módulos integrados (SDR de IA no WhatsApp, SmartMatch de leads e Dashboard de performance) que vão automatizar o processo comercial completo. Primeira entrega prevista para breve.",
     deliveries: [
-      "Virada Inteligente concluída — equipe capacitada em 9 ferramentas de IA",
+      "Virada Inteligente concluída — equipe capacitada com as principais ferramentas de IA",
       "Yolo SDR — agente IA autônomo no WhatsApp (em entrega)",
       "SmartMatch — segmentação inteligente de leads via Bitrix24 (em entrega)",
       "Dashboard + Kanban com métricas e funil em tempo real (em entrega)",

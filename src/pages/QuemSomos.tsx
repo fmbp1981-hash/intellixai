@@ -47,9 +47,9 @@ export default function QuemSomos() {
     <Layout>
       <Helmet>
         <title>Quem Somos | IntelliX.AI - Automação e IA para Empresas</title>
-        <meta name="description" content="Conheça a IntelliX.AI: empresa especializada em automação inteligente, agentes de IA e transformação digital para PMEs brasileiras." />
+        <meta name="description" content="Conheça a IntelliX.AI: empresa especializada em automação inteligente e agentes de IA com resultado mensurável para PMEs brasileiras." />
         <meta property="og:title" content="Quem Somos | IntelliX.AI - Automação e IA para Empresas" />
-        <meta property="og:description" content="Conheça a IntelliX.AI: empresa especializada em automação inteligente, agentes de IA e transformação digital para PMEs brasileiras." />
+        <meta property="og:description" content="Conheça a IntelliX.AI: empresa especializada em automação inteligente e agentes de IA com resultado mensurável para PMEs brasileiras." />
         <meta property="og:type" content="website" />
         <link rel="canonical" href="https://intellixai.lovable.app/quem-somos" />
       </Helmet>

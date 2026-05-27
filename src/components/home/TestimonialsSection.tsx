@@ -15,13 +15,13 @@ const testimonials = [
   },
   {
     quote:
-      "Em 3 horas de Virada Inteligente, minha equipe saiu usando IA de verdade — não teoria. Já na semana seguinte, quatro colaboradores tinham automatizado tarefas que tomavam horas do dia.",
+      "A IntelliX.AI entregou nosso site e o sistema de prospecção com uma qualidade que não esperávamos. O LeadFinder Pro mudou a forma como abordamos novos clientes — hoje temos processo, não achismo.",
     name: "Felipe Nunes",
     role: "Sócio",
     company: "XPAG Brasil",
     initials: "FN",
     avatarColor: "from-yellow-400 to-amber-500",
-    badge: "Virada Inteligente",
+    badge: "LeadFinder Pro",
     badgeClass: "bg-yellow-400/10 border-yellow-400/25 text-yellow-300",
     accentBar: "from-accent to-yellow-400",
   },

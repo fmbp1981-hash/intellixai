@@ -88,7 +88,7 @@ const fronts = [
     nameGold: "Virada",
     nameCyan: " Inteligente",
     target: "In-company + Turma aberta",
-    headline: "Em 3 horas, sua equipe inteira sai do zero ao uso real de 9 ferramentas de IA.",
+    headline: "Em 4 horas, sua equipe inteira sai do zero ao uso real das principais ferramentas de IA.",
     deliveries: [
       "Imersão presencial com metodologia Aprenda · Veja · Faça",
       "Conteúdo customizado com tarefas reais da sua empresa",

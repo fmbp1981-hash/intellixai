@@ -87,7 +87,7 @@ const cases: Case[] = [
     description:
       "Imersão Virada Inteligente entregue e confirmada. Yolo AI Hub — hub de automação comercial com SDR de IA, SmartMatch e Dashboard — em desenvolvimento final e com entrega prevista para breve.",
     deliveries: [
-      "Imersão Virada Inteligente — equipe capacitada em 9 ferramentas de IA ✓",
+      "Imersão Virada Inteligente — equipe capacitada nas principais ferramentas de IA ✓",
       "Yolo SDR — agente IA autônomo no WhatsApp 24/7 (em entrega)",
       "SmartMatch — segmentação inteligente de leads via Bitrix24 (em entrega)",
       "Dashboard + Kanban com métricas e funil em tempo real (em entrega)",

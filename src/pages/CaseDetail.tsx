@@ -209,8 +209,8 @@ const cases: Record<string, Case> = {
       {
         title: "Virada Inteligente — Entregue ✓",
         deliveries: [
-          "Imersão presencial de 3h com toda a equipe do Yolo Coliving",
-          "9 ferramentas de IA aplicadas em tarefas reais da operação de coliving",
+          "Imersão presencial de 4h com toda a equipe do Yolo Coliving",
+          "Principais ferramentas de IA aplicadas em tarefas reais da operação de coliving",
           "Cada participante saiu com pelo menos 1 tarefa real resolvida com IA",
           "Material customizado para o vocabulário e rotinas do negócio",
           "30 dias de suporte pós-imersão por WhatsApp",

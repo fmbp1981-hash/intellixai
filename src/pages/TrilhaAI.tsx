@@ -194,7 +194,7 @@ const faqs = [
   },
   {
     q: "Qual a diferença entre a TRILHA.AI e a Virada Inteligente?",
-    a: "A Virada Inteligente é uma imersão de grupo de 3 horas, presencial, ideal para treinar equipes inteiras de uma vez. A TRILHA.AI é mentoria 1:1 de longo prazo, online, para quem quer aprofundamento personalizado no seu caso específico. Formatos complementares.",
+    a: "A Virada Inteligente é uma imersão de grupo de 4 horas, presencial, ideal para treinar equipes inteiras de uma vez. A TRILHA.AI é mentoria 1:1 de longo prazo, online, para quem quer aprofundamento personalizado no seu caso específico. Formatos complementares.",
   },
   {
     q: "Posso contratar a TRILHA.AI para minha equipe?",

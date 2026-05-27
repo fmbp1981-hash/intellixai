@@ -67,7 +67,7 @@ const b2bFronts = [
     name: "Virada Inteligente",
     nameGold: "Virada",
     nameCyan: " Inteligente",
-    tagline: "Em 3 horas, sua equipe inteira sai do zero ao uso real de 9 ferramentas de IA no dia a dia.",
+    tagline: "Em 4 horas, sua equipe inteira sai do zero ao uso real das principais ferramentas de IA no dia a dia.",
     bullets: [
       "Formato in-company com tarefas reais da sua empresa",
       "Cada participante sai com 1 tarefa concreta resolvida com IA",
@@ -122,7 +122,7 @@ const b2cFronts = [
     nameCyan: " Inteligente",
     tagline: "A mesma imersão executiva que treinou equipes inteiras, agora em formato de turma aberta para profissionais e líderes.",
     bullets: [
-      "3 horas presenciais com 9 ferramentas de IA ao vivo",
+      "4 horas presenciais com ferramentas de IA aplicadas ao vivo",
       "Aplicação prática em tarefas reais do seu trabalho",
       "Vagas limitadas — turmas com até 20 participantes",
     ],
