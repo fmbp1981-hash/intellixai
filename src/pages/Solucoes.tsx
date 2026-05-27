@@ -19,7 +19,7 @@ const b2bFronts = [
     nameCyan: ".AI",
     tagline: "Onde está a IA que mais gera resultado no seu negócio — antes de você gastar um centavo em projeto.",
     bullets: [
-      "Diagnóstico completo em 2 a 4 semanas",
+      "Diagnóstico conduzido dentro da sua empresa, in loco",
       "Mapa de oportunidades com ROI estimado por iniciativa",
       "Plano priorizado: quick wins + roadmap de 6 a 12 meses",
     ],

@@ -17,7 +17,6 @@ import {
   BarChart3,
   Map,
   FileText,
-  Clock,
   TrendingUp,
   AlertTriangle,
   ShieldCheck,
@@ -58,7 +57,6 @@ const phases = [
       "Identificação de gargalos, retrabalho e desperdício de tempo",
       "Análise dos sistemas e dados disponíveis",
     ],
-    duration: "3 a 5 dias úteis",
     color: "border-accent/50",
   },
   {
@@ -71,7 +69,6 @@ const phases = [
       "Estimativa de impacto: tempo, custo e receita",
       "Classificação por esforço de implementação",
     ],
-    duration: "5 a 7 dias úteis",
     color: "border-primary/50",
   },
   {
@@ -84,7 +81,6 @@ const phases = [
       "Iniciativas de médio prazo: 60 a 90 dias",
       "Visão de transformação: 6 a 12 meses",
     ],
-    duration: "3 dias úteis",
     color: "border-accent/30",
   },
   {
@@ -97,7 +93,6 @@ const phases = [
       "Recomendação priorizada e fundamentada",
       "30 dias de acesso direto ao consultor para dúvidas",
     ],
-    duration: "Dia de entrega",
     color: "border-primary/30",
   },
 ];
@@ -170,7 +165,7 @@ const roiCards = [
 const faqs = [
   {
     q: "O RADAR.AI é um software ou uma consultoria?",
-    a: "É consultoria especializada presencial e remota. Não existe painel para você acessar, não existe relatório automático. É um especialista IntelliX.AI mergulhado na sua operação durante 2 a 3 semanas, entregando um diagnóstico construído especificamente para o seu negócio.",
+    a: "É consultoria especializada conduzida dentro da sua empresa. Não existe painel para acessar, não existe relatório automático. Um especialista IntelliX.AI vai até você, entende os processos in loco e entrega um diagnóstico construído especificamente para o seu negócio.",
   },
   {
     q: "Qual o tamanho mínimo de empresa para fazer sentido?",
@@ -178,7 +173,7 @@ const faqs = [
   },
   {
     q: "Quanto tempo leva o processo completo?",
-    a: "De 2 a 4 semanas do início da imersão até a apresentação executiva final, dependendo da complexidade da operação e da disponibilidade da equipe do cliente para as entrevistas de mapeamento.",
+    a: "O prazo varia conforme a complexidade da operação e a disponibilidade da equipe para os mapeamentos. O diagnóstico é conduzido dentro da empresa, com ritmo definido em conjunto com o cliente — sem prazo fixo imposto de fora.",
   },
   {
     q: "O RADAR.AI inclui a implementação das soluções?",
@@ -347,7 +342,7 @@ export default function RadarAI() {
 
                 <div className="space-y-5 text-white/70 leading-relaxed">
                   <p>
-                    O RADAR.AI é um serviço de consultoria estratégica em que um especialista IntelliX.AI passa semanas mergulhado na sua empresa — entrevistando equipes, mapeando processos, analisando dados — para identificar com precisão cirúrgica onde a IA gera o maior retorno no seu caso específico.
+                    O RADAR.AI é um serviço de consultoria estratégica conduzido dentro da sua empresa. Um especialista IntelliX.AI vai até você, vivencia os processos in loco, entrevista equipes e analisa os dados — para identificar com precisão cirúrgica onde a IA gera o maior retorno no seu caso específico.
                   </p>
                   <p>
                     O resultado não é uma lista genérica de "como usar ChatGPT no trabalho". É um <strong className="text-white">mapa de oportunidades construído do zero para a sua realidade</strong> — com ROI estimado por iniciativa, plano de implementação priorizado e apresentação executiva para tomada de decisão.
@@ -401,10 +396,6 @@ export default function RadarAI() {
                       ))}
                     </ul>
 
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-3.5 h-3.5 text-primary" />
-                      <span className="text-xs text-primary font-medium">{phase.duration}</span>
-                    </div>
                   </div>
                 </div>
               </AnimatedSection>

@@ -15,7 +15,7 @@ const fronts = [
     target: "B2B · Diagnóstico estratégico",
     headline: "Antes de investir em IA, saiba exatamente onde ela gera retorno na sua operação.",
     deliveries: [
-      "Especialista mergulhado na sua operação por 2 a 4 semanas",
+      "Especialista que vai até sua empresa e vivencia os processos in loco",
       "Mapa de oportunidades com ROI estimado por iniciativa",
       "Plano priorizado: quick wins + roadmap de 6 a 12 meses",
     ],
