@@ -28,6 +28,10 @@ import {
   Shield,
 } from "lucide-react";
 
+// ─── CHECKOUT ────────────────────────────────────────────────────────────────
+// Substitua pelo link real gerado no painel Kiwify após criar o produto
+const KIWIFY_VIRADA_URL = "https://pay.kiwify.com.br/virada-inteligente";
+
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
 const methodology = [
@@ -477,12 +481,18 @@ export default function ViradaInteligente() {
                     </p>
                   </div>
 
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-auto">
-                    <Button className="w-full bg-gradient-to-r from-accent to-yellow-400 text-accent-foreground font-bold hover:from-accent/90 hover:to-yellow-400/90 shadow-[0_0_25px_hsl(var(--accent)/0.35)] transition-[box-shadow] duration-200 group">
-                      Inscrever-me agora
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                    </Button>
-                  </a>
+                  <div className="mt-auto space-y-3">
+                    <a href={KIWIFY_VIRADA_URL} target="_blank" rel="noopener noreferrer" className="block">
+                      <Button className="w-full bg-gradient-to-r from-accent to-yellow-400 text-accent-foreground font-black text-base hover:from-accent/90 hover:to-yellow-400/90 shadow-[0_0_30px_hsl(var(--accent)/0.5)] hover:shadow-[0_0_40px_hsl(var(--accent)/0.7)] transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 group py-6">
+                        Contratar agora — Kiwify
+                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </Button>
+                    </a>
+                    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 text-xs text-white/40 hover:text-[#25D366] transition-colors duration-200">
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      Tem dúvidas? Fale antes pelo WhatsApp
+                    </a>
+                  </div>
 
                   <p className="text-xs text-white/30 text-center mt-3">
                     *Parcelamento em até 12x no cartão de crédito. Também aceitamos Pix e boleto.
