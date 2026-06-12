@@ -484,10 +484,31 @@ export default function ViradaInteligente() {
                   <div className="mt-auto space-y-3">
                     <a href={KIWIFY_VIRADA_URL} target="_blank" rel="noopener noreferrer" className="block">
                       <Button className="w-full bg-gradient-to-r from-accent to-yellow-400 text-accent-foreground font-black text-base hover:from-accent/90 hover:to-yellow-400/90 shadow-[0_0_30px_hsl(var(--accent)/0.5)] hover:shadow-[0_0_40px_hsl(var(--accent)/0.7)] transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 group py-6">
-                        Contratar agora — Kiwify
+                        Contratar agora
                         <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                       </Button>
                     </a>
+
+                    {/* Métodos de pagamento */}
+                    <div className="flex items-center justify-center gap-2 flex-wrap">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-bold text-white/60">
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                        Cartão
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#32BCAD]/10 border border-[#32BCAD]/25 text-[11px] font-bold text-[#32BCAD]">
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                        PIX
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-bold text-white/60">
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16v16H4z"/><path d="M8 4v16M12 4v16M16 4v16"/></svg>
+                        Boleto
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-bold text-white/50">
+                        <Shield className="w-3 h-3" />
+                        Compra segura
+                      </span>
+                    </div>
+
                     <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 text-xs text-white/40 hover:text-[#25D366] transition-colors duration-200">
                       <MessageCircle className="w-3.5 h-3.5" />
                       Tem dúvidas? Fale antes pelo WhatsApp
@@ -495,7 +516,7 @@ export default function ViradaInteligente() {
                   </div>
 
                   <p className="text-xs text-white/30 text-center mt-3">
-                    *Parcelamento em até 12x no cartão de crédito. Também aceitamos Pix e boleto.
+                    *Parcelamento em até 12x no cartão de crédito. PIX e boleto à vista.
                   </p>
                 </div>
               </div>
