@@ -30,7 +30,7 @@ import {
 
 // ─── CHECKOUT ────────────────────────────────────────────────────────────────
 // Substitua pelo link real gerado no painel Kiwify após criar o produto
-const KIWIFY_VIRADA_URL = "https://pay.kiwify.com.br/virada-inteligente";
+const KIWIFY_VIRADA_URL = "https://pay.kiwify.com.br/2ULxCsN";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
