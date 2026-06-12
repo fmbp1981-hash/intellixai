@@ -145,7 +145,7 @@ const b2cFronts = [
 
 // ─── Components ───────────────────────────────────────────────────────────────
 
-type Front = typeof b2bFronts[0];
+type Front = typeof b2bFronts[0] | typeof b2cFronts[0];
 
 function FrontCard({ front, delay = 0 }: { front: Front; delay?: number }) {
   const Icon = front.icon;
@@ -203,7 +203,7 @@ function FrontCard({ front, delay = 0 }: { front: Front; delay?: number }) {
           {/* CTA + category label */}
           <div className="flex items-center justify-between gap-3 mt-auto">
             <span className={`text-[10px] font-black uppercase tracking-widest ${front.checkColor} opacity-70`}>
-              {(front as { categoryLabel?: string }).categoryLabel}
+              {front.categoryLabel}
             </span>
             <Link to={front.ctaHref}>
               <Button
