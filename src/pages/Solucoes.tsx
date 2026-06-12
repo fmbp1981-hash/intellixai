@@ -23,6 +23,7 @@ const b2bFronts = [
       "Mapa de oportunidades com ROI estimado por iniciativa",
       "Plano priorizado: quick wins + roadmap de 6 a 12 meses",
     ],
+    categoryLabel: "CONSULTORIA",
     ctaLabel: "Conhecer o RADAR.AI",
     ctaHref: "/radar-ai",
     topBar: "from-cyan-400 to-primary",
@@ -48,6 +49,7 @@ const b2bFronts = [
       "Integração com seus sistemas atuais — sem substituir o que funciona",
       "Propriedade intelectual do código 100% entregue ao cliente",
     ],
+    categoryLabel: "DESENVOLVIMENTO",
     ctaLabel: "Conhecer a FORJA.AI",
     ctaHref: "/forja-ai",
     topBar: "from-accent to-yellow-400",
@@ -73,6 +75,7 @@ const b2bFronts = [
       "Cada participante sai com 1 tarefa concreta resolvida com IA",
       "30 dias de suporte por WhatsApp após a imersão",
     ],
+    categoryLabel: "EXPERIÊNCIA",
     ctaLabel: "Conhecer a Virada Inteligente",
     ctaHref: "/virada-inteligente",
     topBar: "from-emerald-500 to-teal-400",
@@ -101,6 +104,7 @@ const b2cFronts = [
       "Plano de trilha personalizado com suas tarefas reais",
       "Canal direto entre sessões para dúvidas de aplicação",
     ],
+    categoryLabel: "MENTORIA",
     ctaLabel: "Conhecer a TRILHA.AI",
     ctaHref: "/trilha-ai",
     topBar: "from-violet-500 to-purple-400",
@@ -126,6 +130,7 @@ const b2cFronts = [
       "Aplicação prática em tarefas reais do seu trabalho",
       "Vagas limitadas — turmas com até 20 participantes",
     ],
+    categoryLabel: "EDUCAÇÃO",
     ctaLabel: "Ver próximas turmas",
     ctaHref: "/virada-inteligente#turmas",
     topBar: "from-emerald-500 to-teal-400",
@@ -186,7 +191,7 @@ function FrontCard({ front, delay = 0 }: { front: Front; delay?: number }) {
           </p>
 
           {/* Bullets */}
-          <ul className="space-y-2.5 mb-7 flex-1">
+          <ul className="space-y-2.5 mb-5 flex-1">
             {front.bullets.map((bullet) => (
               <li key={bullet} className="flex items-start gap-2.5">
                 <CheckCircle className={`w-4 h-4 ${front.checkColor} mt-0.5 flex-shrink-0`} />
@@ -195,17 +200,22 @@ function FrontCard({ front, delay = 0 }: { front: Front; delay?: number }) {
             ))}
           </ul>
 
-          {/* CTA */}
-          <Link to={front.ctaHref}>
-            <Button
-              variant="outline"
-              size="sm"
-              className={`w-full border transition-[border-color,background-color] duration-200 group/btn ${front.cta}`}
-            >
-              {front.ctaLabel}
-              <ArrowRight className="ml-2 w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
-            </Button>
-          </Link>
+          {/* CTA + category label */}
+          <div className="flex items-center justify-between gap-3 mt-auto">
+            <span className={`text-[10px] font-black uppercase tracking-widest ${front.checkColor} opacity-70`}>
+              {(front as { categoryLabel?: string }).categoryLabel}
+            </span>
+            <Link to={front.ctaHref}>
+              <Button
+                variant="outline"
+                size="sm"
+                className={`border transition-[border-color,background-color] duration-200 group/btn ${front.cta}`}
+              >
+                {front.ctaLabel}
+                <ArrowRight className="ml-2 w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </AnimatedSection>
