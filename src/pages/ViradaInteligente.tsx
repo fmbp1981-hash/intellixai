@@ -467,7 +467,7 @@ export default function ViradaInteligente() {
                   <div className="border border-accent/20 rounded-xl p-5 bg-black/20 mb-5">
                     <p className="text-xs font-bold uppercase tracking-widest text-accent mb-3">Pronto para dar a virada com IA?</p>
                     <p className="text-3xl font-black text-white mb-1">
-                      12x de R$&nbsp;99,07
+                      12x de R$&nbsp;113,46
                     </p>
                     <p className="text-sm text-white/50 mb-3">ou <strong className="text-white">R$&nbsp;1.097,00</strong> à vista</p>
                     <div className="flex items-center gap-2 p-2.5 rounded-lg bg-accent/10 border border-accent/20 mb-3">
