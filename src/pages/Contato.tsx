@@ -44,6 +44,15 @@ const contactItems = [
     color: "text-violet-400",
     bg: "bg-violet-500/10 border-violet-500/20",
   },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "IntelliX .AI",
+    href: "https://www.linkedin.com/in/intellix-ai-919136416",
+    isExternal: true,
+    color: "text-[#0A66C2]",
+    bg: "bg-[#0A66C2]/10 border-[#0A66C2]/20",
+  },
 ];
 
 export default function Contato() {
