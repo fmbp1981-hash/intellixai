@@ -95,7 +95,7 @@ export function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://linkedin.com/company/intellixai"
+                href="https://www.linkedin.com/in/intellix-ai-919136416"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:border-primary/50 hover:text-primary hover:bg-primary/8 hover:scale-110 transition-[border-color,color,background-color,transform] duration-200"
@@ -168,6 +168,12 @@ export function Footer() {
                   <MapPin className="w-4 h-4 text-primary/60 flex-shrink-0" />
                   Recife, PE — Brasil
                 </div>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/intellix-ai-919136416" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/45 hover:text-primary text-sm transition-colors duration-200">
+                  <Linkedin className="w-4 h-4 text-primary/60 flex-shrink-0" />
+                  IntelliX .AI no LinkedIn
+                </a>
               </li>
             </ul>
           </div>
