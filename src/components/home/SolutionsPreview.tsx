@@ -12,6 +12,7 @@ const fronts = [
     name: "RADAR.AI",
     nameGold: "RADAR",
     nameCyan: ".AI",
+    categoryLabel: "CONSULTORIA",
     target: "B2B · Diagnóstico estratégico",
     headline: "Antes de investir em IA, saiba exatamente onde ela gera retorno na sua operação.",
     deliveries: [
@@ -20,7 +21,6 @@ const fronts = [
       "Plano priorizado: quick wins + roadmap de 6 a 12 meses",
     ],
     url: "/radar-ai",
-    // Cyan / primary
     topBar: "from-cyan-400 to-primary",
     iconBg: "bg-cyan-400/15 border-cyan-400/30",
     iconColor: "text-cyan-400",
@@ -37,6 +37,7 @@ const fronts = [
     name: "FORJA.AI",
     nameGold: "FORJA",
     nameCyan: ".AI",
+    categoryLabel: "DESENVOLVIMENTO",
     target: "B2B · Desenvolvimento sob medida",
     headline: "Quando o problema é único, a solução precisa ser construída do zero — com IA.",
     deliveries: [
@@ -45,7 +46,6 @@ const fronts = [
       "Código entregue ao cliente. Propriedade intelectual 100% sua.",
     ],
     url: "/forja-ai",
-    // Gold / accent
     topBar: "from-accent to-yellow-400",
     iconBg: "bg-yellow-400/15 border-yellow-400/30",
     iconColor: "text-yellow-400",
@@ -62,6 +62,7 @@ const fronts = [
     name: "TRILHA.AI",
     nameGold: "TRILHA",
     nameCyan: ".AI",
+    categoryLabel: "MENTORIA",
     target: "B2C · Mentoria individual",
     headline: "Sua trilha de IA personalizada — com plano, sessões práticas 1:1 e acompanhamento.",
     deliveries: [
@@ -70,7 +71,6 @@ const fronts = [
       "Canal direto entre sessões para dúvidas de aplicação",
     ],
     url: "/trilha-ai",
-    // Violet
     topBar: "from-violet-500 to-purple-400",
     iconBg: "bg-violet-500/15 border-violet-500/30",
     iconColor: "text-violet-400",
@@ -87,6 +87,7 @@ const fronts = [
     name: "Virada Inteligente",
     nameGold: "Virada",
     nameCyan: " Inteligente",
+    categoryLabel: "EXPERIÊNCIA",
     target: "In-company + Turma aberta",
     headline: "Em 4 horas, sua equipe inteira sai do zero ao uso real das principais ferramentas de IA.",
     deliveries: [
@@ -95,7 +96,6 @@ const fronts = [
       "30 dias de suporte pós-imersão por WhatsApp",
     ],
     url: "/virada-inteligente",
-    // Emerald
     topBar: "from-emerald-500 to-teal-400",
     iconBg: "bg-emerald-500/15 border-emerald-500/30",
     iconColor: "text-emerald-400",
@@ -172,7 +172,7 @@ export function SolutionsPreview() {
                   </p>
 
                   {/* Deliveries */}
-                  <ul className="space-y-2 mb-5 flex-1">
+                  <ul className="space-y-2 mb-4 flex-1">
                     {f.deliveries.slice(0, 2).map((d) => (
                       <li key={d} className="flex items-start gap-2 text-xs text-white/55 leading-snug">
                         <ArrowRight className="w-3 h-3 mt-0.5 flex-shrink-0 text-white/25" />
@@ -181,17 +181,22 @@ export function SolutionsPreview() {
                     ))}
                   </ul>
 
-                  {/* CTA */}
-                  <Link to={f.url}>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className={`w-full border text-xs transition-[border-color,background-color] duration-200 group/btn ${f.cta}`}
-                    >
-                      Conhecer a frente
-                      <ArrowRight className="ml-1.5 w-3 h-3 group-hover/btn:translate-x-0.5 transition-transform" />
-                    </Button>
-                  </Link>
+                  {/* Category label + CTA */}
+                  <div className="flex items-center justify-between gap-2 mt-auto">
+                    <span className={`text-[10px] font-black uppercase tracking-widest ${f.iconColor} opacity-70 flex-shrink-0`}>
+                      {f.categoryLabel}
+                    </span>
+                    <Link to={f.url}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className={`border text-xs transition-[border-color,background-color] duration-200 group/btn ${f.cta}`}
+                      >
+                        Conhecer a frente
+                        <ArrowRight className="ml-1.5 w-3 h-3 group-hover/btn:translate-x-0.5 transition-transform" />
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </AnimatedSection>
