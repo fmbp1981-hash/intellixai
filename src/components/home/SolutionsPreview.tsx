@@ -87,7 +87,7 @@ const fronts = [
     name: "Virada Inteligente",
     nameGold: "Virada",
     nameCyan: " Inteligente",
-    categoryLabel: "EXPERIÊNCIA",
+    categoryLabel: "EDUCAÇÃO / EXPERIÊNCIA",
     target: "In-company + Turma aberta",
     headline: "Em 4 horas, sua equipe inteira sai do zero ao uso real das principais ferramentas de IA.",
     deliveries: [
