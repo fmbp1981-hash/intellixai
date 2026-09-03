@@ -2,6 +2,10 @@ import yoloTurma1 from "@/assets/virada/yolo-turma-1.jpeg.asset.json";
 import yoloTurma2 from "@/assets/virada/yolo-turma-2.jpeg.asset.json";
 import yoloInstrutor from "@/assets/virada/yolo-instrutor.jpeg.asset.json";
 import yoloTela from "@/assets/virada/yolo-tela.jpeg.asset.json";
+import yoloVideoInstrutor from "@/assets/virada/yolo-instrutor-video.mp4.asset.json";
+import yoloVideoInstrutorPoster from "@/assets/virada/yolo-instrutor-video-poster.jpg.asset.json";
+import yoloVideoParticipantes from "@/assets/virada/yolo-participantes-video.mp4.asset.json";
+import yoloVideoParticipantesPoster from "@/assets/virada/yolo-participantes-video-poster.jpg.asset.json";
 
 export type Midia = {
   tipo: "image" | "video";
