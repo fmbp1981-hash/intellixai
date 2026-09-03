@@ -42,7 +42,7 @@ export function GaleriaRegistros({ highlightId }: GaleriaRegistrosProps) {
         <div className="space-y-14">
           {registrosVirada.map((registro, ri) => (
             <AnimatedSection key={registro.id} animation="fade-up" delay={ri * 100}>
-              <div className="rounded-2xl border border-white/8 bg-white/4 p-6 md:p-8">
+              <div id={registro.id} className="rounded-2xl border border-white/8 bg-white/4 p-6 md:p-8 scroll-mt-24">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap mb-2">
