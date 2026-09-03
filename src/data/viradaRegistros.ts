@@ -35,6 +35,18 @@ export const registrosVirada: RegistroTurma[] = [
       "Equipe capacitada nas principais ferramentas de IA aplicadas à rotina comercial e operacional, com casos práticos construídos ao vivo durante a imersão.",
     midias: [
       {
+        tipo: "video",
+        url: yoloVideoInstrutor.url,
+        poster: yoloVideoInstrutorPoster.url,
+        alt: "Vídeo do instrutor da IntelliX.AI conduzindo o treinamento de IA na Yolo Coliving",
+      },
+      {
+        tipo: "video",
+        url: yoloVideoParticipantes.url,
+        poster: yoloVideoParticipantesPoster.url,
+        alt: "Vídeo dos participantes praticando com ferramentas de IA durante a Virada Inteligente",
+      },
+      {
         tipo: "image",
         url: yoloTurma1.url,
         alt: "Turma da Yolo Coliving reunida ao final da imersão Virada Inteligente",
