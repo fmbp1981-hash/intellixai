@@ -11,6 +11,14 @@ interface GaleriaRegistrosProps {
 export function GaleriaRegistros({ highlightId }: GaleriaRegistrosProps) {
   const [ativo, setAtivo] = useState<{ midias: Midia[]; index: number } | null>(null);
 
+  useEffect(() => {
+    if (!highlightId) return;
+    const el = document.getElementById(highlightId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [highlightId]);
+
   const midiaAtual = ativo ? ativo.midias[ativo.index] : null;
 
   const navegar = (delta: number) => {
