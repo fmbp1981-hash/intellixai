@@ -431,7 +431,7 @@ export default function ViradaInteligente() {
       </section>
 
       {/* ── 5.1 GALERIA DE REGISTROS ────────────────────────────────────────── */}
-      <GaleriaRegistros />
+      <GaleriaRegistros highlightId="yolo-coliving-2026-08-27" />
 
       {/* ── 6. QUANDO E COMO PARTICIPAR ─────────────────────────────────────── */}
 
