@@ -105,8 +105,8 @@ const cases: Case[] = [
       "Dashboard + Kanban com métricas e funil em tempo real (em entrega)",
     ],
     products: [
-      { name: "Yolo AI Hub", url: "/virada-inteligente", isExternal: false },
-      { name: "Virada Inteligente", url: "/virada-inteligente", isExternal: false },
+      { name: "Yolo AI Hub", url: "/virada-inteligente#yolo-coliving-2026-08-27", isExternal: false },
+      { name: "Virada Inteligente", url: "/virada-inteligente#yolo-coliving-2026-08-27", isExternal: false },
     ],
     gradient: "from-accent to-yellow-400",
     avatarGradient: "from-accent/30 to-yellow-400/20",

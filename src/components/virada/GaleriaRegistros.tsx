@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Calendar, MapPin, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { registrosVirada, type Midia } from "@/data/viradaRegistros";
 
-export function GaleriaRegistros() {
+interface GaleriaRegistrosProps {
+  highlightId?: string;
+}
+
+export function GaleriaRegistros({ highlightId }: GaleriaRegistrosProps) {
   const [ativo, setAtivo] = useState<{ midias: Midia[]; index: number } | null>(null);
+
+  useEffect(() => {
+    if (!highlightId) return;
+    const el = document.getElementById(highlightId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [highlightId]);
 
   const midiaAtual = ativo ? ativo.midias[ativo.index] : null;
 
@@ -38,7 +50,7 @@ export function GaleriaRegistros() {
         <div className="space-y-14">
           {registrosVirada.map((registro, ri) => (
             <AnimatedSection key={registro.id} animation="fade-up" delay={ri * 100}>
-              <div className="rounded-2xl border border-white/8 bg-white/4 p-6 md:p-8">
+              <div id={registro.id} className="rounded-2xl border border-white/8 bg-white/4 p-6 md:p-8 scroll-mt-24">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap mb-2">
