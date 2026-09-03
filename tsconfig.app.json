@@ -19,6 +19,8 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noImplicitAny": false,
+    "resolveJsonModule": true,
+
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@/*": [
