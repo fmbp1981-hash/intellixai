@@ -2,6 +2,10 @@ import yoloTurma1 from "@/assets/virada/yolo-turma-1.jpeg.asset.json";
 import yoloTurma2 from "@/assets/virada/yolo-turma-2.jpeg.asset.json";
 import yoloInstrutor from "@/assets/virada/yolo-instrutor.jpeg.asset.json";
 import yoloTela from "@/assets/virada/yolo-tela.jpeg.asset.json";
+import yoloVideoInstrutor from "@/assets/virada/yolo-instrutor-video.mp4.asset.json";
+import yoloVideoInstrutorPoster from "@/assets/virada/yolo-instrutor-video-poster.jpg.asset.json";
+import yoloVideoParticipantes from "@/assets/virada/yolo-participantes-video.mp4.asset.json";
+import yoloVideoParticipantesPoster from "@/assets/virada/yolo-participantes-video-poster.jpg.asset.json";
 
 export type Midia = {
   tipo: "image" | "video";
@@ -30,6 +34,18 @@ export const registrosVirada: RegistroTurma[] = [
     descricao:
       "Equipe capacitada nas principais ferramentas de IA aplicadas à rotina comercial e operacional, com casos práticos construídos ao vivo durante a imersão.",
     midias: [
+      {
+        tipo: "video",
+        url: yoloVideoInstrutor.url,
+        poster: yoloVideoInstrutorPoster.url,
+        alt: "Vídeo do instrutor da IntelliX.AI conduzindo o treinamento de IA na Yolo Coliving",
+      },
+      {
+        tipo: "video",
+        url: yoloVideoParticipantes.url,
+        poster: yoloVideoParticipantesPoster.url,
+        alt: "Vídeo dos participantes praticando com ferramentas de IA durante a Virada Inteligente",
+      },
       {
         tipo: "image",
         url: yoloTurma1.url,
