@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { Helmet } from "react-helmet-async";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
+import { GaleriaRegistros } from "@/components/virada/GaleriaRegistros";
+
 import {
   Accordion,
   AccordionContent,
@@ -428,7 +430,11 @@ export default function ViradaInteligente() {
         </div>
       </section>
 
+      {/* ── 5.1 GALERIA DE REGISTROS ────────────────────────────────────────── */}
+      <GaleriaRegistros />
+
       {/* ── 6. QUANDO E COMO PARTICIPAR ─────────────────────────────────────── */}
+
       <section id="turmas" className="py-24 bg-[#0A1525]">
         <div className="container mx-auto px-4 max-w-5xl">
           <AnimatedSection className="text-center mb-12">
