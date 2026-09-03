@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Calendar, MapPin, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { registrosVirada, type Midia } from "@/data/viradaRegistros";
 
-export function GaleriaRegistros() {
+interface GaleriaRegistrosProps {
+  highlightId?: string;
+}
+
+export function GaleriaRegistros({ highlightId }: GaleriaRegistrosProps) {
   const [ativo, setAtivo] = useState<{ midias: Midia[]; index: number } | null>(null);
 
   const midiaAtual = ativo ? ativo.midias[ativo.index] : null;
