@@ -1,11 +1,17 @@
 import yoloTurma1 from "@/assets/virada/yolo-turma-1.jpeg.asset.json";
 import yoloTurma2 from "@/assets/virada/yolo-turma-2.jpeg.asset.json";
 import yoloInstrutor from "@/assets/virada/yolo-instrutor.jpeg.asset.json";
-import yoloTela from "@/assets/virada/yolo-tela.jpeg.asset.json";
 import yoloVideoInstrutor from "@/assets/virada/yolo-instrutor-video.mp4.asset.json";
 import yoloVideoInstrutorPoster from "@/assets/virada/yolo-instrutor-video-poster.jpg.asset.json";
 import yoloVideoParticipantes from "@/assets/virada/yolo-participantes-video.mp4.asset.json";
 import yoloVideoParticipantesPoster from "@/assets/virada/yolo-participantes-video-poster.jpg.asset.json";
+import frameInstrutorTela from "@/assets/virada/yolo-frame-instrutor-tela.jpg.asset.json";
+import frameInstrutorExplica from "@/assets/virada/yolo-frame-instrutor-explica.jpg.asset.json";
+import frameParticipantesAtentos from "@/assets/virada/yolo-frame-participantes-atentos.jpg.asset.json";
+import frameInstrutorApontando from "@/assets/virada/yolo-frame-instrutor-apontando.jpg.asset.json";
+import frameParticipantePergunta from "@/assets/virada/yolo-frame-participante-pergunta.jpg.asset.json";
+import frameMaosNaMassa from "@/assets/virada/yolo-frame-maos-na-massa.jpg.asset.json";
+
 
 export type Midia = {
   tipo: "image" | "video";
@@ -63,9 +69,35 @@ export const registrosVirada: RegistroTurma[] = [
       },
       {
         tipo: "image",
-        url: yoloTela.url,
-        alt: "Tela com ferramentas de IA em uso durante o treinamento in company",
+        url: frameInstrutorTela.url,
+        alt: "Instrutor da IntelliX.AI apresentando ferramentas de IA na tela durante o treinamento",
       },
+      {
+        tipo: "image",
+        url: frameInstrutorApontando.url,
+        alt: "Instrutor demonstrando um fluxo de automação na tela para a equipe da Yolo Coliving",
+      },
+      {
+        tipo: "image",
+        url: frameInstrutorExplica.url,
+        alt: "Instrutor explicando aplicações práticas de Inteligência Artificial para a rotina da empresa",
+      },
+      {
+        tipo: "image",
+        url: frameParticipantePergunta.url,
+        alt: "Participante tirando dúvidas com o instrutor durante a imersão Virada Inteligente",
+      },
+      {
+        tipo: "image",
+        url: frameMaosNaMassa.url,
+        alt: "Participantes colocando a mão na massa com ferramentas de IA no notebook",
+      },
+      {
+        tipo: "image",
+        url: frameParticipantesAtentos.url,
+        alt: "Equipe da Yolo Coliving acompanhando a demonstração de ferramentas de IA",
+      },
+
     ],
   },
 ];
