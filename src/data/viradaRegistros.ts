@@ -69,9 +69,35 @@ export const registrosVirada: RegistroTurma[] = [
       },
       {
         tipo: "image",
-        url: yoloTela.url,
-        alt: "Tela com ferramentas de IA em uso durante o treinamento in company",
+        url: frameInstrutorTela.url,
+        alt: "Instrutor da IntelliX.AI apresentando ferramentas de IA na tela durante o treinamento",
       },
+      {
+        tipo: "image",
+        url: frameInstrutorApontando.url,
+        alt: "Instrutor demonstrando um fluxo de automação na tela para a equipe da Yolo Coliving",
+      },
+      {
+        tipo: "image",
+        url: frameInstrutorExplica.url,
+        alt: "Instrutor explicando aplicações práticas de Inteligência Artificial para a rotina da empresa",
+      },
+      {
+        tipo: "image",
+        url: frameParticipantePergunta.url,
+        alt: "Participante tirando dúvidas com o instrutor durante a imersão Virada Inteligente",
+      },
+      {
+        tipo: "image",
+        url: frameMaosNaMassa.url,
+        alt: "Participantes colocando a mão na massa com ferramentas de IA no notebook",
+      },
+      {
+        tipo: "image",
+        url: frameParticipantesAtentos.url,
+        alt: "Equipe da Yolo Coliving acompanhando a demonstração de ferramentas de IA",
+      },
+
     ],
   },
 ];
