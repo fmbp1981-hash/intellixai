@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/lib/helmet-compat";
 import { Link } from "@/lib/router-compat";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Phone, MapPin, MessageCircle, Instagram, Linkedin } from "lucide-react";

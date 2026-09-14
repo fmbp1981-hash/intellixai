@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Link } from "@/lib/router-compat";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/lib/helmet-compat";
 import { ArrowLeft, Tag, Clock, User, Calendar } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";

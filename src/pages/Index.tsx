@@ -7,7 +7,7 @@ import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { PortfolioPreview } from "@/components/home/PortfolioPreview";
 import { LeadCaptureForm } from "@/components/home/LeadCaptureForm";
 import { CTASection } from "@/components/home/CTASection";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/lib/helmet-compat";
 
 const Index = () => {
   return (
