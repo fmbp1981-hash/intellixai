@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, TrendingUp, MessageSquare, TrendingDown, Zap, BookOpen } from "lucide-react";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
