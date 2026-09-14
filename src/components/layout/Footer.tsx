@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react";
 import logo from "@/assets/logo-intellix.png";
 
@@ -39,7 +39,8 @@ const NeuralBackground = () => {
           </linearGradient>
         </defs>
         {connections.map((conn, i) => {
-          const from = nodes[conn[0]]; const to = nodes[conn[1]];
+          const from = nodes[conn[0] ?? 0]; const to = nodes[conn[1] ?? 0];
+          if (!from || !to) return null;
           return <line key={i} x1={`${from.x}%`} y1={`${from.y}%`} x2={`${to.x}%`} y2={`${to.y}%`} stroke="url(#footerLineGradient)" strokeWidth="1" opacity="0.4" />;
         })}
         {nodes.map((node, i) => (

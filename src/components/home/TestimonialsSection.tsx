@@ -47,7 +47,7 @@ export function TestimonialsSection() {
       <div className="container mx-auto px-4 relative z-10">
 
         <AnimatedSection className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-5 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-5 backdrop-blur-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span className="text-xs font-bold uppercase tracking-widest text-white/50">
               Quem usa, recomenda

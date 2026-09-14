@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/layout/Layout";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, ArrowRight } from "lucide-react";
 

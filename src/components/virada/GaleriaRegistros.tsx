@@ -83,7 +83,7 @@ export function GaleriaRegistros({ highlightId }: GaleriaRegistrosProps) {
                       key={m.url}
                       type="button"
                       onClick={() => setAtivo({ midias: registro.midias, index: i })}
-                      className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                      className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 bg-black/30 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-accent/60"
                     >
                       <img
                         src={m.tipo === "video" ? m.poster ?? m.url : m.url}

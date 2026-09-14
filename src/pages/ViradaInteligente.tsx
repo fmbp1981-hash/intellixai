@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { Helmet } from "react-helmet-async";
@@ -209,7 +209,7 @@ export default function ViradaInteligente() {
             <div className="flex flex-col">
 
               <AnimatedSection animation="fade-left" delay={60}>
-                <div className="flex w-fit items-center gap-2 bg-white/5 border border-accent/30 rounded-full px-4 py-2 mb-8 backdrop-blur-sm">
+                <div className="flex w-fit items-center gap-2 bg-white/5 border border-accent/30 rounded-full px-4 py-2 mb-8 backdrop-blur-xs">
                   <Sparkles className="w-3.5 h-3.5 text-accent flex-shrink-0" />
                   <span className="text-xs font-semibold text-white/80 tracking-wide">
                     Imersão executiva · 4 horas · Presencial

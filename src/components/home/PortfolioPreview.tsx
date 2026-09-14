@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle, ExternalLink } from "lucide-react";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";

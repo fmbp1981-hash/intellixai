@@ -1,5 +1,5 @@
 import { CheckCircle2, ArrowRight, Sparkles, Target, Puzzle, HeartHandshake, LayoutGrid } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 
