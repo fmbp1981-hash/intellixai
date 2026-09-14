@@ -66,7 +66,7 @@ export const AnimatedSection = ({
     "fade-left": "translate-x-0 opacity-100",
     "fade-right": "translate-x-0 opacity-100",
     "scale": "scale-100 opacity-100",
-    "blur": "blur-0 opacity-100",
+    "blur": "blur-none opacity-100",
     "slide-up": "translate-y-0 opacity-100",
   };
 
