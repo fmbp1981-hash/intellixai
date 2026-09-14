@@ -107,7 +107,7 @@ function StatNumber({ benefit }: { benefit: ROIBenefit }) {
 
   useEffect(() => {
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setStarted(true); },
+      ([entry]) => { if (entry?.isIntersecting) setStarted(true); },
       { threshold: 0.5 }
     );
     if (ref.current) obs.observe(ref.current);

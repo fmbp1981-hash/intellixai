@@ -49,14 +49,14 @@ function extractTableOfContents(content: string): TocItem[] {
   const items: TocItem[] = [];
   let match;
   while ((match = headingRegex.exec(content)) !== null) {
-    const text = match[2].replace(/\*\*/g, "").replace(/\*/g, "").trim();
+    const text = (match[2] ?? "").replace(/\*\*/g, "").replace(/\*/g, "").trim();
     const id = text
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/[^\w\s-]/g, "")
       .replace(/\s+/g, "-");
-    items.push({ id, text, level: match[1].length });
+    items.push({ id, text, level: (match[1] ?? "").length });
   }
   return items;
 }
