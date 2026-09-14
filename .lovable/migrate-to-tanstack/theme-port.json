@@ -1,0 +1,25 @@
+{
+  "customizations": [
+    { "token": ":root HSL palette (background, card, primary, accent, gold, cyan, sidebar, etc.)", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "--cyan / --cyan-glow / --cyan-bright / --gold / --gold-glow / --gold-bright / --dark-blue tokens", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "--gradient-cyan / --gradient-gold / --gradient-dark / --gradient-glass / --gradient-glow", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "--shadow-cyan / --shadow-cyan-intense / --shadow-gold / --shadow-card / --shadow-glow", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "font-sans (Inter) / font-display (Space Grotesk) from tailwind.config.ts", "source": "tailwind.config.ts", "reappliedIn": "src/styles.css @theme" },
+    { "token": "colors.cyan / colors.gold Tailwind color extensions", "source": "tailwind.config.ts", "reappliedIn": "src/styles.css @theme" },
+    { "token": "container (center, padding 2rem, 2xl 1400px)", "source": "tailwind.config.ts", "reappliedIn": "src/styles.css @utility container" },
+    { "token": "keyframes/animations: accordion-down/up, fade-in, fade-in-left, fade-in-right, scale-in, pulse-glow", "source": "tailwind.config.ts", "reappliedIn": "src/styles.css @theme" },
+    { "token": "body base styles + Space Grotesk headings + smooth scroll + ::selection", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "grain texture body::after + grain-shift keyframes", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "card-glass / glass-card / glass-card-glow glassmorphism components", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "gradient-text / gradient-text-gold / gradient-text-brand-blue / gradient-text-mixed", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "glow-cyan / glow-gold / icon-glow / icon-glow-gold / text-glow / text-glow-gold", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "hover-lift / hover-glow / gradient-border / btn-primary / btn-accent", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "editorial prose suite (drop-cap, pull-quote, captions, dividers, prose typography)", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "reading-progress-bar / toc-link / scroll-progress utilities", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "animate-marquee / animate-orb-1..3 / animate-cta-glow / animate-float / animate-glow + keyframes", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "animate-radar-spin / animate-forge-pulse / animate-trilha-float + keyframes", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "prefers-reduced-motion overrides", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "premium scrollbar styling (webkit + firefox)", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "@tailwindcss/typography plugin (prose classes in BlogPost)", "source": "tailwind.config.ts", "reappliedIn": "src/styles.css @plugin" }
+  ]
+}
