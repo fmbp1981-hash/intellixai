@@ -12,7 +12,7 @@ export function CTASection() {
       <div className="container mx-auto px-4 relative z-10">
         <AnimatedSection className="max-w-3xl mx-auto text-center">
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/12 mb-7 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/12 mb-7 backdrop-blur-xs">
             <MessageCircle className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-white/60">Próximos passos</span>
           </div>

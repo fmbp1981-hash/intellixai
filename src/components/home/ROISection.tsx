@@ -148,7 +148,7 @@ export function ROISection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <AnimatedSection className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/25 mb-5 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/25 mb-5 backdrop-blur-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             <span className="text-xs font-bold uppercase tracking-widest text-accent/80">Resultados reais</span>
           </div>

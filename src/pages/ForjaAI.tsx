@@ -268,7 +268,7 @@ export default function ForjaAI() {
             {/* Left — text */}
             <div>
               <AnimatedSection animation="fade-right" delay={0}>
-                <div className="flex w-fit items-center gap-2 bg-white/5 border border-accent/30 rounded-full px-4 py-2 mb-8 backdrop-blur-sm">
+                <div className="flex w-fit items-center gap-2 bg-white/5 border border-accent/30 rounded-full px-4 py-2 mb-8 backdrop-blur-xs">
                   <Hammer className="w-3.5 h-3.5 text-accent flex-shrink-0" />
                   <span className="text-xs font-semibold text-white/80 tracking-wide">
                     Soluções sob medida · B2B · Desenvolvimento especializado

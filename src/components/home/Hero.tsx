@@ -205,7 +205,7 @@ export function Hero() {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-white/12 text-white/65 hover:border-primary/45 hover:text-primary hover:bg-primary/6 font-semibold px-8 py-6 rounded-xl transition-[border-color,color,background-color] duration-200 backdrop-blur-sm"
+                      className="border-white/12 text-white/65 hover:border-primary/45 hover:text-primary hover:bg-primary/6 font-semibold px-8 py-6 rounded-xl transition-[border-color,color,background-color] duration-200 backdrop-blur-xs"
                     >
                       Conhecer a Virada Inteligente
                     </Button>
@@ -223,7 +223,7 @@ export function Hero() {
               {pillars.map((item) => (
                 <div
                   key={item.title}
-                  className={`flex items-start gap-3 p-4 rounded-2xl border ${item.bg} hover:bg-white/4 transition-[background-color,border-color] duration-300 backdrop-blur-sm`}
+                  className={`flex items-start gap-3 p-4 rounded-2xl border ${item.bg} hover:bg-white/4 transition-[background-color,border-color] duration-300 backdrop-blur-xs`}
                 >
                   <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <item.icon className="w-4 h-4" style={{ color: item.color }} />
