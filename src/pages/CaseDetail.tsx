@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from "@/lib/router-compat";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/lib/helmet-compat";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/lib/helmet-compat";
 import { AnimatedSection } from "@/hooks/useScrollAnimation";
 import {
   Accordion,

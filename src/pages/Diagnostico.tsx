@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/lib/helmet-compat";
 import { Layout } from "@/components/layout/Layout";
 import { useState } from "react";
 import { useSearchParams } from "@/lib/router-compat";

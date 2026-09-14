@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/lib/helmet-compat";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "@/lib/router-compat";
 import { Button } from "@/components/ui/button";

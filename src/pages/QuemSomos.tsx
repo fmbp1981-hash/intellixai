@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/lib/helmet-compat";
 import { Link } from "@/lib/router-compat";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Target, Eye, Lightbulb, Rocket, Heart, GraduationCap, Award, Briefcase } from "lucide-react";
