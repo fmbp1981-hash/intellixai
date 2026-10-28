@@ -1,0 +1,9 @@
+{
+  "name": "IntelliX.AI — Cartão Digital",
+  "short_name": "IntelliX.AI",
+  "start_url": "/cartao",
+  "display": "standalone",
+  "background_color": "#1A1A2E",
+  "theme_color": "#1A1A2E",
+  "icons": [{ "src": "/favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }]
+}
