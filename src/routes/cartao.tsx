@@ -53,11 +53,13 @@ function loadImage(src: string) {
 
 async function logoBase64(): Promise<string | null> {
   try {
-    const blob = await (await fetch("/favicon.png")).blob();
-    const buf = new Uint8Array(await blob.arrayBuffer());
-    let s = "";
-    buf.forEach((b) => (s += String.fromCharCode(b)));
-    return btoa(s);
+    const img = await loadImage("/favicon.png");
+    const c = document.createElement("canvas");
+    c.width = 256; c.height = 256;
+    const ctx = c.getContext("2d")!;
+    ctx.fillStyle = "#1A1A2E"; ctx.fillRect(0, 0, 256, 256);
+    ctx.drawImage(img, 0, 0, 256, 256);
+    return c.toDataURL("image/jpeg", 0.85).split(",")[1] ?? null;
   } catch {
     return null;
   }
