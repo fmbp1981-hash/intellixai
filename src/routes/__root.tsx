@@ -7,6 +7,7 @@ import {
   Scripts,
   createRootRouteWithContext,
   useRouter,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { HelmetProvider } from "@/lib/helmet-compat";
 import { Toaster } from "@/components/ui/toaster";
@@ -89,7 +90,7 @@ function RootComponent() {
   );
 }
 
-function RootErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function RootErrorComponent({ error, reset }: ErrorComponentProps) {
   const router = useRouter();
 
   console.error(error);
