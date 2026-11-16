@@ -136,10 +136,12 @@ export async function processarSolicitacao(
     );
 
     if (decisao.acao === "reaproveitar") {
+      // A resposta é igual à de um pedido novo com falha de e-mail, para não revelar
+      // a terceiros se um e-mail pediu este material recentemente.
       console.info(`[materiais] Pedido repetido, sem novo cadastro (${log})`);
       return sucesso(
         { downloadUrl, emailEnviado: false },
-        { duplicado: true, validadeSegundos: VALIDADE_LINK_SEGUNDOS },
+        { validadeSegundos: VALIDADE_LINK_SEGUNDOS },
       );
     }
 
@@ -170,7 +172,7 @@ export async function processarSolicitacao(
     );
     return sucesso(
       { downloadUrl, emailEnviado },
-      { duplicado: false, validadeSegundos: VALIDADE_LINK_SEGUNDOS },
+      { validadeSegundos: VALIDADE_LINK_SEGUNDOS },
     );
   } catch (erro) {
     console.error(

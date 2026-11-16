@@ -13,8 +13,6 @@ export interface SolicitacaoAtendida {
 }
 
 export interface SolicitacaoMeta {
-  /** true quando o mesmo e-mail já tinha pedido este material há pouco (não gravou de novo). */
-  duplicado: boolean;
   /** Validade do link, em segundos. */
   validadeSegundos: number;
 }

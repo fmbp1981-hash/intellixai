@@ -21,13 +21,13 @@ const solucoesLinks = [
 const mainNavLinks = [
   { href: "/cases", label: "Cases", icon: Briefcase },
   { href: "/diagnostico", label: "Diagnóstico", icon: Stethoscope },
-  { href: "/materiais", label: "Materiais", icon: BookOpen },
   { href: "/#falar-com-equipe", label: "Fale Conosco", icon: Phone, isAnchor: true },
 ];
 
 const moreLinks = [
   { href: "/quem-somos", label: "Quem Somos", icon: Users },
   { href: "/como-trabalhamos", label: "Como Trabalhamos", icon: Cog },
+  { href: "/materiais", label: "Materiais", icon: BookOpen },
   { href: "/contato", label: "Contato", icon: MessageSquare },
 ];
 

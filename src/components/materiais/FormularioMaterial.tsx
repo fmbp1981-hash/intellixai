@@ -131,7 +131,7 @@ export function FormularioMaterialCard({
   }
 
   if (resultado) {
-    const { dados, meta } = resultado;
+    const { dados } = resultado;
     return (
       <div
         className="rounded-2xl border border-accent/30 bg-accent/6 p-6 sm:p-8 text-center"
@@ -163,11 +163,6 @@ export function FormularioMaterialCard({
               />
               <span>Enviamos também para seu e-mail.</span>
             </>
-          ) : meta?.duplicado ? (
-            <span>
-              Você já tinha pedido este material há pouco. Aqui está o link de
-              novo; o e-mail enviado antes continua valendo.
-            </span>
           ) : (
             <span>
               Não conseguimos enviar o e-mail agora. Baixe pelo botão acima.

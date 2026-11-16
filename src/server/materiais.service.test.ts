@@ -69,7 +69,7 @@ describe("processarSolicitacao", () => {
         downloadUrl: "https://exemplo.supabase.co/sign/guia.pdf?token=t",
         emailEnviado: true,
       },
-      meta: { duplicado: false, validadeSegundos: VALIDADE_LINK_SEGUNDOS },
+      meta: { validadeSegundos: VALIDADE_LINK_SEGUNDOS },
     });
     expect(deps.criarLinkAssinado).toHaveBeenCalledWith("guias/guia.pdf", 3600);
     expect(inseridos).toEqual([
@@ -191,7 +191,7 @@ describe("processarSolicitacao", () => {
     const r = await processarSolicitacao(entradaValida, contexto, deps);
     expect(r).toEqual({
       data: { downloadUrl: expect.any(String), emailEnviado: false },
-      meta: { duplicado: true, validadeSegundos: VALIDADE_LINK_SEGUNDOS },
+      meta: { validadeSegundos: VALIDADE_LINK_SEGUNDOS },
     });
     expect(deps.existeCadastroRecente).toHaveBeenCalledWith(
       "mat-1",
