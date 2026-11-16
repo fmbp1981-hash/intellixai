@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "@/lib/router-compat";
-import { Menu, X, ChevronDown, Zap, Briefcase, Stethoscope, Users, Cog, MessageSquare, Phone, Search, Hammer, Map } from "lucide-react";
+import { Menu, X, ChevronDown, Zap, Briefcase, Stethoscope, Users, Cog, MessageSquare, Phone, Search, Hammer, Map, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -21,6 +21,7 @@ const solucoesLinks = [
 const mainNavLinks = [
   { href: "/cases", label: "Cases", icon: Briefcase },
   { href: "/diagnostico", label: "Diagnóstico", icon: Stethoscope },
+  { href: "/materiais", label: "Materiais", icon: BookOpen },
   { href: "/#falar-com-equipe", label: "Fale Conosco", icon: Phone, isAnchor: true },
 ];
 

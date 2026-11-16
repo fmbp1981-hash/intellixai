@@ -16,6 +16,7 @@ import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as DiagnosticoRouteImport } from './routes/diagnostico'
 import { Route as ForjaAiRouteImport } from './routes/forja-ai'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as QuemSomosRouteImport } from './routes/quem-somos'
 import { Route as RadarAiRouteImport } from './routes/radar-ai'
 import { Route as SolucoesRouteImport } from './routes/solucoes'
@@ -25,6 +26,8 @@ import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as CasesIndexRouteImport } from './routes/cases/index'
 import { Route as CasesSlugRouteImport } from './routes/cases/$slug'
+import { Route as MateriaisIndexRouteImport } from './routes/materiais/index'
+import { Route as MateriaisSlugRouteImport } from './routes/materiais/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -59,6 +62,11 @@ const ForjaAiRoute = ForjaAiRouteImport.update({
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacidadeRoute = PrivacidadeRouteImport.update({
+  id: '/privacidade',
+  path: '/privacidade',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QuemSomosRoute = QuemSomosRouteImport.update({
@@ -106,6 +114,16 @@ const CasesSlugRoute = CasesSlugRouteImport.update({
   path: '/cases/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MateriaisIndexRoute = MateriaisIndexRouteImport.update({
+  id: '/materiais/',
+  path: '/materiais/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MateriaisSlugRoute = MateriaisSlugRouteImport.update({
+  id: '/materiais/$slug',
+  path: '/materiais/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -115,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/diagnostico': typeof DiagnosticoRoute
   '/forja-ai': typeof ForjaAiRoute
   '/portfolio': typeof PortfolioRoute
+  '/privacidade': typeof PrivacidadeRoute
   '/quem-somos': typeof QuemSomosRoute
   '/radar-ai': typeof RadarAiRoute
   '/solucoes': typeof SolucoesRoute
@@ -122,8 +141,10 @@ export interface FileRoutesByFullPath {
   '/virada-inteligente': typeof ViradaInteligenteRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/cases/$slug': typeof CasesSlugRoute
+  '/materiais/$slug': typeof MateriaisSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/cases/': typeof CasesIndexRoute
+  '/materiais/': typeof MateriaisIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -133,6 +154,7 @@ export interface FileRoutesByTo {
   '/diagnostico': typeof DiagnosticoRoute
   '/forja-ai': typeof ForjaAiRoute
   '/portfolio': typeof PortfolioRoute
+  '/privacidade': typeof PrivacidadeRoute
   '/quem-somos': typeof QuemSomosRoute
   '/radar-ai': typeof RadarAiRoute
   '/solucoes': typeof SolucoesRoute
@@ -140,8 +162,10 @@ export interface FileRoutesByTo {
   '/virada-inteligente': typeof ViradaInteligenteRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/cases/$slug': typeof CasesSlugRoute
+  '/materiais/$slug': typeof MateriaisSlugRoute
   '/blog': typeof BlogIndexRoute
   '/cases': typeof CasesIndexRoute
+  '/materiais': typeof MateriaisIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -152,6 +176,7 @@ export interface FileRoutesById {
   '/diagnostico': typeof DiagnosticoRoute
   '/forja-ai': typeof ForjaAiRoute
   '/portfolio': typeof PortfolioRoute
+  '/privacidade': typeof PrivacidadeRoute
   '/quem-somos': typeof QuemSomosRoute
   '/radar-ai': typeof RadarAiRoute
   '/solucoes': typeof SolucoesRoute
@@ -159,8 +184,10 @@ export interface FileRoutesById {
   '/virada-inteligente': typeof ViradaInteligenteRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/cases/$slug': typeof CasesSlugRoute
+  '/materiais/$slug': typeof MateriaisSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/cases/': typeof CasesIndexRoute
+  '/materiais/': typeof MateriaisIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -172,6 +199,7 @@ export interface FileRouteTypes {
     | '/diagnostico'
     | '/forja-ai'
     | '/portfolio'
+    | '/privacidade'
     | '/quem-somos'
     | '/radar-ai'
     | '/solucoes'
@@ -179,8 +207,10 @@ export interface FileRouteTypes {
     | '/virada-inteligente'
     | '/blog/$slug'
     | '/cases/$slug'
+    | '/materiais/$slug'
     | '/blog/'
     | '/cases/'
+    | '/materiais/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -190,6 +220,7 @@ export interface FileRouteTypes {
     | '/diagnostico'
     | '/forja-ai'
     | '/portfolio'
+    | '/privacidade'
     | '/quem-somos'
     | '/radar-ai'
     | '/solucoes'
@@ -197,8 +228,10 @@ export interface FileRouteTypes {
     | '/virada-inteligente'
     | '/blog/$slug'
     | '/cases/$slug'
+    | '/materiais/$slug'
     | '/blog'
     | '/cases'
+    | '/materiais'
   id:
     | '__root__'
     | '/'
@@ -208,6 +241,7 @@ export interface FileRouteTypes {
     | '/diagnostico'
     | '/forja-ai'
     | '/portfolio'
+    | '/privacidade'
     | '/quem-somos'
     | '/radar-ai'
     | '/solucoes'
@@ -215,8 +249,10 @@ export interface FileRouteTypes {
     | '/virada-inteligente'
     | '/blog/$slug'
     | '/cases/$slug'
+    | '/materiais/$slug'
     | '/blog/'
     | '/cases/'
+    | '/materiais/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -227,6 +263,7 @@ export interface RootRouteChildren {
   DiagnosticoRoute: typeof DiagnosticoRoute
   ForjaAiRoute: typeof ForjaAiRoute
   PortfolioRoute: typeof PortfolioRoute
+  PrivacidadeRoute: typeof PrivacidadeRoute
   QuemSomosRoute: typeof QuemSomosRoute
   RadarAiRoute: typeof RadarAiRoute
   SolucoesRoute: typeof SolucoesRoute
@@ -234,8 +271,10 @@ export interface RootRouteChildren {
   ViradaInteligenteRoute: typeof ViradaInteligenteRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CasesSlugRoute: typeof CasesSlugRoute
+  MateriaisSlugRoute: typeof MateriaisSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
   CasesIndexRoute: typeof CasesIndexRoute
+  MateriaisIndexRoute: typeof MateriaisIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -287,6 +326,13 @@ declare module '@tanstack/react-router' {
       path: '/portfolio'
       fullPath: '/portfolio'
       preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacidade': {
+      id: '/privacidade'
+      path: '/privacidade'
+      fullPath: '/privacidade'
+      preLoaderRoute: typeof PrivacidadeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/quem-somos': {
@@ -352,6 +398,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CasesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/materiais/': {
+      id: '/materiais/'
+      path: '/materiais'
+      fullPath: '/materiais/'
+      preLoaderRoute: typeof MateriaisIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/materiais/$slug': {
+      id: '/materiais/$slug'
+      path: '/materiais/$slug'
+      fullPath: '/materiais/$slug'
+      preLoaderRoute: typeof MateriaisSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -363,6 +423,7 @@ const rootRouteChildren: RootRouteChildren = {
   DiagnosticoRoute: DiagnosticoRoute,
   ForjaAiRoute: ForjaAiRoute,
   PortfolioRoute: PortfolioRoute,
+  PrivacidadeRoute: PrivacidadeRoute,
   QuemSomosRoute: QuemSomosRoute,
   RadarAiRoute: RadarAiRoute,
   SolucoesRoute: SolucoesRoute,
@@ -370,8 +431,10 @@ const rootRouteChildren: RootRouteChildren = {
   ViradaInteligenteRoute: ViradaInteligenteRoute,
   BlogSlugRoute: BlogSlugRoute,
   CasesSlugRoute: CasesSlugRoute,
+  MateriaisSlugRoute: MateriaisSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
   CasesIndexRoute: CasesIndexRoute,
+  MateriaisIndexRoute: MateriaisIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
