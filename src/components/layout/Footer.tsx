@@ -64,7 +64,9 @@ export function Footer() {
     { href: "/cases", label: "Cases" },
     { href: "/quem-somos", label: "Quem Somos" },
     { href: "/como-trabalhamos", label: "Como Trabalhamos" },
+    { href: "/materiais", label: "Materiais" },
     { href: "/contato", label: "Contato" },
+    { href: "/privacidade", label: "Política de Privacidade" },
   ];
 
   const frentes = [
@@ -185,7 +187,12 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/25">
-          <p>© {currentYear} IntelliX.AI. Todos os direitos reservados.</p>
+          <p>
+            © {currentYear} IntelliX.AI. Todos os direitos reservados.{" "}
+            <Link to="/privacidade" className="underline underline-offset-2 hover:text-white/60">
+              Política de Privacidade
+            </Link>
+          </p>
           <div className="flex items-center gap-4">
             <span className="text-white/15">Recife, PE · Brasil</span>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-white/8 bg-white/[0.03] text-[10px] text-white/30">
